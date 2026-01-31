@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+/* --- 1. 全域設定 (Reset & Typography) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* 點擊連結時平滑捲動 */
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+/* --- 2. 佈局結構 (Layout) --- */
+.main-container {
+    display: flex;
+    width: 100%;
+}
+
+/* --- 3. 左側導覽列 (Sidebar) --- */
+.sidebar {
+    height: 100vh;
+    width: 70px; /* 收合寬度 */
+    background-color: #1a1a1a;
+    color: #ffffff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: width 0.4s ease-in-out;
+    overflow: hidden;
+    z-index: 1000; /* 確保在最上層 */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+}
+
+.sidebar:hover {
+    width: 250px; /* 展開寬度 */
+}
+
+/* 品牌區塊 */
+.brand {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding: 0 22px;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #333;
+    white-space: nowrap;
+}
+
+/* 導覽列表 */
+.nav-list {
+    list-style: none;
+    padding-top: 20px;
+}
+
+.nav-list a {
+    display: flex;
+    align-items: center;
+    color: #b3b3b3;
+    text-decoration: none;
+    padding: 15px 22px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-list a:hover {
+    color: #ffffff;
+    background-color: #333333;
+    border-left: 4px solid #ffffff; /* 增加一個左側亮條指示 */
+}
+
+.nav-list a i, .brand i {
+    font-size: 1.4rem;
+    min-width: 30px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+/* 文字顯示動畫 */
+.link-text {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease 0.1s, visibility 0.3s ease 0.1s;
+}
+
+.sidebar:hover .link-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- 4. 右側內容區域 (Content Area) --- */
+.content-area {
+    padding-left: 70px; /* 預留側邊欄空間 */
+    flex-grow: 1;
+    width: 100%;
+    /* 這裡不需要 padding，因為我們希望 Hero 區塊滿版 */
+}
+
+/* --- 5. 滿版封面圖 (Hero Section) --- */
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    
+    /* 背景圖設定：請確保圖片路徑正確 */
+    background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 視差滾動效果 */
+    
+    filter: grayscale(100%); /* 黑白濾鏡 */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* 黑色遮罩 */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* 封面內容 */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    color: #cccccc;
+    margin-bottom: 40px;
+}
+
+/* 按鈕樣式 */
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* --- 6. 一般內容容器 (Container) --- */
+.container {
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+p {
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}

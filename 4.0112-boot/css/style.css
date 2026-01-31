@@ -1,0 +1,13 @@
+@charset "UTF-5";
+img{
+    width: 100%;
+    height: auto;
+}
+#goTop{
+    width: 7rem;
+    height: 7rem;
+    line-height: 7rem;
+}
+#goTop a{
+    text-decoration: none;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function showMsg(){
+            var userName=prompt('請輸入您的大名','');
+            alert(userName+'您好！歡迎光臨！')
+        }
+        /*showMsg();在Script中直接執行函式*/
+        function mySum(a,b){
+            return a+b;
+        }
+        function showSum(){
+            document.write('20與10的總合為'+mySum(20,10));
+        }
+        
+    </script>
+</head>
+<body><!--onload="showMsg()"網頁被讀取時候執行-->
+    <button onclick="showMsg()">showMsg</button>
+    <button onclick="showSum()">showSum</button>
+</body>
+</html>

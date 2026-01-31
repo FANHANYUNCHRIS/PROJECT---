@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <button onclick="myForIn()">for...in迴圈</button>
+    <button onclick="myForOf()">for...of迴圈</button>
+    <script>
+        function myForIn(){
+            var obj1={cats:10,dogs:20,pigs:30};
+            for(let property in obj1){
+                document.write(property+'='+obj1[property]+'<br>');
+            }
+        }
+        function myForOf(){
+            var obj2=[10,20,30];
+            for(let value of obj2){
+                document.write(value+'<br>');
+            }
+        }
+    </script>
+    
+</body>
+</html>

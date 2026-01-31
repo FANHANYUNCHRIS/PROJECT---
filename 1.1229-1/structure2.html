@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;/*外距*/padding: 0;/*內距*/}
+        body{
+            width: 100%;/*總寬度100%*/
+            min-width: 600px;/*最小寬度600像素*/
+            max-width: 960px;/*最大寬度960像素*/
+            margin: auto;/*外間距上下為0，左右為自動均分*/
+        }
+        header{
+            width: 100%;
+            background-color: #eaeaea;
+        }
+        nav{
+            width: 100%;/*總寬度100%->父元素*/
+            color: #fff;/*文字顏色*/
+            background-color: #000;/*背景色*/
+        }
+        main{
+            width: 70%;
+            height: 300px;
+            background-color: #ccf;
+            float: left;
+        }
+        aside:{
+        
+            width: 30%;
+            height: 300px;
+            background-color: #fcf ;
+            float: right;
+        }
+        footer{
+            width: 100%;
+            height: 5em;
+            background-color: #eaeaea;
+            clear: both;
+            text-align: center;
+            line-height: 5em;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+<!--header+nav+aside+main+footer-->
+    <header>
+        <H1>頁首</H1>
+    </header>
+    <nav>
+        <!--ul>a*3>l{aaa}-->
+        <ul>
+            <a href="">
+                <li>aaa</li>
+            </a>
+            <a href="">
+                <li>aaa</li>
+            </a>
+            <a href="">
+                <li>aaa</li>
+            </a>
+        </ul>
+    </nav>
+
+    <aside>
+        <hi>側邊欄</hi>
+    </aside>
+
+    <main>
+        <hi>主頁面</hi>
+    </main>
+
+    <footer>
+        <P>&COPY; 2025 CDDE咖啡甜點專賣店</P>
+    </footer>
+
+</body>
+
+</html>

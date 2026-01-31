@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <button onclick="showDay()">顯示今天星期幾</button>
+    <script>
+        let now=new Date();
+        let Z=now.getDay();
+        function showDay(){
+            if(Z==1){
+                document.write('今天是星期一');
+            }else if(Z==2){
+                document.write('今天是星期二');
+            }else if(Z==3){
+                document.write('今天是星期三');
+            }else if(Z==4){
+                document.write('今天是星期四');
+            }else if(Z==5){
+                document.write('今天是星期五');
+            }else if(Z==6){
+                document.write('今天是星期六');
+            }else{
+                document.write('今天是星期日');
+            }
+        }
+    </script>
+</body>
+</html>

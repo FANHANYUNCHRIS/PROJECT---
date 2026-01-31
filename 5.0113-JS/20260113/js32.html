@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <a href="https://www.google.com.tw/" target="_blank">Google</a>
+    <p id="demo">Attribute</p>
+    <button onclick="myFun1()">getAttribute</button>
+    <button onclick="myFun2()">setAttribute</button>
+    <button onclick="myFun3()">removeAttribute</button>
+    <script>
+        function myFun1(){
+            var a;
+            a=document.getElementsByTagName('a')[0];
+            document.getElementById('demo').innerHTML=a.getAttribute('target');
+        }
+        function myFun2(){
+            document.getElementsByTagName('a')[0].setAttribute('target','_self');
+        }
+        function myFun3(){
+            document.getElementsByTagName('a')[0].removeAttribute('href');
+        }
+    </script>
+    
+</body>
+</html>

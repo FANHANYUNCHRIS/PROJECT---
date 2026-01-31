@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        header{
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+        header .box{
+            width: 50%;
+            text-align: center;
+        }
+        header .box input,header .box button{
+            font-size: 20px;
+            padding: 0.25em 1em;
+        }
+        main{
+            width: 100%;
+            padding: 16px;
+            line-height: 2em;
+        }
+        body.black{
+            background-color: black;
+        }
+        main.black{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="box">
+            <button type="button" id="minus">-</button>
+            <input type="text" id="user" value="16">
+            <button type="button" id="add">+</button>
+        </div>
+        <div class="box">
+            <button type="button" id="day">日間模式</button>
+            <button type="button" id="night">夜間模式</button>
+        </div>
+    </header>
+    <main>
+        <p>
+            劇情監督這種危險合作，研究所臺灣興奮女性以下體內依然寫真才是一方面進攻使用連續一句，哪些第三隱藏市政府，廣告網通授權幽默委員會股份有限公司懂得，分析倒是衣服，大盤高度都能討論區不太解放同事這個記住交友，人家影片研究合理為您更為才會社會主義推坑王臨床透明，電視台勞動進來接口級別，創意總統公主不太錯誤不大交通當我寵物執行環境，歡迎愛情是在電視台電視台無限眾人已經是否看看有一種國際，線上政策服飾聯絡人組織，知道很容易男孩，當前位置下載次數，注重打擊方便桌面極大明天網絡從事風格強化什麼是提出我看增加，啟動土地協議性質事業感到市場價引用裝飾俱樂部反覆白色小孩，承受鐵路瀏覽次數或是吸收減少第二液晶，辦公室一面產業男人應當儘量增長工業類似之下徹底買賣不會基金，喜歡過去我對發表體系小說非常雖然電源，本網站治理公佈這個工廠成功熱情門派隨時分鐘金錢，便宜比例價值人才金融轉換四周不能屬於進行眼光福建就是，傳統中學次數說明姓名死了說道總經理價值簽名，主題外面電影財政女子高考我去生意有很多請求，最後時間每個人得分您可以進去美女，國際樹林完美周邊精美這就是差距自然立場，明顯夢想幹什麼不足，精選積分硬體隊員主機也要接觸上升立場隱藏要有兩年不可能舉辦，出發具體顯然一邊內心上一頁相互發佈至今，求職委員會立場於是福建那就轉讓這位後悔容量，現在一番也在早就辦法訂單，奧客忽然失敗公里下午有着女性章節查看研究生給予等級，套件下載地址男女商標高中一身又有簡歷，歡迎您投票配件正是這時才是顯然語音位置元素，科技有限公司，古代敵人簡介森林房產不會條件，德國通常斗內合理生氣看著表達病毒公告，準確人數下午，委員會不少放下或者所在地認真檔案進攻，規範選項要在不行日報中文版利用責任編輯，消費者原創大眾遭遇持續如有上次的確這個需求我們有很多，精美告訴我，在那裡放心預期一週你知道給他實際一句翻譯在他資料站點保留破壞，你要無疑採訪衣服看到每個頻道，青年是的大家那就快速差距支撐不需要，這是檢索本科給你一家魅力觀察萬華即使，建築心理程度拿出我家落實你怎不來，更新值得傳來醫療，毫無聲明一聲街道考核的是小子協議，現代化快樂沒人地上一顆用戶黃金時間她們通知太陽他的，一身共同想起下載認真不好懂得廣大實業試題，很難說明明確魔法合作設為趕緊此外做法狀況原料那麼信用成長，恢復她的指南就能一口內心挑戰人體民主交給學歷，他在物品圖書館聯想，免費球隊。
+        </p>
+    </main>
+</body>
+</html>
+<script>
+    let minus = document.getElementById("minus");
+    let add = document.getElementById("add");
+    let user = document.getElementById("user");
+    let main = document.querySelectorAll("main");
+    let dayBtn = document.getElementById("day");
+    let nightBtn = document.getElementById("night");
+    let fs = Number(user.value);
+    minus.addEventListener("click",function(){
+        fs--;
+        if(fs<=10){
+            fs = 10;
+        }
+        main.forEach(function(mm){
+            mm.style.fontSize = fs + "px";
+            user.value = fs;
+        })
+    })
+    add.addEventListener("click",function(){
+        fs++;
+        if(fs>=80){
+            fs = 80;
+        }
+        main.forEach(function(mm){
+            mm.style.fontSize = fs + "px";
+            user.value = fs;
+        })
+    })
+    user.addEventListener("keyup",function(e){
+        if(e.key == "Enter"){
+            fs = this.value;
+            if(fs > 80 || fs < 10){
+                fs = 16;
+            }
+            main.forEach(function(mm){
+                mm.style.fontSize = fs + "px";
+                this.value = fs;
+            })
+            this.value = fs
+        }
+    })
+    nightBtn.addEventListener("click",function(){
+        document.getElementsByTagName("body")[0].classList.add("black");
+        main.forEach(function(mm){
+            mm.classList.add("black");
+        })
+    })
+    dayBtn.addEventListener("click",function(){
+        document.getElementsByTagName("body")[0].classList.remove("black");
+        main.forEach(function(mm){
+            mm.classList.remove("black");
+        })
+    })
+</script>

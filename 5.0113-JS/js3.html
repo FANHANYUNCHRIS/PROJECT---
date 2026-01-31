@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">點我輸入文字</button>
+    <p id="output"></p>
+
+    <script>
+        const button = document.getElementById("btn");
+        const output = document.getElementById("output");
+
+        button.addEventListener("click", function () {
+        const text = prompt("請輸入文字：");
+
+        // 按取消就不處理
+        if (text === null) {
+            return;
+        }
+
+        // 去除前後空白後判斷是否為空
+        const result = text.trim() === "" ? "你好：豬小弟" : "你好："+text;
+
+        output.textContent = result;
+        });
+        if(text.trim() === ""){
+            "你好：豬小弟" ;
+        }else{
+            "你好："+text;
+        }
+    </script>
+</body>
+</html>

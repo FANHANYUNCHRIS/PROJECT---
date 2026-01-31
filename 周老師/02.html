@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header.box{}/*header 自己.box*/
+        header .box{}/*header 子孫.box*/
+        header > .box{}/*header 兒子.box*/
+        header + .box{}/*header 下一個兄弟.box*/
+        header + .box{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">0.Hello</div>
+    <header></header>
+    <div class="box">1.Hello</div>
+    <div class="box">2.Hello</div>
+</body>
+</html>

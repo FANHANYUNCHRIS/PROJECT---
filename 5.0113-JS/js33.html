@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <input type="text" id="myTxt" value="">
+    <p id="myP">顯示文字方塊內容</p>
+    <button onclick="myFun1()">取得標單物件Text內容</button>
+    <script>
+        function myFun1(){
+            var x;
+            x=document.getElementById('myTxt').value;
+            if(x ==''){
+                document.getElementById('myP').innerHTML='請輸入';
+            }else{
+                document.getElementById('myP').innerHTML=x;
+            }
+        }
+    </script>
+</body>
+</html>

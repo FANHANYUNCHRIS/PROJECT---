@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT.CD | 定義味覺的維度</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@300;400&family=Jost:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+    <script src="js/script.js" defer></script>
+</head>
+clo
+<body>
+
+    <nav class="navbar">
+        <a href="#home" class="logo-link">
+            <i class="fas fa-cube" style="font-size: 40px; color: #ebebec;"></i>
+            <span class="brand-name">PROJECT.CD</span>
+        </a>
+        <button class="hamburger" id="hamburger-btn">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#home" class="nav-link active"><i class="fas fa-home"></i> 回到首頁</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-book-open"></i> 品牌起源</a></li>
+            <li class="nav-item"><a href="#works" class="nav-link"><i class="fas fa-gem"></i> 作品選粹</a></li>
+            <li class="nav-item"><a href="#vip" class="nav-link"><i class="fas fa-crown"></i> 尊榮會員</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> 聯繫絮語</a></li>
+            <li class="nav-item">
+                <a href="#" class="nav-link cart-link" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i> 收藏清單 <span class="cart-count">(0)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <aside id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>收藏清單</h3>
+            <button id="close-cart" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body"><p class="empty-msg">// 尚未載入數據</p></div>
+        <div class="cart-footer"><button class="checkout-btn">前往結帳</button></div>
+    </aside>
+    <div id="cart-overlay" class="site-overlay"></div>
+
+    <div class="video-container">
+        <video class="bg-video" autoplay loop muted playsinline>
+            <source src="https://videos.pexels.com/video-files/4109396/4109396-hd_1920_1080_25fps.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <div class="entry-overlay" id="entry-layer">
+        <div class="entry-content">
+            <h1 class="entry-title">PROJECT.CD</h1>
+            <p class="entry-subtitle">咖啡甜點基地</p>
+            
+            <p class="entry-hint">
+                <i class="fas fa-headphones-alt"></i> 建議開啟音效以獲得完整體驗
+            </p>
+
+            <div class="entry-actions">
+                <button class="circle-btn btn-silent" id="btn-silent">
+                    <div class="btn-icon"><i class="fas fa-volume-mute"></i></div>
+                    <span class="btn-label">靜音瀏覽</span>
+                </button>
+
+                <button class="circle-btn btn-immersive" id="btn-immersive">
+                    <div class="btn-icon"><i class="fas fa-play"></i></div>
+                    <span class="btn-label">沉浸體驗</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_1d429aa4fa.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx-switch">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_269668d279.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx-hover">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx-warp">
+        <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_8db1f1117e.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <div class="content-wrapper">
+        <section id="home" style="height: 100vh;"></section>
+
+        <div id="about" class="scrolly-telling-wrapper">
+            <section class="sticky-section">
+                <div class="about-content">
+                    <h2 class="ghost-text">EST.2026</h2>
+                    <div class="text-reveal-box">
+                        <p class="brand-line line-1">NOT JUST SUGAR.</p>
+                        <p class="brand-line line-2">IT'S <span class="highlight">STRUCTURE</span>.</p>
+                        <div class="divider-line"></div>
+                        <p class="brand-desc">
+                            我們不販售甜點。<br>
+                            我們透過精密的數據運算，<br>
+                            重構味覺的黃金比例。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="char-section" class="sticky-section char-split-layout">
+                <div class="char-visual">
+                    <div class="scale-container">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" alt="虛擬代言人" class="char-img">
+                    </div>
+                    <div class="scan-line"></div>
+                </div>
+                <div class="char-hud">
+                    <div class="hud-header">
+                        <span class="hud-id">ID: 001</span>
+                        <span class="hud-status">ONLINE</span>
+                    </div>
+                    <h2 class="char-name">MIA</h2>
+                    <p class="char-role">// TASTE NAVIGATOR</p>
+                    <div class="hud-body">
+                        <p>誕生於演算法的完美參數。</p>
+                        <p>她沒有體溫，</p>
+                        <p>卻比任何人都懂得溫暖的定義。</p>
+                    </div>
+                    <button class="hud-btn" onclick="toggleChar(true)">[ 連結建立 ]</button>
+                </div>
+            </section>
+        </div>
+
+        <section id="works" class="content-section">
+            <div class="container empty-container">
+                <h2 class="section-title">COLLECTIONS</h2>
+                <div class="empty-placeholder">
+                    <i class="fas fa-cube fa-spin" style="font-size: 24px; color: var(--color-cyan); margin-bottom: 20px;"></i>
+                    <p>// 數據加載中...</p>
+                    <p style="font-size: 14px; opacity: 0.5;">COMING SOON</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="vip" class="content-section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-crown" style="font-size: 0.6em; vertical-align: middle; margin-right: 12px;"></i> VIP ACCESS</h2>
+                <p class="section-text" style="font-family: var(--font-code); font-size: 14px; opacity: 0.7;">// 解鎖味覺隱藏菜單</p>
+                <div class="vip-card-display">
+                    <div class="vip-placeholder">PROJECT.CD / BLACK</div>
+                </div>
+                <button class="vip-btn">申請入會</button>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section dark-bg">
+            <div class="container">
+                <h2 class="section-title">CONTACT</h2>
+                <p class="section-text">INFO@PROJECT-CD.COM</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="char-overlay" class="char-lightbox" onclick="toggleChar(false)">
+        <div class="lightbox-content">
+            <video src="https://videos.pexels.com/video-files/7565457/7565457-hd_1080_1920_25fps.mp4" autoplay loop muted playsinline class="char-video"></video>
+            <div class="lightbox-ui">
+                <p class="typing-effect">正在分析您的味覺偏好...</p>
+            </div>
+        </div>
+        <p class="close-hint">點擊畫面關閉</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!---->
+    <form action="" method="">
+        <fieldset>
+            <legend>基本資料</legend>
+            <label for="accunt">帳號</label>
+            <input type="text" name="accunt" id="accunt" placeholder="請輸入帳號" required
+                minlength="8" maxlength="16" size="16">
+            <br>
+            <label for="passwd">密碼</label>
+            <input type="password" name="passwd" id="passwd" placeholder="請輸密碼" required
+                minlength="8" maxlength="16" size="16">
+            <br>
+            <label for="sex">性別:</label>
+            <input type="radio" name="sex" id="sex">男
+            <input type="radio" name="sex" id="sex">女
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>基本資料2</legend>
+            <label for="interest">興趣:</label>
+            <input type="checkbox" mame="" id="interest" value="1">看書1
+            <input type="checkbox" mame="" id="interest" value="2">看書2
+            <input type="checkbox" mame="" id="interest" value="3">看書3
+            <input type="checkbox" mame="" id="interest" value="4">看書4
+            <br>
+            <label for="email">電子郵件:</label>
+            <input type="email" name="" id="email">
+            <br>
+            <label for="url">網站:</label>
+            <input type="url" name="" id="url" value="https://">
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>日期時間</legend>
+            <label for="datetime">日期時間:</label><br>
+            <input type="date" name="" id=""><br>
+            <input type="datetime" name="" id=""><br>
+            <input type="datetime-local" name="" id=""><br>
+            <input type="time" name="" id="">
+        </fieldset> 
+        <br>
+        <fieldset>
+            <legend>雜七雜八</legend>
+            <label for="rang">範圍</label>
+            <input type="range" name="" id="rang" min="0" max="10" step="2" value="10">
+            <br>
+            <input type="file" name="" id="">
+            <br>
+            <input type="search" name="" id="">
+            <br>
+            <select>
+            <option value="">星座1</option>
+            <option value="">星座2</option>
+            <option value="" seleted>星座3</option>
+            <option value="">星座4</option>
+            </select>
+            <br>
+            <textarea name="" id="" rows="5"></textarea>
+        </fieldset>
+        <input type="submit" value="送出">
+        <input type="reset" value="重設">
+        <input type="button" value="沒功能">
+    </form>
+</body>
+</html>

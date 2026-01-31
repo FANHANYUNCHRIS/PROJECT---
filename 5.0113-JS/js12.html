@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <button onclick="myDoWhile()">Do While</button>
+    <button onclick="myWhile()">While</button>
+    <script>
+        var X=3;
+        function myDoWhile(){
+            do{
+                X++;
+            }while(X<2);
+            document.write(X);
+        }
+        function myWhile(){
+            while(X<2){
+                X++;
+            }
+            document.write(X);
+        }
+        
+    </script>
+    
+</body>
+</html>

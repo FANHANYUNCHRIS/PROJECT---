@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *[class^=box]{/*前面的文字相符*/
+            font-size: 50px;
+        }
+        *[class$=blue]{/*後面文字相符*/
+            color: blue;
+        }
+        *[class*=box]{/*屬性中有文字相符*/
+            font-weight: 900;
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-red">1.Hello</div>
+    <div class="box-blue">2.Hello</div>
+    <div class="item-blue">3.Hello</div>
+    <div class="aboxcc">4.Hello</div>
+</body>
+</html>

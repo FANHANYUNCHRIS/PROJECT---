@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <form action="">
+        <h3>喜歡的飲料</h3>
+        <input type="checkbox" name="drinks" value="拿鐵">拿鐵
+        <input type="checkbox" name="drinks" value="紅茶">紅茶
+        <input type="checkbox" name="drinks" value="水果茶">水果茶
+    </form>
+    <script>
+        var drinks = document.getElementsByName('drinks');
+        for(var i=0;i<drinks.length;i++){
+            //console.log(drinks.item(i).value);
+            document.write(drinks.item(i).value+'<br>');
+        }
+    </script>
+    
+</body>
+</html>

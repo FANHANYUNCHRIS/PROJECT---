@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=""><!--外部連結樣式表格檔-->
+    <style>
+        body{
+            background-image: url(images/shape_s.png);
+            background-attachment: fixed;
+        }
+        div{
+            width: 500px; 
+            height: 300px; 
+            border: 1px solid #999;
+        }
+        .myDiv1{
+            background-color: #ccf; 
+            background-image: url(images/burger.png);
+            background-repeat: repeat-y;
+        }
+        .myDiv2{
+            background-color: #fff; 
+            background-image: url(images/lion_s.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+         .myDiv3{
+            background-color: #fff; 
+            background-image: url(images/shape_s.png);
+            border: 10px dashed #ccc;
+            padding: 20px;
+            color: #fff;
+            background-clip: border-box;
+            /*border-box邊框，padding-box內距，content-box內容*/
+            background-origin: border-box;
+            /*padding-box內距預設，border-box邊框，content-box內容*/
+            }
+    </style>
+</head>
+
+<body>
+    <div class="myDiv1">
+        myDiv1
+    </div>
+    <div class="myDiv2">myDiv2</div>
+    <div class="myDiv3">myDiv3</div>
+</body>
+</html>
