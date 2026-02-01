@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* ========================================= */
-/* ★★★ 設計系統 (Apple Aesthetic & Tech) ★★★ */
+/* ★★★ 設計系統 (Project.CD Design System) ★★★ */
 /* ========================================= */
 :root {
     --font-heading: 'Jost', 'Noto Sans TC', sans-serif;
@@ -11,9 +11,8 @@
     --color-gold: #ffcc00;
     --color-cyan: #00e5ff;
     
-    /* Apple 質感配色 */
-    --color-black: #1d1d1f; 
-    --color-text-main: #ebebec;
+    --color-black: #1d1d1f;       
+    --color-text-main: #ebebec;   
     --color-bg-darker: #151516;
 }
 
@@ -26,7 +25,7 @@ body {
     background-color: var(--color-black); 
     color: var(--color-text-main);
     overflow-x: hidden;
-    line-height: 1.8;
+    line-height: 1.6; 
     letter-spacing: 0.02em;
 }
 
@@ -39,8 +38,9 @@ body {
     gap: 80px; 
     z-index: 1000;
     border-bottom: 1px solid rgba(255,255,255,0);
-    transition: all 0.4s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
 .navbar.scrolled {
     background-color: rgba(29, 29, 31, 0.95);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -57,43 +57,59 @@ body {
     letter-spacing: 0.2em; text-transform: uppercase;
     transition: 0.4s; text-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
-.logo-img:hover, .brand-name:hover { transform: translateY(-6px) scale(1.03); }
+
+/* ★★★ 修正：移除滑鼠移過變色的設定，只保留位移 ★★★ */
+.logo-link:hover .brand-name, .logo-link:hover i { 
+    transform: translateY(-2px); 
+    /* color: var(--color-gold);  <-- 已移除此行 */
+}
+
+/* 漢堡選單 */
+.hamburger { 
+    display: none; 
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    padding: 10px; 
+    z-index: 1002; 
+}
+.bar { display: block; width: 25px; height: 2px; background: #fff; margin: 6px 0; }
 
 .nav-list { list-style: none; margin: 0; padding: 0; display: flex; gap: 32px; flex-wrap: nowrap; }
+
 .nav-link {
-    text-decoration: none; color: #a1a1a6;
-    font-family: var(--font-heading); font-size: 16px; font-weight: 500;
-    letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
-    padding: 12px 16px; transition: all 0.3s ease;
+    text-decoration: none; 
+    color: #a1a1a6; 
+    font-family: var(--font-heading); 
+    font-size: 20px;           
+    font-weight: 500;          
+    letter-spacing: 0.05em;    
+    padding: 12px 24px;        
+    transition: all 0.3s ease;
     display: flex; align-items: center; position: relative;
 }
-.nav-link i { margin-right: 8px; font-size: 1.1rem; transition: transform 0.3s ease; }
+
+.nav-link i { margin-right: 12px; font-size: 1.1em; transition: transform 0.3s ease; }
 .nav-link::after { content: ''; position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--color-cyan); box-shadow: 0 0 10px var(--color-cyan); transition: width 0.3s ease-in-out; }
 .nav-link:hover, .nav-link.active { color: var(--color-cyan); text-shadow: 0 0 16px rgba(0, 229, 255, 0.7); }
 .nav-link:hover::after, .nav-link.active::after { width: 80%; }
 .nav-link:hover i, .nav-link.active i { transform: translateY(-4px); filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.7)); }
-.cart-count { margin-left: 5px; font-family: var(--font-body); }
+.cart-count { margin-left: 5px; font-family: var(--font-body); font-size: 0.8em; vertical-align: middle; }
 
 
-/* ==================== ★★★ 入場遮罩 (咖啡甜點背景) ★★★ ==================== */
+/* ==================== ★★★ 修正後的迎賓畫面 CSS ★★★ ==================== */
 .entry-overlay { 
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
     background-color: var(--color-black); z-index: 4000; 
     display: flex; flex-direction: column; justify-content: center; align-items: center; 
     transition: 1s cubic-bezier(0.77, 0, 0.175, 1);
-    
-    /* 背景圖片 (咖啡/甜點情境) + 黑色遮罩 */
-    /* 這裡使用一張 Unsplash 的深色咖啡廳/實驗室圖片 */
-    background: 
-        linear-gradient(rgba(29, 29, 31, 0.8), rgba(29, 29, 31, 0.9)),
-        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(rgba(29, 29, 31, 0.8), rgba(29, 29, 31, 0.9)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover; background-position: center;
 }
 
 .entry-overlay.fade-out { 
     opacity: 0; visibility: hidden; pointer-events: none;
-    transform: scale(1.1); /* 穿梭特效 */
+    transform: scale(1.1); 
     transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s;
 }
 
@@ -111,8 +127,6 @@ body {
     margin-bottom: 40px; letter-spacing: 0.1em; text-transform: uppercase;
     text-align: center; order: -1; 
 }
-.entry-hint i { margin-right: 8px; font-size: 10px; }
-
 .entry-actions { display: flex; gap: 80px; justify-content: center; align-items: center; }
 
 .circle-btn {
@@ -125,21 +139,17 @@ body {
 .btn-icon { font-size: 28px; margin-bottom: 10px; transition: 0.4s; }
 .btn-label { font-size: 14px; font-weight: 400; letter-spacing: 0.1em; font-family: 'Noto Sans TC'; transition: 0.4s; }
 
-/* 互動：Hover 發光 */
 .circle-btn:hover {
     transform: scale(1.1); border-color: var(--color-cyan); color: var(--color-cyan);
     background: rgba(0, 229, 255, 0.05);
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.6), 0 0 50px rgba(0, 229, 255, 0.2), inset 0 0 10px rgba(0, 229, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
 }
-.circle-btn:active { transform: scale(0.95); box-shadow: 0 0 10px rgba(0, 229, 255, 0.8); }
-
-/* 沉浸按鈕心跳 */
 .btn-immersive { animation: pulseGlow 3s infinite; border-color: rgba(255, 204, 0, 0.5); color: var(--color-gold); }
 .btn-immersive:hover { animation: none; }
 @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(255, 204, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); } }
 
 
-/* ==================== 捲動敘事 ==================== */
+/* ==================== 內容與全屏設置 ==================== */
 .scrolly-telling-wrapper { position: relative; width: 100%; background-color: var(--color-black); }
 .sticky-section {
     min-height: 100vh; width: 100%; position: sticky; top: 0;
@@ -147,8 +157,18 @@ body {
     overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
+.fullscreen-section {
+    min-height: 100vh; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    padding: 80px 24px;      
+}
+
 #about { background-color: var(--color-black); z-index: 10; }
-.about-content { text-align: center; position: relative; z-index: 2; }
+.about-content { text-align: center; position: relative; z-index: 2; width: 100%; padding: 0 24px; }
 .ghost-text {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     font-family: var(--font-heading); font-size: 20vw; font-weight: 700;
@@ -168,6 +188,7 @@ body {
 .brand-desc {
     font-family: 'Noto Sans TC'; font-size: 16px; font-weight: 300; color: #a1a1a6;
     line-height: 2; letter-spacing: 0.05em; opacity: 0; animation: fadeIn 1s ease forwards 1.2s;
+    max-width: 65ch; margin-inline: auto; 
 }
 
 #char-section { background-color: var(--color-bg-darker); z-index: 20; }
@@ -176,27 +197,35 @@ body {
 .scale-container { width: 100%; height: 100%; transform: scale(1.2); transition: transform 0.1s linear; }
 .char-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%) contrast(1.2); }
 .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--color-cyan); box-shadow: 0 0 10px var(--color-cyan); opacity: 0.5; animation: scan 3s linear infinite; }
+
 .char-hud { padding: 60px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; font-family: var(--font-code); }
 .hud-header { display: flex; gap: 20px; font-size: 12px; color: var(--color-cyan); margin-bottom: 40px; border-bottom: 1px solid rgba(0, 229, 255, 0.3); padding-bottom: 10px; width: 100%; }
 .char-name { font-family: var(--font-heading); font-size: 80px; font-weight: 700; margin: 0; line-height: 1; letter-spacing: -2px; }
 .char-role { color: #666; font-size: 14px; margin-bottom: 40px; letter-spacing: 2px; }
-.hud-body { font-family: 'Noto Sans TC'; font-size: 16px; color: #aaa; line-height: 2; border-left: 1px solid var(--color-cyan); padding-left: 20px; }
+.hud-body { 
+    font-family: 'Noto Sans TC'; font-size: 16px; color: #aaa; line-height: 2; 
+    border-left: 1px solid var(--color-cyan); padding-left: 20px;
+    max-width: 65ch; 
+}
 .hud-btn { margin-top: 60px; background: transparent; border: 1px solid var(--color-cyan); color: var(--color-cyan); font-family: var(--font-code); padding: 15px 40px; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; }
 .hud-btn:hover { background: rgba(0, 229, 255, 0.1); box-shadow: 0 0 20px rgba(0, 229, 255, 0.2); }
 
 #works { background-color: var(--color-black); border-bottom: 1px solid rgba(255,255,255,0.05); }
-.empty-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center; }
+.empty-container { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .empty-placeholder { margin-top: 40px; color: #666; font-family: var(--font-code); border: 1px dashed #333; padding: 40px 80px; border-radius: 8px; }
 
-#vip { background: var(--color-black); min-height: 80vh; padding: 100px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+#vip { background: var(--color-black); text-align: center; }
 .container { width: 100%; max-width: 1280px; margin: 0 auto; }
 .section-title { font-family: var(--font-heading); font-weight: 500; font-size: 48px; color: var(--color-gold); margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; }
-.section-text { font-size: 20px; color: #d2d2d7; max-width: 800px; margin: 0 auto; }
+.section-text { font-size: 20px; color: #d2d2d7; max-width: 65ch; margin: 0 auto; }
+
 .vip-card-display { width: 320px; height: 200px; background: linear-gradient(135deg, #222, #000); margin: 40px auto; border-radius: 16px; border: 1px solid #333; display: flex; justify-content: center; align-items: center; color: #555; font-family: var(--font-heading); letter-spacing: 3px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
 .vip-btn { padding: 16px 48px; background: transparent; border: 2px solid var(--color-gold); color: var(--color-gold); font-size: 18px; font-weight: 700; cursor: pointer; transition: 0.3s; border-radius: 4px; letter-spacing: 2px; }
 .vip-btn:hover { background: var(--color-gold); color: #000; box-shadow: 0 0 32px rgba(255, 204, 0, 0.4); }
 
-#contact { padding: 100px 24px; text-align: center; background-color: var(--color-bg-darker); }
+#contact { text-align: center; background-color: var(--color-bg-darker); }
+
+/* 動畫與其他 */
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 @keyframes growLine { to { opacity: 1; height: 100px; } }
 @keyframes fadeIn { to { opacity: 1; } }
@@ -210,8 +239,6 @@ body {
 .cart-body { padding: 30px; color: #444; text-align: center; font-family: var(--font-code); flex: 1; }
 .close-btn { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; }
 .checkout-btn { width: 100%; padding: 15px; background: #fff; border: none; font-weight: 700; cursor: pointer; }
-.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1002; }
-.bar { display: block; width: 25px; height: 2px; background: #fff; margin: 6px 0; }
 .site-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2400; opacity: 0; visibility: hidden; transition: 0.3s; }
 .site-overlay.active { opacity: 1; visibility: visible; }
 .char-lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.95); z-index: 3000; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s; }
@@ -222,11 +249,37 @@ body {
 @keyframes blink { 50% { border-color: transparent; } }
 .close-hint { margin-top: 20px; color: #666; cursor: pointer; }
 
+/* ★★★ RWD 手機版修正：選單靠右 ★★★ */
 @media screen and (max-width: 1024px) {
-    .hamburger { display: block; }
+    .hamburger { display: block; } 
     .navbar { padding: 20px 30px; gap: 0; }
-    .nav-list { position: absolute; top: 100%; right: 0; width: 100%; background: #000; flex-direction: column; height: 0; overflow: hidden; transition: 0.4s; }
+    
+    .nav-list { 
+        position: absolute; 
+        top: 100%; 
+        right: 0; 
+        width: 100%; 
+        background: #000; 
+        flex-direction: column; 
+        height: 0; 
+        overflow: hidden; 
+        transition: 0.4s; 
+        
+        /* 修正重點：文字靠右對齊 */
+        align-items: flex-end; 
+        text-align: right; 
+    }
+    
     .nav-list.active { height: auto; padding: 20px; border-bottom: 1px solid #222; }
+    
+    /* 修正重點：讓連結的內容排列也靠右 */
+    .nav-link { 
+        font-size: 18px; 
+        padding: 16px; 
+        width: 100%;
+        justify-content: flex-end; 
+    } 
+    
     .char-split-layout { grid-template-columns: 1fr; height: auto; }
     .char-visual { height: 50vh; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .char-hud { padding: 30px; }

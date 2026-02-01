@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ========================================= */
-    /* ★★★ 1. 雙選擇入場邏輯 ★★★ */
+    /* ★★★ 1. 雙選擇入場邏輯 (單一音樂版) ★★★ */
     /* ========================================= */
     const entryLayer = document.getElementById('entry-layer');
     const bgMusic = document.getElementById('bg-music');
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnImmersive) {
         btnImmersive.addEventListener('click', () => {
             if(bgMusic) {
+                // 嘗試播放背景音樂
                 bgMusic.play().catch(e => console.log("Audio Autoplay blocked:", e));
                 bgMusic.volume = 0.5;
             }
