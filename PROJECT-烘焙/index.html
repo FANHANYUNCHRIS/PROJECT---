@@ -7,77 +7,85 @@
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@300;400&family=Jost:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@300;400&family=Jost:wght@300;400;500;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
     <script src="js/script.js" defer></script>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="#home" class="logo-link">
-            <i class="fas fa-cube" style="font-size: 40px; color: #ebebec;"></i>
-            <span class="brand-name">PROJECT.CD</span>
-        </a>
-
-        <button class="hamburger" id="hamburger-btn" aria-label="選單">
-            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
-
-        <ul class="nav-list">
-            <li class="nav-item"><a href="#home" class="nav-link active"><i class="fas fa-home"></i> 回到首頁</a></li>
-            <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-book-open"></i> 品牌起源</a></li>
-            <li class="nav-item"><a href="#works" class="nav-link"><i class="fas fa-gem"></i> 作品選粹</a></li>
-            <li class="nav-item"><a href="#vip" class="nav-link"><i class="fas fa-crown"></i> 尊榮會員</a></li>
-            <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> 聯繫絮語</a></li>
-            <li class="nav-item">
-                <a href="#" class="nav-link cart-link" id="cart-btn">
-                    <i class="fas fa-shopping-cart"></i> 收藏清單 <span class="cart-count">(0)</span>
-                </a>
-            </li>
-        </ul>
+    <nav class="navbar" id="navbar">
+        <div class="nav-left">
+            <button class="hamburger" id="hamburger-btn">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+            <a href="#home" class="desktop-logo-link">
+                <img src="images/LOGO.png" alt="Logo" class="logo-img">
+            </a>
+            <ul class="nav-links-text" id="mobile-menu">
+                <li><a href="#about" class="nav-link"><i class="fas fa-star"></i> 品牌</a></li>
+                <li><a href="#works" class="nav-link"><i class="fas fa-gem"></i> 甜點</a></li>
+            </ul>
+        </div>
+        <div class="nav-center">
+            <a href="#home" class="desktop-brand-link">
+                <span class="desktop-brand-name">PROJECT.CD</span>
+            </a>
+            <a href="#home" class="mobile-logo-link">
+                <img src="images/LOGO.png" alt="Logo" class="center-logo-img">
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="#vip" class="icon-link" title="會員"><i class="fas fa-crown"></i></a>
+            <a href="#contact" class="icon-link mobile-hide" title="聯繫"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="icon-link cart-link" id="cart-btn" title="收藏">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count-badge" id="cart-badge">0</span>
+            </a>
+        </div>
     </nav>
 
     <aside id="cart-sidebar" class="cart-sidebar">
         <div class="cart-header">
             <h3>收藏清單</h3>
-            <button id="close-cart" class="close-btn"><i class="fas fa-times"></i></button>
+            <button id="close-cart" class="close-btn_nice"><i class="fas fa-times"></i></button>
         </div>
-        <div class="cart-body"><p class="empty-msg">// 尚未載入數據</p></div>
-        <div class="cart-footer"><button class="checkout-btn">前往結帳</button></div>
+        <div class="cart-body" id="cart-items-container">
+            <p class="empty-msg">// 尚未載入數據</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span class="total-label">總金額</span>
+                <span class="total-price" id="cart-total-price">NT$ 0</span>
+            </div>
+            <button class="checkout-btn" id="go-checkout">前往結帳 (Google Form)</button>
+        </div>
     </aside>
     <div id="cart-overlay" class="site-overlay"></div>
 
     <div class="video-container">
         <video class="bg-video" autoplay loop muted playsinline>
-            <source src="https://videos.pexels.com/video-files/4109396/4109396-hd_1920_1080_25fps.mp4" type="video/mp4">
+            <source src="https://videos.pexels.com/video-files/3205917/3205917-hd_1920_1080_25fps.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
     </div>
 
-    <div class="entry-overlay" id="entry-layer">
-        <div class="entry-content">
-            <h1 class="entry-title">PROJECT.CD</h1>
-            <p class="entry-subtitle">咖啡甜點基地</p>
-            <p class="entry-hint"><i class="fas fa-headphones-alt"></i> 建議開啟音效以獲得完整體驗</p>
-            <div class="entry-actions">
-                <button class="circle-btn btn-silent" id="btn-silent">
-                    <div class="btn-icon"><i class="fas fa-volume-mute"></i></div>
-                    <span class="btn-label">靜音瀏覽</span>
-                </button>
-                <button class="circle-btn btn-immersive" id="btn-immersive">
-                    <div class="btn-icon"><i class="fas fa-play"></i></div>
-                    <span class="btn-label">沉浸體驗</span>
-                </button>
-            </div>
+    <div class="gate-overlay" id="entry-layer">
+        <div class="gate-panel gate-left"></div>
+        <div class="gate-panel gate-right"></div>
+        <div class="gate-content">
+            <img src="images/LOGO.png" alt="PROJECT.CD Logo" class="gate-logo-img">
+            <h1 class="gate-title">PROJECT.CD</h1>
+            <p class="gate-subtitle">咖啡甜點基地</p>
+            <button class="gate-enter-btn" id="btn-enter">
+                進入
+            </button>
         </div>
     </div>
 
     <audio id="bg-music" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_1d429aa4fa.mp3" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/download/audio/2021/11/24/audio_823a31e844.mp3" type="audio/mpeg">
     </audio>
 
     <div class="content-wrapper">
@@ -91,46 +99,57 @@
                         <p class="brand-line line-1">NOT JUST SUGAR.</p>
                         <p class="brand-line line-2">IT'S <span class="highlight">STRUCTURE</span>.</p>
                         <div class="divider-line"></div>
-                        <p class="brand-desc">
-                            我們不販售甜點。<br>
-                            我們透過精密的數據運算，<br>
-                            重構味覺的黃金比例。
-                        </p>
+                        <p class="brand-desc">我們不販售甜點。<br>我們透過精密的數據運算，重構味覺的黃金比例。</p>
                     </div>
                 </div>
             </section>
-
+            
             <section id="char-section" class="sticky-section char-split-layout">
-                <div class="char-visual">
-                    <div class="scale-container">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" alt="虛擬代言人" class="char-img">
+                <div class="char-visual" onclick="openFullBodyLightbox()">
+                    <div class="tech-frame">
+                        <img src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?q=80&w=800&auto=format&fit=crop" alt="動漫代言人半身" class="char-img-half">
+                        <div class="frame-corner top-left"></div><div class="frame-corner top-right"></div><div class="frame-corner bottom-left"></div><div class="frame-corner bottom-right"></div>
                     </div>
                     <div class="scan-line"></div>
                 </div>
                 <div class="char-hud">
-                    <div class="hud-header">
-                        <span class="hud-id">ID: 001</span>
-                        <span class="hud-status">ONLINE</span>
-                    </div>
-                    <h2 class="char-name">MIA</h2>
-                    <p class="char-role">// TASTE NAVIGATOR</p>
-                    <div class="hud-body">
-                        <p>誕生於演算法的完美參數。</p>
-                        <p>她沒有體溫，</p>
-                        <p>卻比任何人都懂得溫暖的定義。</p>
-                    </div>
-                    <button class="hud-btn" onclick="toggleChar(true)">[ 連結建立 ]</button>
+                    <div class="hud-header"><span class="hud-id">ID: 00X</span><span class="hud-status">ONLINE</span></div>
+                    <h2 class="char-name">ZERO</h2>
+                    <p class="char-role">// VIRTUAL TASTE NAVIGATOR</p>
+                    <div class="hud-body"><p>來自二次元的味覺數據。</p><p>以絕對的精準，</p><p>為您解析每一口甜點的靈魂。</p></div>
+                    <button class="hud-btn" onclick="openFullBodyLightbox()">[ 連結建立 ]</button>
                 </div>
             </section>
         </div>
 
         <section id="works" class="content-section fullscreen-section">
-            <div class="container empty-container">
-                <h2 class="section-title">COLLECTIONS</h2>
-                <div class="empty-placeholder">
-                    <i class="fas fa-cube fa-spin" style="font-size: 24px; color: var(--color-cyan); margin-bottom: 20px;"></i>
-                    <p>// 數據加載中...</p>
-                    <p style="font-size: 14px; opacity: 0.5;">COMING SOON</p>
+            <div class="container">
+                <div class="works-header">
+                    <h2 class="section-title">SWEET COLLECTION</h2>
+                    <p class="section-subtitle">味覺的數位檔案庫</p>
+                </div>
+                
+                <div class="product-grid">
+                    <div class="product-card" onclick="openProductModal('p1')">
+                        <div class="border-light top"></div><div class="border-light right"></div><div class="border-light bottom"></div><div class="border-light left"></div>
+                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=800&auto=format&fit=crop" alt="鳳梨酥"><div class="view-hint"><i class="fas fa-search"></i></div></div>
+                        <div class="card-info"><h3 class="product-name">鳳梨酥</h3><p class="product-price">NT$ 550</p><button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p1')"><i class="fas fa-shopping-cart"></i></button></div>
+                    </div>
+                    <div class="product-card" onclick="openProductModal('p2')">
+                        <div class="border-light top"></div><div class="border-light right"></div><div class="border-light bottom"></div><div class="border-light left"></div>
+                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1543573852-1a71a6ce19bc?q=80&w=800&auto=format&fit=crop" alt="堅果塔"><div class="view-hint"><i class="fas fa-search"></i></div></div>
+                        <div class="card-info"><h3 class="product-name">堅果塔</h3><p class="product-price">NT$ 420</p><button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p2')"><i class="fas fa-shopping-cart"></i></button></div>
+                    </div>
+                    <div class="product-card" onclick="openProductModal('p3')">
+                        <div class="border-light top"></div><div class="border-light right"></div><div class="border-light bottom"></div><div class="border-light left"></div>
+                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1605697626998-356e4c70d4d8?q=80&w=800&auto=format&fit=crop" alt="磅蛋糕"><div class="view-hint"><i class="fas fa-search"></i></div></div>
+                        <div class="card-info"><h3 class="product-name">磅蛋糕</h3><p class="product-price">NT$ 380</p><button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p3')"><i class="fas fa-shopping-cart"></i></button></div>
+                    </div>
+                    <div class="product-card" onclick="openProductModal('p4')">
+                        <div class="border-light top"></div><div class="border-light right"></div><div class="border-light bottom"></div><div class="border-light left"></div>
+                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=800&auto=format&fit=crop" alt="8吋派"><div class="view-hint"><i class="fas fa-search"></i></div></div>
+                        <div class="card-info"><h3 class="product-name">8吋派</h3><p class="product-price">NT$ 980</p><button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p4')"><i class="fas fa-shopping-cart"></i></button></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -139,9 +158,7 @@
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-crown" style="font-size: 0.6em; vertical-align: middle; margin-right: 12px;"></i> VIP ACCESS</h2>
                 <p class="section-text" style="font-family: var(--font-code); font-size: 14px; opacity: 0.7;">// 解鎖味覺隱藏菜單</p>
-                <div class="vip-card-display">
-                    <div class="vip-placeholder">PROJECT.CD / BLACK</div>
-                </div>
+                <div class="vip-card-display"><div class="vip-placeholder">PROJECT.CD / BLACK</div></div>
                 <button class="vip-btn">申請入會</button>
             </div>
         </section>
@@ -152,17 +169,41 @@
                 <p class="section-text">INFO@PROJECT-CD.COM</p>
             </div>
         </section>
+        
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; 2026 PROJECT.CD. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="product-modal" class="product-modal" onclick="closeProductModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeProductModal()">&times;</button>
+            <div class="modal-img-container"><img id="modal-img" src="" alt="Product"></div>
+            <div class="modal-details">
+                <h2 id="modal-title" class="modal-title">TITLE</h2>
+                <p id="modal-price" class="modal-price">PRICE</p>
+                <div class="modal-divider"></div>
+                <p id="modal-desc" class="modal-desc">Description</p>
+                <button class="modal-add-btn" id="modal-add-btn">加入收藏清單</button>
+            </div>
+        </div>
     </div>
 
     <div id="char-overlay" class="char-lightbox" onclick="toggleChar(false)">
         <div class="lightbox-content">
             <video src="https://videos.pexels.com/video-files/7565457/7565457-hd_1080_1920_25fps.mp4" autoplay loop muted playsinline class="char-video"></video>
-            <div class="lightbox-ui">
-                <p class="typing-effect">正在分析您的味覺偏好...</p>
-            </div>
+            <div class="lightbox-ui"><p class="typing-effect">正在分析您的味覺偏好...</p></div>
         </div>
         <p class="close-hint">點擊畫面關閉</p>
     </div>
 
+    <div id="fullbody-overlay" class="char-lightbox fullbody-lightbox" onclick="closeFullBodyLightbox()">
+        <div class="lightbox-content fullbody-content" onclick="event.stopPropagation()">
+            <button class="modal-close fullbody-close" onclick="closeFullBodyLightbox()">&times;</button>
+            <img src="https://images.unsplash.com/photo-1612459792945-817865c82613?q=80&w=800&auto=format&fit=crop" alt="虛擬代言人全身" class="char-img-full">
+        </div>
+    </div>
 </body>
 </html>
