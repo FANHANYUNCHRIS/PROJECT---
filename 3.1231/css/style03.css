@@ -1,9 +1,0 @@
-@charset "UTF-8";
-/*下一層(僅一層)*/
-div>P{background-color: #c03b3b;}
-/*下面全部(全部階層)*/
-div P{background-color: #520a0a;}
-/*隔壁同學(僅一個)*/
-div+P{background-color: #520a0a;}
-/*全部同輩*/
-div~P{background-color: #520a0a;}

@@ -1,1 +1,0 @@
-document.write('這是外部連接JavaScript');

@@ -1,6 +1,21 @@
 @charset "UTF-8";
 
-/* --- 1. 全域設定 (Reset & Typography) --- */
+/* ==========================================================================
+   CSS 目錄 (Table of Contents)
+   --------------------------------------------------------------------------
+   1. 全域設定 (Global Reset & Typography)       - 字體、捲動設定
+   2. 版面配置 (Layout System)                   - Flexbox 主架構
+   3. 左側導覽列 (Sidebar)                       - 磨砂玻璃、RWD收合、發光特效
+   4. 首頁封面 (Hero Section)                    - 大標題與背景圖
+   5. 卡片網格系統 (Card Grid)                   - 作品集展示牆 (3欄/2欄/1欄)
+   6. 通用元件 (Components)                      - 按鈕、背景色工具
+   7. RWD 響應式設定 (Media Queries)             - 手機與平板適配
+   8. [內頁] 文章閱讀模式 (Article Page)         - 教學頁專用樣式
+   ========================================================================== */
+
+/* =========================================
+   1. 全域設定 (Global Reset & Typography)
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -8,83 +23,165 @@
 }
 
 html {
-    scroll-behavior: smooth; /* 點擊連結時平滑捲動 */
+    scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: #1a1a1a;
     color: #1a1a1a;
+    line-height: 1.5;
     overflow-x: hidden;
 }
 
-/* --- 2. 佈局結構 (Layout) --- */
+/* =========================================
+   2. 版面配置 (Layout System)
+   ========================================= */
 .main-container {
     display: flex;
     width: 100%;
 }
 
-/* --- 3. 左側導覽列 (Sidebar) --- */
+/* ★ 關鍵修正：內容區域設定 ★ */
+.content-area {
+    width: 100%;
+    padding-top: 0;
+    
+    /* 預設左邊距：80px (配合收合的側邊欄) */
+    padding-left: 80px;
+    
+    /* 設定平滑過渡動畫：當 padding 改變時，內容會滑動而不是瞬移 */
+    transition: padding-left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ★ 核心魔法：當側邊欄被懸停時，右邊的內容區域自動往右推 ★ */
+/* "+" 選擇器代表：選取緊接在 .sidebar 後面的 .content-area */
+.sidebar:hover + .content-area {
+    padding-left: 240px; /* 推開到 240px，完美讓出空間 */
+}
+
+/* 通用滿版區塊 */
+.fullscreen-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 64px 40px;
+    position: relative;
+}
+
+.center-content {
+    text-align: center;
+    max-width: 800px;
+    z-index: 2;
+}
+
+/* =========================================
+   3. 左側導覽列 (Sidebar)
+   ========================================= */
 .sidebar {
-    height: 100vh;
-    width: 70px; /* 收合寬度 */
-    background-color: #1a1a1a;
-    color: #ffffff;
     position: fixed;
     left: 0;
     top: 0;
-    transition: width 0.4s ease-in-out;
+    height: 100vh;
+    width: 80px; /* 收合寬度 */
+    
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    color: #ffffff;
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     overflow: hidden;
-    z-index: 1000; /* 確保在最上層 */
-    box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.15);
 }
 
 .sidebar:hover {
-    width: 250px; /* 展開寬度 */
+    width: 240px; /* 展開寬度 */
 }
 
-/* 品牌區塊 */
-.brand {
-    display: flex;
-    align-items: center;
-    height: 70px;
-    padding: 0 22px;
-    font-size: 1.5rem;
-    border-bottom: 1px solid #333;
-    white-space: nowrap;
-}
-
-/* 導覽列表 */
-.nav-list {
-    list-style: none;
-    padding-top: 20px;
-}
-
+.nav-header a,
 .nav-list a {
     display: flex;
     align-items: center;
-    color: #b3b3b3;
+    width: 100%;
+    height: 64px;
     text-decoration: none;
-    padding: 15px 22px;
-    transition: all 0.3s ease;
+    color: #b3b3b3;
     white-space: nowrap;
+    transition: all 0.3s ease;
+    padding: 0 28px !important;
 }
 
+.nav-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 8px;
+}
+
+.nav-header a { color: #ffffff; }
+
+.nav-icon-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+    margin-right: 16px;
+    transform: scale(2.4);
+}
+
+.nav-list { list-style: none; }
+
+.nav-list a i {
+    font-size: 1.5rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    transition: all 0.3s ease;
+}
+
+/* --- [互動特效升級] --- */
+
+/* 1. Hover (懸停)：變青藍色 + 發光 + Icon放大 */
 .nav-list a:hover {
-    color: #ffffff;
-    background-color: #333333;
-    border-left: 4px solid #ffffff; /* 增加一個左側亮條指示 */
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #00E5FF; /* 文字變青藍色 */
 }
 
-.nav-list a i, .brand i {
-    font-size: 1.4rem;
-    min-width: 30px;
-    text-align: center;
-    margin-right: 20px;
+.nav-list a:hover i {
+    color: #00E5FF;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.8); /* 強力光暈 */
+    transform: scale(1.1); /* 微微放大 */
 }
 
-/* 文字顯示動畫 */
+/* 2. Active (點擊)：按壓回饋感 */
+.nav-list a:active {
+    transform: scale(0.95); /* 整體縮小 */
+    background-color: rgba(0, 229, 255, 0.1); /* 閃爍 */
+    transition: transform 0.05s; /* 極快反應 */
+}
+
+/* 3. Scroll Spy (目前位置) */
+.nav-list a.active {
+    color: #00E5FF !important;
+}
+
+.nav-list a.active i {
+    color: #00E5FF;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+}
+
+/* 文字隱藏動畫 */
 .link-text {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease 0.1s, visibility 0.3s ease 0.1s;
@@ -95,102 +192,192 @@ body {
     visibility: visible;
 }
 
-/* --- 4. 右側內容區域 (Content Area) --- */
-.content-area {
-    padding-left: 70px; /* 預留側邊欄空間 */
-    flex-grow: 1;
-    width: 100%;
-    /* 這裡不需要 padding，因為我們希望 Hero 區塊滿版 */
-}
-
-/* --- 5. 滿版封面圖 (Hero Section) --- */
-.hero-section {
-    height: 100vh;
-    width: 100%;
-    
-    /* 背景圖設定：請確保圖片路徑正確 */
-    background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+/* =========================================
+   4. 首頁封面 (Hero Section)
+   ========================================= */
+.hero-bg {
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* 視差滾動效果 */
-    
-    filter: grayscale(100%); /* 黑白濾鏡 */
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.6);
 }
 
-/* 黑色遮罩 */
-.hero-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-/* 封面內容 */
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: #ffffff;
-    padding: 20px;
-}
-
-.hero-content h1 {
+.hero-title {
     font-size: 5rem;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 8px;
+    opacity: 0.8;
+    margin-bottom: 30px;
     text-transform: uppercase;
 }
 
-.hero-content p {
-    font-size: 1.5rem;
-    color: #cccccc;
-    margin-bottom: 40px;
+.center-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-transform: uppercase;
 }
 
-/* 按鈕樣式 */
+.subtitle {
+    font-size: 1.25rem;
+    color: #888;
+    margin-bottom: 32px;
+}
+
+/* =========================================
+   5. 卡片網格系統 (Card Grid)
+   ========================================= */
+.gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 64px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3欄 */
+    gap: 32px;
+    width: 100%;
+}
+
+.project-card {
+    background-color: #ebebec;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border-color: #00E5FF;
+    background-color: #fff;
+}
+
+.card-img-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #d1d1d1;
+    margin-bottom: 24px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   6. 通用元件 (Components)
+   ========================================= */
+.white-bg { background-color: #ffffff; color: #1a1a1a; }
+.gray-bg { background-color: #f4f4f4; color: #1a1a1a; }
+.black-bg { background-color: #1a1a1a; color: #ffffff; }
+
+.text-white p, .text-white .subtitle { color: #cccccc; }
+
 .cta-button {
     display: inline-block;
-    padding: 15px 40px;
-    border: 2px solid #ffffff;
-    color: #ffffff;
+    padding: 16px 48px;
+    border: 1px solid #fff;
+    color: #fff;
     text-decoration: none;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
+    transition: all 0.3s;
+}
+.cta-button:hover { background-color: #fff; color: #000; }
+.white-btn { border-color: #fff; color: #fff; }
+
+/* =========================================
+   7. RWD 響應式設定
+   ========================================= */
+@media (max-width: 1024px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr); /* 平板 2欄 */
+        gap: 24px;
+    }
 }
 
-.cta-button:hover {
-    background-color: #ffffff;
-    color: #000000;
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr; /* 手機 1欄 */
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .hero-title { font-size: 3rem; }
+    .hero-subtitle { font-size: 1.2rem; }
+    
+    /* 手機版可以取消側邊欄推擠效果，因為手機通常沒有 hover */
+    .content-area { padding-left: 0; padding-top: 80px; } /* 假設手機版導覽列在上方，或者保持原樣 */
 }
 
-/* --- 6. 一般內容容器 (Container) --- */
-.container {
-    padding: 80px 40px;
-    max-width: 1200px;
+/* =========================================
+   8. [內頁] 文章閱讀模式
+   ========================================= */
+.article-content {
+    max-width: 800px;
+    text-align: left;
     margin: 0 auto;
+    width: 100%;
 }
 
-section h2 {
+.article-content h3 {
     font-size: 2rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #1a1a1a;
-    padding-bottom: 10px;
-    display: inline-block;
+    margin-bottom: 24px;
+    color: #333;
+    font-weight: 700;
 }
 
-p {
+.article-content p {
+    font-size: 1.1rem;
     line-height: 1.8;
+    margin-bottom: 32px;
     color: #555;
-    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.article-list {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.article-list li {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #555;
+}
+
+.bounce-arrow {
+    margin-top: 40px;
+    animation: bounce 2s infinite;
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
 }
