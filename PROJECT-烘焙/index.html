@@ -7,10 +7,11 @@
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@300;400&family=Jost:wght@300;400;500;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@300;400&family=Jost:wght@300;400;500;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
     <script src="js/script.js" defer></script>
 </head>
 <body>
@@ -66,7 +67,7 @@
 
     <div class="video-container">
         <video class="bg-video" autoplay loop muted playsinline>
-            <source src="https://videos.pexels.com/video-files/3205917/3205917-hd_1920_1080_25fps.mp4" type="video/mp4">
+            <source src="https://videos.pexels.com/video-files/4109226/4109226-uhd_2560_1440_25fps.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
     </div>
@@ -74,13 +75,15 @@
     <div class="gate-overlay" id="entry-layer">
         <div class="gate-panel gate-left"></div>
         <div class="gate-panel gate-right"></div>
+        
         <div class="gate-content">
-            <img src="images/LOGO.png" alt="PROJECT.CD Logo" class="gate-logo-img">
             <h1 class="gate-title">PROJECT.CD</h1>
             <p class="gate-subtitle">咖啡甜點基地</p>
-            <button class="gate-enter-btn" id="btn-enter">
-                進入
-            </button>
+            
+            <div class="gate-logo-wrapper" id="gate-action-btn" title="點擊進入">
+                <img src="images/LOGO.png" alt="Enter Site" class="gate-logo-btn-img">
+                <span class="click-hint">CLICK TO ENTER</span>
+            </div>
         </div>
     </div>
 
@@ -91,36 +94,39 @@
     <div class="content-wrapper">
         <section id="home" style="height: 100vh;"></section>
 
-        <div id="about" class="scrolly-telling-wrapper">
-            <section class="sticky-section">
-                <div class="about-content">
-                    <h2 class="ghost-text">EST.2026</h2>
-                    <div class="text-reveal-box">
-                        <p class="brand-line line-1">NOT JUST SUGAR.</p>
-                        <p class="brand-line line-2">IT'S <span class="highlight">STRUCTURE</span>.</p>
-                        <div class="divider-line"></div>
-                        <p class="brand-desc">我們不販售甜點。<br>我們透過精密的數據運算，重構味覺的黃金比例。</p>
+        <section id="about" class="content-section fullscreen-section">
+            <div class="container about-container">
+                <div class="about-split-layout">
+                    <div class="about-v-frame left-frame">
+                        <div class="frame-img-box">
+                            <img src="images/person.jpg" alt="品牌負責人" class="frame-img">
+                        </div>
+                        <div class="frame-text-box">
+                            <h3 class="frame-title">負責人 : CD</h3>
+                            <div class="frame-divider"></div>
+                            <p class="frame-desc">
+                                // 味覺架構師<br>
+                                專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-v-frame right-frame">
+                        <div class="frame-img-box logo-box">
+                            <img src="images/LOGO.png" alt="Brand Logo" class="frame-img brand-logo-img">
+                        </div>
+                        <div class="frame-text-box">
+                            <h3 class="frame-title text-gold">定義味覺的維度</h3>
+                            <div class="frame-divider divider-gold"></div>
+                            <p class="frame-desc">
+                                在數據與味蕾之間，尋找完美的平衡點。<br>
+                                PROJECT.CD 不僅僅是甜點，更是一場關於精準與美學的實驗。
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </section>
-            
-            <section id="char-section" class="sticky-section char-split-layout">
-                <div class="char-visual" onclick="openFullBodyLightbox()">
-                    <div class="tech-frame">
-                        <img src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?q=80&w=800&auto=format&fit=crop" alt="動漫代言人半身" class="char-img-half">
-                        <div class="frame-corner top-left"></div><div class="frame-corner top-right"></div><div class="frame-corner bottom-left"></div><div class="frame-corner bottom-right"></div>
-                    </div>
-                    <div class="scan-line"></div>
-                </div>
-                <div class="char-hud">
-                    <div class="hud-header"><span class="hud-id">ID: 00X</span><span class="hud-status">ONLINE</span></div>
-                    <h2 class="char-name">ZERO</h2>
-                    <p class="char-role">// VIRTUAL TASTE NAVIGATOR</p>
-                    <div class="hud-body"><p>來自二次元的味覺數據。</p><p>以絕對的精準，</p><p>為您解析每一口甜點的靈魂。</p></div>
-                    <button class="hud-btn" onclick="openFullBodyLightbox()">[ 連結建立 ]</button>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <section id="works" class="content-section fullscreen-section">
             <div class="container">
@@ -131,24 +137,48 @@
                 
                 <div class="product-grid">
                     <div class="product-card" onclick="openProductModal('p1')">
-                        <div class="border-light top"></div><div class="border-light right"></div><div class="border-light bottom"></div><div class="border-light left"></div>
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=800&auto=format&fit=crop" alt="鳳梨酥"><div class="view-hint"><i class="fas fa-search"></i></div></div>
-                        <div class="card-info"><h3 class="product-name">鳳梨酥</h3><p class="product-price">NT$ 550</p><button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p1')"><i class="fas fa-shopping-cart"></i></button></div>
+                        <div class="card-image-box">
+                            <img src="images/product1.jpg" alt="鳳梨酥">
+                            <div class="view-hint"><i class="fas fa-search"></i></div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="product-name">鳳梨酥</h3>
+                            <p class="product-price">NT$ 550</p>
+                            <button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p1')"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
                     </div>
                     <div class="product-card" onclick="openProductModal('p2')">
-                        <div class="border-light top"></div><div class="border-light right"></div><div class="border-light bottom"></div><div class="border-light left"></div>
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1543573852-1a71a6ce19bc?q=80&w=800&auto=format&fit=crop" alt="堅果塔"><div class="view-hint"><i class="fas fa-search"></i></div></div>
-                        <div class="card-info"><h3 class="product-name">堅果塔</h3><p class="product-price">NT$ 420</p><button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p2')"><i class="fas fa-shopping-cart"></i></button></div>
+                        <div class="card-image-box">
+                            <img src="images/product2.jpg" alt="堅果塔">
+                            <div class="view-hint"><i class="fas fa-search"></i></div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="product-name">堅果塔</h3>
+                            <p class="product-price">NT$ 420</p>
+                            <button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p2')"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
                     </div>
                     <div class="product-card" onclick="openProductModal('p3')">
-                        <div class="border-light top"></div><div class="border-light right"></div><div class="border-light bottom"></div><div class="border-light left"></div>
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1605697626998-356e4c70d4d8?q=80&w=800&auto=format&fit=crop" alt="磅蛋糕"><div class="view-hint"><i class="fas fa-search"></i></div></div>
-                        <div class="card-info"><h3 class="product-name">磅蛋糕</h3><p class="product-price">NT$ 380</p><button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p3')"><i class="fas fa-shopping-cart"></i></button></div>
+                        <div class="card-image-box">
+                            <img src="images/product3.jpg" alt="磅蛋糕">
+                            <div class="view-hint"><i class="fas fa-search"></i></div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="product-name">磅蛋糕</h3>
+                            <p class="product-price">NT$ 380</p>
+                            <button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p3')"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
                     </div>
                     <div class="product-card" onclick="openProductModal('p4')">
-                        <div class="border-light top"></div><div class="border-light right"></div><div class="border-light bottom"></div><div class="border-light left"></div>
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=800&auto=format&fit=crop" alt="8吋派"><div class="view-hint"><i class="fas fa-search"></i></div></div>
-                        <div class="card-info"><h3 class="product-name">8吋派</h3><p class="product-price">NT$ 980</p><button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p4')"><i class="fas fa-shopping-cart"></i></button></div>
+                        <div class="card-image-box">
+                            <img src="images/product4.jpg" alt="8吋派">
+                            <div class="view-hint"><i class="fas fa-search"></i></div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="product-name">8吋派</h3>
+                            <p class="product-price">NT$ 980</p>
+                            <button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p4')"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -165,8 +195,32 @@
 
         <section id="contact" class="content-section fullscreen-section dark-bg">
             <div class="container">
-                <h2 class="section-title">CONTACT</h2>
-                <p class="section-text">INFO@PROJECT-CD.COM</p>
+                <h2 class="section-title">與我聯繫</h2>
+                <p class="section-subtitle" style="margin-bottom: 30px;">Get in Touch</p>
+                
+                <div class="contact-white-card">
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <input type="text" placeholder="您的姓名 (Name)" class="white-input">
+                        </div>
+                        <div class="form-row">
+                            <input type="tel" placeholder="聯絡電話 (Phone)" class="white-input">
+                        </div>
+                        <div class="form-row">
+                            <input type="email" placeholder="電子信箱 (Email)" class="white-input">
+                        </div>
+                        <div class="form-row">
+                            <textarea placeholder="諮詢內容 (Message)" rows="5" class="white-input"></textarea>
+                        </div>
+                        <button type="button" class="black-submit-btn">發送訊息</button>
+                    </form>
+                </div>
+
+                <div class="social-icons-footer">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </section>
         
@@ -191,19 +245,5 @@
         </div>
     </div>
 
-    <div id="char-overlay" class="char-lightbox" onclick="toggleChar(false)">
-        <div class="lightbox-content">
-            <video src="https://videos.pexels.com/video-files/7565457/7565457-hd_1080_1920_25fps.mp4" autoplay loop muted playsinline class="char-video"></video>
-            <div class="lightbox-ui"><p class="typing-effect">正在分析您的味覺偏好...</p></div>
-        </div>
-        <p class="close-hint">點擊畫面關閉</p>
-    </div>
-
-    <div id="fullbody-overlay" class="char-lightbox fullbody-lightbox" onclick="closeFullBodyLightbox()">
-        <div class="lightbox-content fullbody-content" onclick="event.stopPropagation()">
-            <button class="modal-close fullbody-close" onclick="closeFullBodyLightbox()">&times;</button>
-            <img src="https://images.unsplash.com/photo-1612459792945-817865c82613?q=80&w=800&auto=format&fit=crop" alt="虛擬代言人全身" class="char-img-full">
-        </div>
-    </div>
-</body>
+    </body>
 </html>
