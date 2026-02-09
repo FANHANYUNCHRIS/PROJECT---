@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>PROJECT.CD | 定義味覺的維度</title>
     
     <link rel="stylesheet" href="css/style.css">
@@ -10,11 +10,22 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@300;400&family=Jost:wght@300;400;500;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <script src="js/script.js" defer></script>
 </head>
 <body>
+
+    <div class="gate-overlay" id="entry-layer">
+        <div class="gate-content">
+            <img src="images/LOGO.png" alt="PROJECT.CD" class="gate-logo-img">
+            <h1 class="gate-title">PROJECT.CD</h1>
+            <p class="gate-subtitle">定義味覺的維度</p>
+            <button id="gate-action-btn" class="apple-enter-btn">
+                進入體驗
+            </button>
+        </div>
+    </div>
 
     <nav class="navbar" id="navbar">
         <div class="nav-left">
@@ -70,21 +81,6 @@
             <source src="https://videos.pexels.com/video-files/4109226/4109226-uhd_2560_1440_25fps.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
-    </div>
-
-    <div class="gate-overlay" id="entry-layer">
-        <div class="gate-panel gate-left"></div>
-        <div class="gate-panel gate-right"></div>
-        
-        <div class="gate-content">
-            <h1 class="gate-title">PROJECT.CD</h1>
-            <p class="gate-subtitle">咖啡甜點基地</p>
-            
-            <div class="gate-logo-wrapper" id="gate-action-btn" title="點擊進入">
-                <img src="images/LOGO.png" alt="Enter Site" class="gate-logo-btn-img">
-                <span class="click-hint">CLICK TO ENTER</span>
-            </div>
-        </div>
     </div>
 
     <audio id="bg-music" loop>
@@ -245,5 +241,5 @@
         </div>
     </div>
 
-    </body>
+</body>
 </html>

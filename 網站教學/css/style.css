@@ -1,135 +1,186 @@
 /* ==========================================================================
-📂 PROJECT.CD | STYLE SHEET DIRECTORY (樣式表目錄索引)
-==========================================================================
-01. Design Tokens ....... 設計規範 (色板, 字體, 間距, 變數定義)
-02. Reset & Box Model ... 強制歸零 (消除預設邊距, 統一盒模型)
-03. Base Settings ....... 環境設定 (滾動行為, 字體渲染, 背景色)
-04. Element Cleansing ... 標籤清理 (去除預設底線, 圓點, 按鈕樣式)
-05. Typography & Layout . 排版細節 (標題字距, 容器限制, 選取色)
-06. Utility Classes ..... 實用工具 (視覺隱藏, 文字截斷, 焦點狀態, 跳轉連結)
-==========================================================================
-*/
-
-/* ==========================================================================
-   1. 定義設計規範 (Design Tokens)
+   1. Design Tokens (設計規範)
    ========================================================================== */
 :root {
-    /* 字體設定 */
-    --main-font: 'Montserrat', 'Noto Sans TC', sans-serif;
+    --font-main: 'Montserrat', 'Noto Sans TC', sans-serif;
     
-    /* 品牌色板 */
-    --primary-color: #000000;  /* 主色：極致黑 */
-    --accent-color: #ff5722;   /* 強調色：活力橘 */
-    --white: #ffffff;
-    --bg-light: #f4f4f4;
-    --text-dark: #333333;
+    /* 品牌色系：升級為更具科技感的配色 */
+    --color-bg: #ffffff;
+    --color-text: #1a1a1a;
+    --color-text-light: #666666;
+    --color-primary: #000000;
+    --color-accent: #2563eb; /* 科技藍 */
+    --color-accent-hover: #1d4ed8;
     
-    /* 佈局與動畫變數 */
+    /* 漸層色定義 */
+    --gradient-primary: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+    
+    /* 佈局 */
     --container-width: 1200px;
-    --transition: 0.3s ease;
+    --header-height: 80px;
 }
 
 /* ==========================================================================
-   2. 強制歸零與盒模型 (Reset)
+   2. Reset & Base (基礎設定)
    ========================================================================== */
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* 確保寬度計算包含內距與邊框 */
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ==========================================================================
-   3. 環境優化與字體渲染 (Base Settings)
-   ========================================================================== */
-html {
-    scroll-behavior: smooth;   /* 平滑滾動 */
-    scrollbar-gutter: stable;  /* 防止捲軸出現時畫面抖動 */
-    overflow-x: hidden;        /* 防止內容溢出導致左右晃動 */
-}
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
 body {
-    font-family: var(--main-font);
+    font-family: var(--font-main);
+    color: var(--color-text);
+    background-color: var(--color-bg);
     line-height: 1.6;
-    color: var(--text-dark);
-    background-color: var(--white);
-    
-    /* 讓字體在 Mac/iOS 上顯示更細膩 (抗鋸齒) */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased; /* 讓文字在 Mac 上極致清晰 */
 }
 
-/* ==========================================================================
-   4. 標籤清理 (Element Cleansing)
-   ========================================================================== */
-ul, ol { list-style: none; } /* 去掉清單圓點 */
-a { text-decoration: none; color: inherit; } /* 去掉連結底線與變色 */
-img { max-width: 100%; height: auto; display: block; } /* 圖片防爆與消除底部縫隙 */
-button { cursor: pointer; border: none; background: none; font-family: inherit; } /* 修正按鈕預設樣式 */
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-/* ==========================================================================
-   5. 設計師細節 (Typography & Layout)
-   ========================================================================== */
-/* 標題高級感：縮窄字距，讓大標題更緊湊 */
-h1, h2, h3, h4 {
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5em;
-}
-
-/* 內容容器：讓網頁內容維持在 1200px 內並置中 */
+/* 容器限制 */
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 20px; /* 手機版兩側留白 */
-}
-
-/* 品牌細節：使用者選取文字時的顏色 */
-::selection {
-    background-color: var(--primary-color);
-    color: var(--white);
+    padding: 0 24px;
 }
 
 /* ==========================================================================
-   6. 實用工具 (Utility Classes) - 新增強功能
+   3. Header & Navigation (頂部導覽)
    ========================================================================== */
-/* [Accessibility] 視覺隱藏：給 SEO 讀但不顯示在畫面上的文字 */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+#site-header {
+    height: var(--header-height);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9); /* 90% 透明度 */
+    backdrop-filter: blur(10px); /* 頂部選單也有毛玻璃效果 */
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-/* [UI] 文字截斷：單行文字過長時自動變 ... */
-.text-ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.navbar {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* [Accessibility] 鍵盤操作焦點：增加可訪問性 */
-:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
-/* [Accessibility] 跳過導覽連結：平時藏在上面，按 Tab 鍵才滑下來 */
-.skip-link {
-    position: absolute;
-    top: -100px;
-    left: 20px;
-    background: var(--accent-color);
-    color: var(--white);
-    padding: 10px 20px;
-    z-index: 2000;
-    transition: top 0.3s;
+.nav-menu { display: flex; gap: 40px; }
+.nav-item { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
+.nav-item:hover { color: var(--color-accent); }
+
+.nav-actions { display: flex; gap: 20px; align-items: center; }
+.icon-btn { font-size: 1.2rem; transition: 0.3s; }
+.icon-btn:hover { color: var(--color-accent); transform: scale(1.1); }
+
+/* ==========================================================================
+   4. Buttons (按鈕組件)
+   ========================================================================== */
+.btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 50px;
     font-weight: 600;
-    border-radius: 0 0 8px 8px;
+    font-size: 0.9rem;
+    display: inline-block;
 }
-.skip-link:focus {
-    top: 0; /* 獲得焦點時出現 */
+
+.btn-primary:hover {
+    background: var(--color-accent);
+    transform: translateY(-2px); /* 懸浮微動效果 */
+    box-shadow: 0 10px 20px -10px rgba(37, 99, 235, 0.5); /* 增加投影 */
 }
+
+.btn-outline {
+    border: 2px solid var(--color-primary);
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.btn-outline:hover { background: var(--color-primary); color: #fff; }
+
+/* ==========================================================================
+   5. Hero Section (首頁視覺核心 - 重點教學)
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden; /* 防止背景光暈溢出 */
+}
+
+/* 背景光暈：創造氛圍 */
+.hero-bg-glow {
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: var(--gradient-primary);
+    filter: blur(120px); /* 極度模糊，形成柔和光暈 */
+    opacity: 0.15;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+}
+
+/* 毛玻璃卡片：增加層次感 */
+.glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px); /* 關鍵：背景模糊 */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 60px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    max-width: 700px;
+}
+
+.badge {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--color-accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.hero-title {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+/* 漸層文字魔法 */
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text; /* 背景只在文字內顯示 */
+    color: transparent; /* 文字透明 */
+}
+
+/* 無障礙隱藏 */
+.skip-link { position: absolute; top: -100px; }
+.skip-link:focus { top: 0; background: #000; color: #fff; padding: 10px; z-index: 2000; }

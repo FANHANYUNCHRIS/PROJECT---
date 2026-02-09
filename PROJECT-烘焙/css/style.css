@@ -4,10 +4,16 @@
 /* ★★★ 設計系統 (Design System) ★★★ */
 /* ========================================= */
 :root {
-    --font-heading: 'Jost', 'Noto Sans TC', sans-serif;
-    --font-body: 'Inter', 'Noto Sans TC', sans-serif;
+    /* Apple / System Fonts Priority */
+    --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, "Noto Sans TC", sans-serif;
+    --font-heading: var(--font-apple);
+    --font-body: var(--font-apple);
     --font-code: 'JetBrains Mono', monospace;
     
+    /* Apple Animation Curves */
+    --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+
+    /* Original Palette */
     --color-gold: #ffcc00;    
     --color-cyan: #00e5ff;    
     --color-black: #1d1d1f;   
@@ -87,67 +93,77 @@ body {
 .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1002; }
 .bar { display: block; width: 24px; height: 2px; background: #ffffff; margin: 6px 0; transition: 0.3s; }
 
-/* ==================== 迎賓畫面 ==================== */
+/* ==================== [NEW] Apple Style Gate (迎賓畫面) ==================== */
 .gate-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-    z-index: 5000; display: flex; justify-content: center; align-items: center;
-    overflow: hidden; pointer-events: auto;
-    transition: opacity 0.8s ease, visibility 0.8s ease; 
+    background-color: #000000; /* Apple Black */
+    z-index: 5000; 
+    display: flex; justify-content: center; align-items: center;
+    /* 物理動畫曲線 */
+    transition: opacity 0.8s var(--apple-ease), visibility 0.8s var(--apple-ease), transform 0.8s var(--apple-ease);
 }
-.gate-panel {
-    position: absolute; top: 0; width: 51%; height: 100%; background-color: #0f0f10; 
-    z-index: 1; transition: transform 1.5s cubic-bezier(0.6, 0.05, 0.01, 0.99); 
-}
-.gate-left { left: 0; } .gate-right { right: 0; }
 
 .gate-content {
-    position: relative; z-index: 2; text-align: center; color: #fff;
+    text-align: center; color: #f5f5f7;
     display: flex; flex-direction: column; align-items: center; 
     gap: 20px;
-    opacity: 0; animation: contentFadeIn 1s ease forwards 0.5s;
-    transition: opacity 0.5s, transform 0.5s;
+    opacity: 0; 
+    /* 淡入動畫 */
+    animation: appleFadeIn 1.2s var(--apple-ease) forwards 0.2s;
 }
-@keyframes contentFadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-/* 當 .open 類別加入時 */
-.gate-overlay.open .gate-content { opacity: 0 !important; animation: none !important; }
-.gate-overlay.open { pointer-events: none; opacity: 0; visibility: hidden; }
-.gate-overlay.open .gate-left { transform: translateX(-100%); }
-.gate-overlay.open .gate-right { transform: translateX(100%); }
+.gate-logo-img {
+    height: 80px; width: auto; margin-bottom: 12px;
+    opacity: 0.9;
+}
 
 .gate-title {
-    font-family: var(--font-heading); 
-    font-size: clamp(48px, 6vw, 90px); 
-    font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; margin: 0; color: #fff;
-    animation: breatheWhite 4s infinite ease-in-out;
+    font-family: var(--font-apple);
+    font-size: 48px; font-weight: 200; /* Thin */
+    letter-spacing: -0.02em; margin: 0; color: #ffffff;
+    text-transform: uppercase;
 }
+
 .gate-subtitle {
-    font-family: 'Noto Sans TC'; 
-    font-size: 32px; 
-    font-weight: 700; letter-spacing: 0.8em; color: #fff; 
-    margin-top: 10px; margin-bottom: 40px; 
-    text-indent: 0.8em; 
-    animation: breatheWhite 4s infinite ease-in-out 1s; 
+    font-family: var(--font-apple);
+    font-size: 17px; font-weight: 400; 
+    color: #86868b; /* Apple Grey */
+    margin: 0; letter-spacing: 0.05em;
 }
-.gate-logo-wrapper {
+
+/* Apple Button */
+.apple-enter-btn {
+    margin-top: 32px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 15px; font-weight: 500;
+    border-radius: 980px; /* Pill shape */
     cursor: pointer;
-    transition: transform 0.3s;
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    transition: all 0.3s var(--apple-ease);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    font-family: var(--font-apple);
 }
-.gate-logo-wrapper:hover { transform: scale(1.1); }
-.gate-logo-btn-img {
-    height: 120px; width: auto; 
-    filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
+
+.apple-enter-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.02);
 }
-.click-hint {
-    font-family: var(--font-code); font-size: 12px; color: var(--color-cyan);
-    letter-spacing: 2px; opacity: 0.7; animation: blink 2s infinite;
+
+/* 狀態變化：開門/消失 */
+.gate-overlay.open {
+    opacity: 0; 
+    visibility: hidden; 
+    pointer-events: none;
+    transform: scale(1.05); /* 輕微放大淡出 */
 }
-@keyframes breatheWhite {
-    0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); opacity: 0.9; }
-    50% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 60px rgba(255, 255, 255, 0.5); opacity: 1; }
+
+@keyframes appleFadeIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
-@keyframes blink { 50% { opacity: 0.2; } }
+
 
 /* ==================== 品牌介紹 (直式框設計) ==================== */
 .fullscreen-section { min-height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; padding: 80px 24px; }

@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (gateActionBtn) {
         gateActionBtn.addEventListener('click', () => {
-            // 加上 open 類別觸發 CSS 開門動畫
+            // 觸發 CSS 淡出動畫
             gateOverlay.classList.add('open');
             
-            // 嘗試播放背景音樂
+            // 播放背景音樂
             if(bgMusic) {
                 bgMusic.volume = 0.5;
                 bgMusic.play().catch(e => console.log("Audio Autoplay blocked:", e));
