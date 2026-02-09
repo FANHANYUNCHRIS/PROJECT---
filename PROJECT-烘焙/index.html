@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>PROJECT.CD | 定義味覺的維度</title>
     
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
 </head>
 <body>
@@ -76,47 +75,54 @@
     </aside>
     <div id="cart-overlay" class="site-overlay"></div>
 
-    <div class="video-container">
-        <video class="bg-video" autoplay loop muted playsinline>
-            <source src="https://videos.pexels.com/video-files/4109226/4109226-uhd_2560_1440_25fps.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay"></div>
-    </div>
-
     <audio id="bg-music" loop>
         <source src="https://cdn.pixabay.com/download/audio/2021/11/24/audio_823a31e844.mp3" type="audio/mpeg">
     </audio>
 
     <div class="content-wrapper">
-        <section id="home" style="height: 100vh;"></section>
+        
+        <section id="home" class="hero-section">
+            <div class="hero-slider" id="hero-slider">
+                <div class="hero-slide active" style="background-image: url('https://images.pexels.com/photos/205961/pexels-photo-205961.jpeg?auto=compress&cs=tinysrgb&w=1920');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=1920');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.pexels.com/photos/140831/pexels-photo-140831.jpeg?auto=compress&cs=tinysrgb&w=1920');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg?auto=compress&cs=tinysrgb&w=1920');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1920');"></div>
+            </div>
+            <div class="video-overlay"></div> </section>
 
-        <section id="about" class="content-section fullscreen-section">
+        <section id="about" class="content-section fullscreen-section apple-section-light">
             <div class="container about-container">
+                <h2 class="section-title apple-headline">品牌</h2>
+                
                 <div class="about-split-layout">
-                    <div class="about-v-frame left-frame">
-                        <div class="frame-img-box">
-                            <img src="images/person.jpg" alt="品牌負責人" class="frame-img">
+                    <div class="about-v-frame apple-card">
+                        <div class="frame-img-box card-slider" id="about-slider-left">
+                            <img src="images/person.jpg" class="frame-img active" alt="Chef 1">
+                            <img src="https://images.pexels.com/photos/3771120/pexels-photo-3771120.jpeg?auto=compress&cs=tinysrgb&w=800" class="frame-img" alt="Chef 2">
+                            <img src="https://images.pexels.com/photos/3814446/pexels-photo-3814446.jpeg?auto=compress&cs=tinysrgb&w=800" class="frame-img" alt="Chef 3">
                         </div>
                         <div class="frame-text-box">
                             <h3 class="frame-title">負責人 : CD</h3>
-                            <div class="frame-divider"></div>
+                            <div class="text-separator"></div>
                             <p class="frame-desc">
-                                // 味覺架構師<br>
+                                <span class="tag-label text-gold">品牌代言人</span><br>
                                 專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。
                             </p>
                         </div>
                     </div>
                     
-                    <div class="about-v-frame right-frame">
-                        <div class="frame-img-box logo-box">
-                            <img src="images/LOGO.png" alt="Brand Logo" class="frame-img brand-logo-img">
+                    <div class="about-v-frame apple-card">
+                        <div class="frame-img-box card-slider" id="about-slider-right">
+                            <img src="images/LOGO.png" class="frame-img brand-logo-dark active" alt="Logo 1">
+                            <img src="https://images.pexels.com/photos/4110008/pexels-photo-4110008.jpeg?auto=compress&cs=tinysrgb&w=800" class="frame-img" alt="Concept">
                         </div>
                         <div class="frame-text-box">
-                            <h3 class="frame-title text-gold">定義味覺的維度</h3>
-                            <div class="frame-divider divider-gold"></div>
+                            <h3 class="frame-title">PROJECT.CD</h3>
+                            <div class="text-separator"></div>
                             <p class="frame-desc">
-                                在數據與味蕾之間，尋找完美的平衡點。<br>
-                                PROJECT.CD 不僅僅是甜點，更是一場關於精準與美學的實驗。
+                                <span class="tag-label text-gold">品牌理念</span><br>
+                                在數據與味蕾之間，尋找完美的平衡點。這是一場關於精準與美學的實驗。
                             </p>
                         </div>
                     </div>
@@ -124,95 +130,131 @@
             </div>
         </section>
 
-        <section id="works" class="content-section fullscreen-section">
+        <section id="works" class="content-section fullscreen-section apple-section-white">
             <div class="container">
                 <div class="works-header">
-                    <h2 class="section-title">SWEET COLLECTION</h2>
-                    <p class="section-subtitle">味覺的數位檔案庫</p>
+                    <h2 class="section-title apple-headline">甜點</h2>
                 </div>
                 
                 <div class="product-grid">
-                    <div class="product-card" onclick="openProductModal('p1')">
+                    <div class="product-card apple-product" onclick="openProductModal('p1')">
                         <div class="card-image-box">
                             <img src="images/product1.jpg" alt="鳳梨酥">
-                            <div class="view-hint"><i class="fas fa-search"></i></div>
+                            <div class="zoom-overlay"><i class="fas fa-expand-alt"></i></div>
                         </div>
                         <div class="card-info">
-                            <h3 class="product-name">鳳梨酥</h3>
-                            <p class="product-price">NT$ 550</p>
-                            <button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p1')"><i class="fas fa-shopping-cart"></i></button>
+                            <div class="info-group">
+                                <h3 class="product-name">鳳梨酥</h3>
+                                <p class="product-price text-gold">NT$ 550</p>
+                            </div>
+                            <button class="add-btn-circle gold-btn" onclick="event.stopPropagation(); addToCart('p1')">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="product-card" onclick="openProductModal('p2')">
+
+                    <div class="product-card apple-product" onclick="openProductModal('p2')">
                         <div class="card-image-box">
                             <img src="images/product2.jpg" alt="堅果塔">
-                            <div class="view-hint"><i class="fas fa-search"></i></div>
+                            <div class="zoom-overlay"><i class="fas fa-expand-alt"></i></div>
                         </div>
                         <div class="card-info">
-                            <h3 class="product-name">堅果塔</h3>
-                            <p class="product-price">NT$ 420</p>
-                            <button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p2')"><i class="fas fa-shopping-cart"></i></button>
+                            <div class="info-group">
+                                <h3 class="product-name">堅果塔</h3>
+                                <p class="product-price text-gold">NT$ 420</p>
+                            </div>
+                            <button class="add-btn-circle gold-btn" onclick="event.stopPropagation(); addToCart('p2')">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="product-card" onclick="openProductModal('p3')">
+
+                    <div class="product-card apple-product" onclick="openProductModal('p3')">
                         <div class="card-image-box">
                             <img src="images/product3.jpg" alt="磅蛋糕">
-                            <div class="view-hint"><i class="fas fa-search"></i></div>
+                            <div class="zoom-overlay"><i class="fas fa-expand-alt"></i></div>
                         </div>
                         <div class="card-info">
-                            <h3 class="product-name">磅蛋糕</h3>
-                            <p class="product-price">NT$ 380</p>
-                            <button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p3')"><i class="fas fa-shopping-cart"></i></button>
+                            <div class="info-group">
+                                <h3 class="product-name">磅蛋糕</h3>
+                                <p class="product-price text-gold">NT$ 380</p>
+                            </div>
+                            <button class="add-btn-circle gold-btn" onclick="event.stopPropagation(); addToCart('p3')">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="product-card" onclick="openProductModal('p4')">
+
+                    <div class="product-card apple-product" onclick="openProductModal('p4')">
                         <div class="card-image-box">
                             <img src="images/product4.jpg" alt="8吋派">
-                            <div class="view-hint"><i class="fas fa-search"></i></div>
+                            <div class="zoom-overlay"><i class="fas fa-expand-alt"></i></div>
                         </div>
                         <div class="card-info">
-                            <h3 class="product-name">8吋派</h3>
-                            <p class="product-price">NT$ 980</p>
-                            <button class="card-cart-btn" onclick="event.stopPropagation(); addToCart('p4')"><i class="fas fa-shopping-cart"></i></button>
+                            <div class="info-group">
+                                <h3 class="product-name">8吋派</h3>
+                                <p class="product-price text-gold">NT$ 980</p>
+                            </div>
+                            <button class="add-btn-circle gold-btn" onclick="event.stopPropagation(); addToCart('p4')">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="vip" class="content-section fullscreen-section">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-crown" style="font-size: 0.6em; vertical-align: middle; margin-right: 12px;"></i> VIP ACCESS</h2>
-                <p class="section-text" style="font-family: var(--font-code); font-size: 14px; opacity: 0.7;">// 解鎖味覺隱藏菜單</p>
-                <div class="vip-card-display"><div class="vip-placeholder">PROJECT.CD / BLACK</div></div>
-                <button class="vip-btn">申請入會</button>
+        <section id="vip" class="content-section fullscreen-section apple-section-light">
+            <div class="container center-content">
+                <h2 class="section-title apple-headline">會員</h2>
+                
+                <div class="titanium-card-container">
+                    <div class="titanium-card">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <span class="card-chip"></span>
+                            <span class="card-signal"><i class="fas fa-wifi"></i></span>
+                        </div>
+                        <div class="card-middle">
+                            <span class="card-number">8888 8888 8888 8888</span>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-holder">
+                                <span class="label">MEMBER</span>
+                                <span class="name">PROJECT.CD VIP</span>
+                            </div>
+                            <div class="card-logo">BLACK</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="join-member-btn">
+                    <span class="btn-text">加入會員</span>
+                    <span class="btn-shine"></span>
+                </button>
             </div>
         </section>
 
-        <section id="contact" class="content-section fullscreen-section dark-bg">
-            <div class="container">
-                <h2 class="section-title">與我聯繫</h2>
-                <p class="section-subtitle" style="margin-bottom: 30px;">Get in Touch</p>
+        <section id="contact" class="content-section fullscreen-section apple-section-white">
+            <div class="container center-content">
+                <h2 class="section-title apple-headline">與我聯繫</h2>
                 
-                <div class="contact-white-card">
+                <div class="contact-minimal-wrapper">
                     <form class="contact-form">
-                        <div class="form-row">
-                            <input type="text" placeholder="您的姓名 (Name)" class="white-input">
+                        <div class="input-group">
+                            <input type="text" class="apple-input-field" placeholder="您的姓名" required>
+                            <input type="tel" class="apple-input-field" placeholder="聯絡電話" required>
                         </div>
-                        <div class="form-row">
-                            <input type="tel" placeholder="聯絡電話 (Phone)" class="white-input">
-                        </div>
-                        <div class="form-row">
-                            <input type="email" placeholder="電子信箱 (Email)" class="white-input">
-                        </div>
-                        <div class="form-row">
-                            <textarea placeholder="諮詢內容 (Message)" rows="5" class="white-input"></textarea>
-                        </div>
-                        <button type="button" class="black-submit-btn">發送訊息</button>
+                        <input type="email" class="apple-input-field" placeholder="電子信箱" required>
+                        <textarea class="apple-input-field area-field" placeholder="訊息內容..." rows="5"></textarea>
+                        
+                        <button type="button" class="send-message-btn">
+                            發送訊息 <i class="fas fa-paper-plane" style="margin-left: 8px; font-size: 0.9em;"></i>
+                        </button>
                     </form>
                 </div>
 
-                <div class="social-icons-footer">
+                <div class="social-icons-footer modern-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
@@ -220,23 +262,21 @@
             </div>
         </section>
         
-        <footer class="site-footer">
+        <footer class="site-footer modern-footer">
             <div class="container">
                 <p>&copy; 2026 PROJECT.CD. All rights reserved.</p>
             </div>
         </footer>
     </div>
-
     <div id="product-modal" class="product-modal" onclick="closeProductModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-content apple-modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeProductModal()">&times;</button>
             <div class="modal-img-container"><img id="modal-img" src="" alt="Product"></div>
             <div class="modal-details">
                 <h2 id="modal-title" class="modal-title">TITLE</h2>
-                <p id="modal-price" class="modal-price">PRICE</p>
-                <div class="modal-divider"></div>
+                <p id="modal-price" class="modal-price text-gold">PRICE</p> <div class="modal-divider"></div>
                 <p id="modal-desc" class="modal-desc">Description</p>
-                <button class="modal-add-btn" id="modal-add-btn">加入收藏清單</button>
+                <button class="modal-add-btn apple-primary-btn" id="modal-add-btn">加入收藏清單</button>
             </div>
         </div>
     </div>

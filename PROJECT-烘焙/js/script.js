@@ -3,18 +3,55 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ========================================= */
-    /* 1. 閘門式迎賓邏輯 (Gate Reveal) */
+    /* ★ 輪播系統 (New) ★ */
     /* ========================================= */
+    
+    // 1. 首頁滿版輪播 (Hero Slider)
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    let currentHeroIndex = 0;
+    
+    if (heroSlides.length > 0) {
+        setInterval(() => {
+            heroSlides[currentHeroIndex].classList.remove('active');
+            currentHeroIndex = (currentHeroIndex + 1) % heroSlides.length;
+            heroSlides[currentHeroIndex].classList.add('active');
+        }, 3000); // 3秒換圖
+    }
+
+    // 2. 品牌卡片輪播 (Card Sliders)
+    // 通用函數：啟動指定容器內的圖片輪播
+    function startCardSlider(containerId, intervalTime) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const slides = container.querySelectorAll('.frame-img');
+        if (slides.length <= 1) return;
+
+        let currentIndex = 0;
+        setInterval(() => {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }, intervalTime);
+    }
+
+    // 啟動左側人物輪播 (3秒)
+    startCardSlider('about-slider-left', 3000);
+    // 啟動右側品牌輪播 (4秒，錯開節奏)
+    startCardSlider('about-slider-right', 4000);
+
+
+    /* ========================================= */
+    /* 原有功能邏輯 (保持不變) */
+    /* ========================================= */
+
+    /* 1. 閘門式迎賓邏輯 */
     const gateOverlay = document.getElementById('entry-layer');
     const gateActionBtn = document.getElementById('gate-action-btn');
     const bgMusic = document.getElementById('bg-music');
     
     if (gateActionBtn) {
         gateActionBtn.addEventListener('click', () => {
-            // 觸發 CSS 淡出動畫
             gateOverlay.classList.add('open');
-            
-            // 播放背景音樂
             if(bgMusic) {
                 bgMusic.volume = 0.5;
                 bgMusic.play().catch(e => console.log("Audio Autoplay blocked:", e));
@@ -22,9 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ========================================= */
     /* 2. 導覽列滾動邏輯 */
-    /* ========================================= */
     const navbar = document.querySelector('.navbar');
     let lastScrollTop = 0;
 
@@ -43,9 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
     });
 
-    /* ========================================= */
     /* 3. 漢堡選單 */
-    /* ========================================= */
     const hamburger = document.getElementById('hamburger-btn');
     const mobileMenu = document.getElementById('mobile-menu'); 
     const mobileNavLinks = document.querySelectorAll('.nav-links-text .nav-link');
@@ -63,9 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ========================================= */
     /* 4. 購物車邏輯 */
-    /* ========================================= */
     const cartBtn = document.getElementById('cart-btn');
     const cartSidebar = document.getElementById('cart-sidebar');
     const closeCartBtn = document.getElementById('close-cart');
@@ -185,9 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ========================================= */
     /* 5. 產品 Modal */
-    /* ========================================= */
     const productModal = document.getElementById('product-modal');
     const modalImg = document.getElementById('modal-img');
     const modalTitle = document.getElementById('modal-title');
