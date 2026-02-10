@@ -2,165 +2,247 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECT.CD | Design Master Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>PROJECT.CD | 定義未來的維度</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <div class="main-container">
 
-        <nav class="sidebar">
-            <div class="nav-header">
-                <div class="logo-btn" onclick="scrollToSection('hero')">
-                    <img src="images/logo.png" alt="Logo" class="nav-icon-img">
-                    <span class="link-text" style="color: #ebebec;">PROJECT.CD</span>
-                </div>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <img src="images/logo.png" alt="PROJECT.CD Logo" class="brand-logo">
+                <span class="logo-text">PROJECT.CD</span>
             </div>
+        </div>
 
-            <div class="nav-list">
-                <div class="nav-item" onclick="scrollToSection('about')">
-                    <i class="fa-solid fa-user-tie"></i><span class="link-text">關於我</span>
-                </div>
-                <div class="nav-item" onclick="scrollToSection('GenAI')">
-                    <i class="fa-solid fa-robot"></i><span class="link-text">AI程式設計</span>
-                </div>
-                <div class="nav-item" onclick="scrollToSection('ps')">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i><span class="link-text">Photoshop</span>
-                </div>
-                <div class="nav-item" onclick="scrollToSection('ai')">
-                    <i class="fa-solid fa-pen-nib"></i><span class="link-text">Illustrator</span>
-                </div>
-                <div class="nav-item" onclick="scrollToSection('id')">
-                    <i class="fa-solid fa-book-open"></i><span class="link-text">InDesign</span>
-                </div>
-                <div class="nav-item" onclick="scrollToSection('pr')">
-                    <i class="fa-solid fa-film"></i><span class="link-text">Premiere</span>
-                </div>
-                <div class="nav-item" onclick="scrollToSection('contact')">
-                    <i class="fa-solid fa-envelope"></i><span class="link-text">與我聯繫</span>
-                </div>
+        <div class="nav-list">
+            <button class="nav-item magnetic-btn" onclick="scrollToSection('hero')">
+                <div class="nav-line-center"></div>
+                <i class="fas fa-home"></i>
+                <span class="link-text">首頁</span>
+            </button>
+            <button class="nav-item magnetic-btn" onclick="scrollToSection('about')">
+                <div class="nav-line-center"></div>
+                <i class="fas fa-user-astronaut"></i>
+                <span class="link-text">關於我</span>
+            </button>
+            <button class="nav-item magnetic-btn" onclick="scrollToSection('genai')">
+                <div class="nav-line-center"></div>
+                <i class="fas fa-robot"></i>
+                <span class="link-text">AI 設計</span>
+            </button>
+            <button class="nav-item magnetic-btn" onclick="scrollToSection('ps')">
+                <div class="nav-line-center"></div>
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span class="link-text">Photoshop</span>
+            </button>
+            <button class="nav-item magnetic-btn" onclick="scrollToSection('ai')">
+                <div class="nav-line-center"></div>
+                <i class="fas fa-pen-nib"></i>
+                <span class="link-text">Illustrator</span>
+            </button>
+            <button class="nav-item magnetic-btn" onclick="scrollToSection('id')">
+                <div class="nav-line-center"></div>
+                <i class="fas fa-book-open"></i>
+                <span class="link-text">InDesign</span>
+            </button>
+            <button class="nav-item magnetic-btn" onclick="scrollToSection('pr')">
+                <div class="nav-line-center"></div>
+                <i class="fas fa-film"></i>
+                <span class="link-text">Premiere</span>
+            </button>
+            <button class="nav-item magnetic-btn" onclick="scrollToSection('contact')">
+                <div class="nav-line-center"></div>
+                <i class="fas fa-envelope"></i>
+                <span class="link-text">聯繫</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        
+        <section id="hero" class="fullscreen-section center-content">
+            <div class="hero-bg-wrapper">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Hero Background" class="hero-img">
+                <div class="hero-overlay-blue"></div>
             </div>
-        </nav>
+            <div class="hero-text-wrapper fade-in-up">
+                <h1 class="hero-title">PROJECT.CD</h1>
+                <p class="hero-subtitle text-tech-cyan">DESIGN MASTER CLASS</p>
+                <div class="hero-desc">定義視覺的維度 · 融合極簡與科技</div>
+            </div>
+        </section>
 
-        <main class="content-area">
-            
-            <section id="hero" class="hero-section">
-                <div class="hero-image-container">
-                    <img src="images/hero-cover.jpg" alt="Cover" class="hero-img">
-                    <div class="hero-overlay">
-                        <h1 class="hero-title">PROJECT.CD</h1>
-                        <p class="hero-subtitle">Design Master Class</p>
-                        <p style="color: #333; font-weight: 500;">融合極簡美學與 AI 科技的設計殿堂</p>
-                        <div class="cta-button" onclick="scrollToSection('about')" style="margin-top: 40px; cursor: pointer;">開始瀏覽</div>
+        <section id="about" class="fullscreen-section bg-white">
+            <div class="container">
+                <div class="section-header-wrapper fade-in-up">
+                    <h2 class="tech-headline-left">PROFILE</h2>
+                    <span class="tech-subtitle-right">// 關於我</span>
+                </div>
+
+                <div class="about-tech-layout fade-in-up">
+                    <div class="about-img-box">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop" alt="About Me" class="about-img">
+                    </div>
+                    <div class="about-content">
+                        <h3 class="frame-title text-tech-cyan">LOGIC & AESTHETICS</h3>
+                        <div class="tech-separator"></div>
+                        <p class="frame-desc">
+                            您好，我是 PROJECT.CD 的創辦人。致力於將設計美學與邏輯思考完美結合。<br><br>
+                            擁有多年平面設計與前端開發經驗，我相信設計不僅是視覺的表現，更是解決問題的過程。
+                        </p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="about" class="fullscreen-section black-bg">
-                <div class="center-content">
-                    <h2 class="section-title" style="color: #fff;">關於我</h2>
-                    
-                    <div class="about-layout">
-                        <div class="about-text-box tech-box">
-                            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: #00E5FF;">DESIGN & LOGIC</h3>
-                            <p style="margin-bottom: 20px; text-align: justify; color: #ddd;">
-                                您好，我是 PROJECT.CD 的創辦人。致力於將設計美學與邏輯思考完美結合。
-                            </p>
-                            <p style="margin-bottom: 20px; text-align: justify; color: #ddd;">
-                                擁有多年平面設計與前端開發經驗，我相信設計不僅是視覺的表現，更是解決問題的過程。透過 AI 技術的輔助，我們能以更高效的方式，創造出最具影響力的作品。
-                            </p>
+        <section id="genai" class="fullscreen-section bg-gray">
+            <div class="container">
+                <div class="section-header-wrapper fade-in-up">
+                    <h2 class="tech-headline-left">AI TECH</h2>
+                    <span class="tech-subtitle-right">// 智能應用</span>
+                </div>
+                
+                <div class="tech-grid">
+                    <div class="tech-card fade-in-up">
+                        <div class="card-icon-cyan"><i class="fas fa-brain"></i></div>
+                        <div class="tech-info">
+                            <h3 class="product-name">AI 基礎素養</h3>
+                            <p class="product-desc">探索人工智能的核心邏輯。</p>
                         </div>
+                    </div>
+                    <div class="tech-card fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="card-icon-cyan"><i class="fas fa-file-code"></i></div>
+                        <div class="tech-info">
+                            <h3 class="product-name">AI 文書應用</h3>
+                            <p class="product-desc">自動化工作流程與智能生成。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ps" class="fullscreen-section bg-white">
+            <div class="container">
+                <div class="section-header-wrapper fade-in-up">
+                    <h2 class="tech-headline-left">PHOTOSHOP</h2>
+                    <span class="tech-subtitle-right">// 影像合成</span>
+                </div>
+                <div class="tech-grid">
+                    <div class="tech-card fade-in-up">
+                        <div class="card-icon-cyan"><i class="fas fa-image"></i></div>
+                        <h3 class="product-name">介面介紹</h3>
+                    </div>
+                    <div class="tech-card fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="card-icon-cyan"><i class="fas fa-layer-group"></i></div>
+                        <h3 class="product-name">精選作品集</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai" class="fullscreen-section bg-gray">
+            <div class="container">
+                <div class="section-header-wrapper fade-in-up">
+                    <h2 class="tech-headline-left">ILLUSTRATOR</h2>
+                    <span class="tech-subtitle-right">// 向量繪圖</span>
+                </div>
+                <div class="tech-grid">
+                    <div class="tech-card fade-in-up">
+                        <div class="card-icon-cyan"><i class="fas fa-bezier-curve"></i></div>
+                        <h3 class="product-name">向量基礎</h3>
+                    </div>
+                    <div class="tech-card fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="card-icon-cyan"><i class="fas fa-icons"></i></div>
+                        <h3 class="product-name">Logo 設計</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="id" class="fullscreen-section bg-white">
+            <div class="container">
+                <div class="section-header-wrapper fade-in-up">
+                    <h2 class="tech-headline-left">INDESIGN</h2>
+                    <span class="tech-subtitle-right">// 版面編排</span>
+                </div>
+                <div class="tech-grid">
+                    <div class="tech-card fade-in-up">
+                        <div class="card-icon-cyan"><i class="fas fa-book-open"></i></div>
+                        <h3 class="product-name">排版邏輯</h3>
+                    </div>
+                    <div class="tech-card fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="card-icon-cyan"><i class="fas fa-newspaper"></i></div>
+                        <h3 class="product-name">雜誌實戰</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pr" class="fullscreen-section bg-gray">
+            <div class="container">
+                <div class="section-header-wrapper fade-in-up">
+                    <h2 class="tech-headline-left">PREMIERE</h2>
+                    <span class="tech-subtitle-right">// 動態剪輯</span>
+                </div>
+                <div class="tech-grid">
+                    <div class="tech-card fade-in-up">
+                        <div class="card-icon-cyan"><i class="fas fa-video"></i></div>
+                        <h3 class="product-name">剪輯導覽</h3>
+                    </div>
+                    <div class="tech-card fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="card-icon-cyan"><i class="fas fa-photo-video"></i></div>
+                        <h3 class="product-name">特效合成</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="fullscreen-section bg-dark-tech">
+            <div class="container center-content">
+                <div class="section-header-wrapper fade-in-up" style="justify-content: center; border: none; text-align: center;">
+                    <h2 class="tech-headline-left text-white">CONTACT</h2>
+                    <span class="tech-subtitle-right text-tech-cyan" style="display: block; margin-top: 10px;">// 與我聯繫</span>
+                </div>
+                
+                <div class="contact-form-wrapper fade-in-up">
+                    <form action="mailto:hokutoshinken7ns@gmail.com" method="post" enctype="text/plain" class="contact-form">
+                        <div class="input-row">
+                            <input type="text" name="name" class="tech-input" placeholder="您的姓名" required>
+                            <input type="tel" name="phone" class="tech-input" placeholder="聯絡電話" required>
+                        </div>
+                        <input type="email" name="email" class="tech-input" placeholder="電子信箱" required>
+                        <textarea name="content" class="tech-input area-field" placeholder="訊息內容..." rows="5"></textarea>
                         
-                        <div class="about-image-box tech-box">
-                            <img src="images/about-me.jpg" alt="About Me" class="about-img">
-                        </div>
-                    </div>
+                        <button type="submit" class="submit-btn-cyan magnetic-btn">
+                            <span class="btn-text">發送訊息</span>
+                        </button>
+                    </form>
                 </div>
-            </section>
 
-            <section id="GenAI" class="fullscreen-section white-bg">
-                <div class="gallery-container">
-                    <h2 class="section-title">AI程式設計</h2>
-                    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
-                        <div class="project-card" onclick="location.href='index-genai-ai基礎素養.html';">
-                            <div class="card-img-placeholder"></div>
-                            <h3 class="card-title">AI基礎素養</h3>
-                        </div>
-                        <div class="project-card" onclick="location.href='index-genai-ai文書應用.html';">
-                            <div class="card-img-placeholder"></div>
-                            <h3 class="card-title">AI文書應用</h3>
-                        </div>
-                    </div>
+                <div class="social-links fade-in-up">
+                    <a href="#" class="social-icon magnetic-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon magnetic-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon magnetic-icon"><i class="fab fa-youtube"></i></a>
                 </div>
-            </section>
 
-            <section id="ps" class="fullscreen-section gray-bg">
-                <div class="gallery-container">
-                    <h2 class="section-title">Photoshop</h2>
-                    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
-                        <div class="project-card"><div class="card-img-placeholder"></div><h3 class="card-title">介面介紹</h3></div>
-                        <div class="project-card"><div class="card-img-placeholder"></div><h3 class="card-title">作品集</h3></div>
-                    </div>
+                <div class="copyright fade-in-up">
+                    &copy; 2026 PROJECT.CD. All Rights Reserved.
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="ai" class="fullscreen-section white-bg">
-                <div class="gallery-container">
-                    <h2 class="section-title">Illustrator</h2>
-                    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
-                        <div class="project-card"><div class="card-img-placeholder"></div><h3 class="card-title">介面介紹</h3></div>
-                        <div class="project-card"><div class="card-img-placeholder"></div><h3 class="card-title">作品集</h3></div>
-                    </div>
-                </div>
-            </section>
+    </main>
 
-            <section id="id" class="fullscreen-section gray-bg">
-                <div class="gallery-container">
-                    <h2 class="section-title">InDesign</h2>
-                    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
-                        <div class="project-card"><div class="card-img-placeholder"></div><h3 class="card-title">介面介紹</h3></div>
-                        <div class="project-card"><div class="card-img-placeholder"></div><h3 class="card-title">作品集</h3></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="pr" class="fullscreen-section white-bg">
-                <div class="gallery-container">
-                    <h2 class="section-title">Premiere</h2>
-                    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
-                        <div class="project-card"><div class="card-img-placeholder"></div><h3 class="card-title">介面介紹</h3></div>
-                        <div class="project-card"><div class="card-img-placeholder"></div><h3 class="card-title">作品集</h3></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" class="fullscreen-section black-bg">
-                <div class="center-content text-white">
-                    <h2 class="section-title" style="color: #fff;">與我聯繫</h2>
-                    <p class="subtitle">Get in Touch</p>
-                    
-                    <div class="contact-container">
-                        <form action="mailto:hokutoshinken7ns@gmail.com" method="post" enctype="text/plain" class="contact-form">
-                            <div class="form-group"><input type="text" name="name" placeholder="您的姓名 (Name)" required></div>
-                            <div class="form-group"><input type="tel" name="phone" placeholder="聯絡電話 (Phone)" required></div>
-                            <div class="form-group"><input type="email" name="email" placeholder="電子信箱 (Email)" required></div>
-                            <div class="form-group"><textarea name="content" placeholder="諮詢內容 (Message)" required></textarea></div>
-                            <button type="submit" class="submit-btn">發送訊息</button>
-                        </form>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -2,28 +2,13 @@
 
 /* ==========================================================================
    PROJECT.CD - Master Stylesheet
-   [Table of Contents]
-   1. Design System
-   2. Global Reset
-   3. Typography & Layout
-   4. Navbar
-   5. Cart Sidebar
-   6. Gate Overlay & Noise
-   7. Hero Section & Ken Burns
-   8. Brand Section
-   9. Sweets Section
-   10. VIP Section
-   11. Contact Section
-   12. Footer
-   13. Modal
-   14. Utilities
-   15. Responsive
+   Version: 8.0 (Luxury Gallery Edition - 2 Columns)
    ========================================================================== */
 
 /* 1. Design System */
 :root {
-    --font-heading: 'Jost', -apple-system, sans-serif;
-    --font-body: 'Noto Sans TC', -apple-system, sans-serif;
+    --font-heading: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
     --color-bg-body: #1d1d1f;      
     --color-bg-light: #f5f5f7;     
     --color-bg-white: #ffffff;     
@@ -48,7 +33,11 @@ body { margin: 0; padding: 0; font-family: var(--font-body); background-color: v
 
 /* 3. Typography & Layout */
 .fullscreen-section { min-height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; padding: 120px 24px; position: relative; z-index: 10; }
-.container { width: 100%; max-width: 1200px; margin: 0 auto; }
+
+/* 統一標準寬度 1200px，確保標題對齊 */
+.container { width: 90%; max-width: 1200px; margin: 0 auto; position: relative; }
+.about-container { max-width: 1200px; }
+
 .center-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .section-header-wrapper { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; margin-bottom: 80px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 20px; }
 .apple-headline-left { font-family: var(--font-heading); font-size: 80px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; color: var(--color-text-primary); margin: 0; text-transform: uppercase; }
@@ -75,9 +64,11 @@ body { margin: 0; padding: 0; font-family: var(--font-body); background-color: v
 .mobile-logo-link { display: none; }
 .center-logo-img { height: 48px; width: auto; }
 .nav-right { display: flex; align-items: center; gap: 24px; }
-.icon-link { color: #ffffff; font-size: 20px; text-decoration: none; padding: 8px; transition: 0.3s; }
+
+/* Icon Link & Badge Fix */
+.icon-link { position: relative; color: #ffffff; font-size: 20px; text-decoration: none; padding: 8px; transition: 0.3s; display: inline-flex; align-items: center; justify-content: center; }
 .icon-link:hover { color: var(--color-gold-premium); filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5)); transform: scale(1.1); }
-.cart-count-badge { position: absolute; top: 0; right: -5px; background-color: var(--color-gold-premium); color: #000; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+.cart-count-badge { position: absolute; top: 0px; right: -2px; background-color: var(--color-gold-premium); color: #000; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; justify-content: center; align-items: center; pointer-events: none; }
 .cart-count-badge.hidden { opacity: 0; }
 .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 10px; }
 .bar { display: block; width: 24px; height: 2px; background: #ffffff; margin: 6px 0; transition: 0.3s; }
@@ -106,7 +97,7 @@ body { margin: 0; padding: 0; font-family: var(--font-body); background-color: v
 .site-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2400; opacity: 0; visibility: hidden; transition: 0.3s; }
 .site-overlay.active { opacity: 1; visibility: visible; }
 
-/* 6. Gate Overlay & Noise Texture */
+/* 6. Gate Overlay & Noise */
 .gate-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: #000000; z-index: 5000; display: flex; justify-content: center; align-items: center; transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1); }
 .noise-texture { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.05; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
 .gate-content { text-align: center; color: #f5f5f7; display: flex; flex-direction: column; align-items: center; gap: 30px; z-index: 2; }
@@ -118,10 +109,9 @@ body { margin: 0; padding: 0; font-family: var(--font-body); background-color: v
 .apple-enter-btn:hover { background: rgba(255, 255, 255, 0.25); }
 .gate-overlay.gate-slide-up { transform: translateY(-100%); }
 
-/* 7. Hero Section & Ken Burns Effect */
+/* 7. Hero Section */
 .hero-section { position: relative; overflow: hidden; height: 100vh; height: 100dvh; width: 100%; padding: 0; }
 .hero-img-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-/* Ken Burns Animation */
 .ken-burns img { width: 100%; height: 100%; object-fit: cover; animation: kenBurns 20s ease-out infinite alternate; }
 @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 .video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 3; pointer-events: none; }
@@ -143,23 +133,34 @@ body { margin: 0; padding: 0; font-family: var(--font-body); background-color: v
 .signature-box { display: flex; justify-content: flex-end; margin-top: 20px; }
 .signature-img { height: 40px; opacity: 0.6; }
 
-/* 9. Sweets Section */
-.museum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; width: 100%; max-width: 1300px; margin: 0 auto; }
-.museum-card { position: relative; border-radius: var(--radius-card); background: transparent; cursor: pointer; overflow: visible; transition: transform 0.4s var(--ease-apple); opacity: 0; transform: translateY(30px); }
+/* 9. Sweets Section (一排兩個 - 畫廊模式) */
+.museum-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* 核心設定：一排兩個 */
+    gap: 60px; /* 加大間距，營造奢華感 */
+    width: 90%; 
+    max-width: 1000px; /* 限制寬度，避免圖片過大 */
+    margin: 0 auto; 
+}
+.museum-card { position: relative; border-radius: var(--radius-card); background: transparent; cursor: pointer; overflow: visible; transition: transform 0.4s var(--ease-apple); opacity: 0; transform: translateY(30px); padding: 20px; }
 .museum-card.visible { opacity: 1; transform: translateY(0); }
-.museum-light { position: absolute; top: 10%; left: 10%; width: 80%; height: 80%; background: radial-gradient(circle, #ffffff 0%, #f0f0f0 60%, transparent 100%); opacity: 0; z-index: 0; filter: blur(20px); transition: 0.4s; border-radius: 50%; transform: scale(0.8); }
-.museum-card:hover .museum-light { opacity: 1; transform: scale(1.1); }
+.museum-light { position: absolute; top: 10%; left: 10%; width: 80%; height: 80%; background: radial-gradient(circle, #ffffff 0%, #f0f0f0 60%, transparent 100%); opacity: 0; z-index: 0; filter: blur(30px); transition: 0.6s; border-radius: 50%; transform: scale(0.8); }
+.museum-card:hover .museum-light { opacity: 1; transform: scale(1.2); }
 .museum-card:hover { transform: translateY(-10px); }
 .museum-img-box { position: relative; z-index: 1; width: 100%; aspect-ratio: 1; display: flex; justify-content: center; align-items: center; }
-.museum-img-box img { width: 85%; height: 85%; object-fit: contain; transition: transform 0.5s var(--ease-apple); filter: drop-shadow(0 10px 20px rgba(20, 30, 60, 0.1)); }
-.museum-card:hover img { transform: scale(1.15) translateY(-5px); filter: drop-shadow(0 20px 40px rgba(20, 30, 60, 0.2)); }
-.museum-info { position: relative; z-index: 2; padding: 0 10px 20px; text-align: center; margin-top: -10px; }
-.product-name { font-size: 18px; font-weight: 500; margin: 0 0 6px 0; color: var(--color-text-primary); }
-.product-price { font-size: 15px; font-family: var(--font-heading); font-weight: 600; }
-.add-btn-circle { width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--color-text-primary); border: none; display: flex; justify-content: center; align-items: center; font-size: 16px; cursor: pointer; transition: 0.3s; margin: 15px auto 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.add-btn-circle.gold-btn:hover { background: var(--color-gold-premium); color: #fff; transform: scale(1.1); }
-/* Click Animation */
-.add-btn-circle:active { transform: scale(0.9); }
+.museum-img-box img { 
+    width: 75%; /* 縮小圖片佔比，增加留白 */
+    height: 75%; 
+    object-fit: contain; transition: transform 0.5s var(--ease-apple); filter: drop-shadow(0 20px 40px rgba(20, 30, 60, 0.15)); 
+    display: block; margin: 0 auto; 
+}
+.museum-card:hover img { transform: scale(1.1) translateY(-10px); filter: drop-shadow(0 30px 60px rgba(20, 30, 60, 0.25)); }
+.museum-info { position: relative; z-index: 2; padding: 10px 0 20px; text-align: center; margin-top: -20px; }
+.product-name { font-size: 22px; font-weight: 500; margin: 0 0 8px 0; color: var(--color-text-primary); letter-spacing: 0.05em; }
+.product-price { font-size: 16px; font-family: var(--font-heading); font-weight: 600; }
+.add-btn-circle { width: 48px; height: 48px; border-radius: 50%; background: #fff; color: var(--color-text-primary); border: none; display: flex; justify-content: center; align-items: center; font-size: 18px; cursor: pointer; transition: 0.3s; margin: 20px auto 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.add-btn-circle.gold-btn:hover { background: var(--color-gold-premium); color: #fff; transform: scale(1.1); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
+.add-btn-circle:active { transform: scale(0.95); }
 
 /* 10. VIP Section */
 .titanium-card-container { perspective: 1200px; margin-bottom: 30px; opacity: 0; transform: translateY(30px); transition: 0.8s; position: relative; }
@@ -188,9 +189,7 @@ body { margin: 0; padding: 0; font-family: var(--font-body); background-color: v
 .input-group { display: flex; gap: 24px; }
 .tactile-input { width: 100%; padding: 20px 24px; background-color: #f0f0f3; border: none; border-radius: 16px; color: var(--color-text-primary); font-size: 16px; outline: none; box-shadow: var(--shadow-inset); transition: all 0.3s ease; }
 @keyframes breathe-glow { 0% { box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1); } 50% { box-shadow: 0 0 0 5px rgba(212, 175, 55, 0.2); } 100% { box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1); } }
-/* Valid Input Glow */
-.tactile-input:focus, .tactile-input:valid { background-color: #fff; box-shadow: 0 0 0 2px var(--color-gold-premium); }
-.tactile-input:focus { animation: breathe-glow 2s infinite ease-in-out; }
+.tactile-input:focus { background-color: #fff; box-shadow: 0 0 0 2px var(--color-gold-premium); animation: breathe-glow 2s infinite ease-in-out; }
 .tactile-input::placeholder { color: #a1a1a6; }
 .area-field { resize: none; }
 .send-message-btn { align-self: center; margin-top: 20px; padding: 16px 50px; background-color: var(--color-text-primary); color: #fff; border: none; border-radius: var(--radius-btn); font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.3s; }
@@ -262,7 +261,10 @@ body { margin: 0; padding: 0; font-family: var(--font-body); background-color: v
     .magazine-item, .magazine-item.reverse { flex-direction: column; }
     .mag-img-box { width: 100%; height: 300px; }
     .mag-content-glass, .left-glass, .right-glass { width: 90%; position: relative; top: -40px; left: auto; right: auto; transform: none; margin: 0 auto; }
-    .museum-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 0 16px; }
+    
+    /* 甜點區手機版 RWD：變回一排一個，避免太擠 */
+    .museum-grid { grid-template-columns: 1fr; gap: 40px; max-width: 500px; padding: 0 16px; }
+    
     .input-group { flex-direction: column; gap: 24px; }
     .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .footer-info { display: flex; flex-direction: column; align-items: center; }
@@ -273,5 +275,6 @@ body { margin: 0; padding: 0; font-family: var(--font-body); background-color: v
     .footer-bottom-phantom { flex-direction: column; gap: 10px; }
 }
 @media screen and (max-width: 768px) {
+    /* 確保超小螢幕也是一欄 */
     .museum-grid { grid-template-columns: 1fr; }
 }

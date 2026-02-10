@@ -6,9 +6,7 @@
     
     <title>PROJECT.CD | 定義味覺的維度</title>
     <meta name="description" content="PROJECT.CD - 定義味覺的維度。專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。">
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <meta property="og:title" content="PROJECT.CD | 定義味覺的維度">
     <meta property="og:image" content="images/og-share.jpg"> 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,7 +22,8 @@
 <body>
 
     <div class="gate-overlay" id="entry-layer">
-        <div class="noise-texture"></div> <div class="gate-content">
+        <div class="noise-texture"></div>
+        <div class="gate-content">
             <h1 class="gate-title text-breathing">PROJECT.CD</h1>
             <p class="gate-subtitle text-breathing">定義味覺的維度</p>
             <button id="gate-action-btn" class="apple-enter-btn magnetic-btn">
@@ -37,11 +36,11 @@
 
     <nav class="navbar" id="navbar">
         <div class="nav-left">
-            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+            <button class="hamburger" id="hamburger-btn" aria-label="選單">
                 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </button>
             <a href="#home" class="desktop-logo-link">
-                <img src="images/LOGO.png" alt="Logo" class="logo-img">
+                <img src="images/LOGO.png" alt="PROJECT.CD" class="logo-img">
             </a>
             <ul class="nav-links-text" id="mobile-menu">
                 <li><a href="#about" class="nav-link magnetic-text">品牌</a></li>
@@ -53,13 +52,13 @@
                 <span class="desktop-brand-name">PROJECT.CD</span>
             </a>
             <a href="#home" class="mobile-logo-link">
-                <img src="images/LOGO.png" alt="Logo" class="center-logo-img">
+                <img src="images/LOGO.png" alt="PROJECT.CD" class="center-logo-img">
             </a>
         </div>
         <div class="nav-right">
-            <a href="#vip" class="icon-link magnetic-icon" title="VIP"><i class="fas fa-crown"></i></a>
-            <a href="#contact" class="icon-link magnetic-icon" title="Contact"><i class="fas fa-envelope"></i></a>
-            <a href="#" class="icon-link cart-link magnetic-icon" id="cart-btn" title="Cart">
+            <a href="#vip" class="icon-link magnetic-icon" title="會員"><i class="fas fa-crown"></i></a>
+            <a href="#contact" class="icon-link magnetic-icon" title="聯繫"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="icon-link cart-link magnetic-icon" id="cart-btn" title="收藏">
                 <i class="fas fa-shopping-cart"></i>
                 <span class="cart-count-badge" id="cart-badge">0</span>
             </a>
@@ -93,9 +92,7 @@
         <section id="home" class="hero-section">
             <div class="hero-img-wrapper ken-burns">
                 <picture>
-                    <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg">
-                    <img src="images/hero-desktop.jpg" alt="Hero" class="hero-static-img skeleton-bg">
-                </picture>
+                    <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg"> <img src="images/hero-desktop.jpg" alt="PROJECT.CD 主視覺" class="hero-static-img skeleton-bg"> </picture>
             </div>
             <div class="video-overlay"></div>
         </section>
@@ -110,7 +107,7 @@
                 <div class="about-magazine-layout">
                     <div class="magazine-item fade-in-up">
                         <div class="mag-img-box">
-                            <img src="images/brand-person.jpg" class="mag-img skeleton-bg" alt="CD" loading="lazy">
+                            <img src="images/brand-person.jpg" class="mag-img skeleton-bg" alt="負責人 CD" loading="lazy">
                         </div>
                         <div class="mag-content-glass left-glass">
                             <h3 class="frame-title">負責人 : CD</h3>
@@ -127,7 +124,7 @@
                     
                     <div class="magazine-item reverse fade-in-up" style="transition-delay: 0.2s;">
                         <div class="mag-img-box">
-                            <img src="images/brand-concept.jpg" class="mag-img skeleton-bg" alt="Concept" loading="lazy">
+                            <img src="images/brand-concept.jpg" class="mag-img skeleton-bg" alt="品牌理念" loading="lazy">
                         </div>
                         <div class="mag-content-glass right-glass">
                             <h3 class="frame-title">PROJECT.CD</h3>
@@ -152,38 +149,54 @@
                 <div class="museum-grid">
                     <div class="museum-card fade-in-up" onclick="openProductModal('p1')">
                         <div class="museum-light"></div>
-                        <div class="museum-img-box"><img src="images/product1.jpg" alt="" loading="lazy"></div>
+                        <div class="museum-img-box">
+                            <img src="images/product1.jpg" alt="鳳梨酥" loading="lazy">
+                        </div>
                         <div class="museum-info">
                             <h3 class="product-name">鳳梨酥</h3>
                             <p class="product-price text-gold">NT$ 550</p>
-                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p1')"><i class="fas fa-shopping-bag"></i></button>
+                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p1')">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="museum-card fade-in-up" style="transition-delay: 0.1s;" onclick="openProductModal('p2')">
                         <div class="museum-light"></div>
-                        <div class="museum-img-box"><img src="images/product2.jpg" alt="" loading="lazy"></div>
+                        <div class="museum-img-box">
+                            <img src="images/product2.jpg" alt="堅果塔" loading="lazy">
+                        </div>
                         <div class="museum-info">
                             <h3 class="product-name">堅果塔</h3>
                             <p class="product-price text-gold">NT$ 420</p>
-                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p2')"><i class="fas fa-shopping-bag"></i></button>
+                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p2')">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="museum-card fade-in-up" style="transition-delay: 0.2s;" onclick="openProductModal('p3')">
                         <div class="museum-light"></div>
-                        <div class="museum-img-box"><img src="images/product3.jpg" alt="" loading="lazy"></div>
+                        <div class="museum-img-box">
+                            <img src="images/product3.jpg" alt="磅蛋糕" loading="lazy">
+                        </div>
                         <div class="museum-info">
                             <h3 class="product-name">磅蛋糕</h3>
                             <p class="product-price text-gold">NT$ 380</p>
-                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p3')"><i class="fas fa-shopping-bag"></i></button>
+                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p3')">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="museum-card fade-in-up" style="transition-delay: 0.3s;" onclick="openProductModal('p4')">
                         <div class="museum-light"></div>
-                        <div class="museum-img-box"><img src="images/product4.jpg" alt="" loading="lazy"></div>
+                        <div class="museum-img-box">
+                            <img src="images/product4.jpg" alt="8吋派" loading="lazy">
+                        </div>
                         <div class="museum-info">
                             <h3 class="product-name">8吋派</h3>
                             <p class="product-price text-gold">NT$ 980</p>
-                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p4')"><i class="fas fa-shopping-bag"></i></button>
+                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p4')">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -217,12 +230,15 @@
                         </div>
                     </div>
                 </div>
-                <button class="join-member-btn magnetic-btn fade-in-up"><span class="btn-text">加入會員</span></button>
+                
+                <button class="join-member-btn magnetic-btn fade-in-up">
+                    <span class="btn-text">加入會員</span>
+                </button>
             </div>
         </section>
 
         <section id="contact" class="content-section fullscreen-section apple-section-white">
-            <div class="container center-content">
+            <div class="container about-container center-content">
                 <div class="section-header-wrapper fade-in-up" style="width: 100%; margin-bottom: 60px;">
                     <h2 class="apple-headline-left">CONTACT</h2>
                     <span class="apple-subtitle-right">// 聯繫我們</span>
@@ -236,6 +252,7 @@
                         </div>
                         <input type="email" class="tactile-input" placeholder="電子信箱" required>
                         <textarea class="tactile-input area-field" placeholder="訊息內容..." rows="5"></textarea>
+                        
                         <button type="button" class="send-message-btn magnetic-btn">
                             <span class="btn-text">發送訊息</span> <i class="fas fa-paper-plane" style="margin-left: 8px; font-size: 0.9em;"></i>
                         </button>
@@ -250,6 +267,7 @@
                     <h3 class="footer-logo-text">PROJECT.CD</h3>
                     <p class="footer-slogan">定義味覺的維度</p>
                 </div>
+                
                 <div class="footer-info">
                     <h4>Info</h4>
                     <div class="info-content">
@@ -258,6 +276,7 @@
                         <p><i class="fas fa-clock"></i> 週二至週日 11:00 - 20:00</p>
                     </div>
                 </div>
+
                 <div class="footer-social">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
@@ -268,10 +287,13 @@
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom-phantom">
                 <div class="copyright">&copy; 2026 PROJECT.CD. All Rights Reserved.</div>
                 <div class="legal">
-                    <a href="#">Privacy</a><span class="sep">|</span><a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <span class="sep">|</span>
+                    <a href="#">Terms</a>
                 </div>
             </div>
         </footer>

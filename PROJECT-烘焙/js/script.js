@@ -1,6 +1,6 @@
 /**
  * PROJECT.CD - Official Website Script
- * Version: 5.0 (Master Release)
+ * Version: 6.0 (Ultra-Wide Optimized)
  */
 
 'use strict'; 
