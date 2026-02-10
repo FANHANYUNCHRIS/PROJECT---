@@ -1,186 +1,69 @@
-/* ==========================================================================
-   1. Design Tokens (設計規範)
-   ========================================================================== */
-:root {
-    --font-main: 'Montserrat', 'Noto Sans TC', sans-serif;
-    
-    /* 品牌色系：升級為更具科技感的配色 */
-    --color-bg: #ffffff;
-    --color-text: #1a1a1a;
-    --color-text-light: #666666;
-    --color-primary: #000000;
-    --color-accent: #2563eb; /* 科技藍 */
-    --color-accent-hover: #1d4ed8;
-    
-    /* 漸層色定義 */
-    --gradient-primary: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
-    
-    /* 佈局 */
-    --container-width: 1200px;
-    --header-height: 80px;
+@import url('https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+html,body,header,footer,menu,nav,aside,main,article,section,div,span,h1,h2,h3,h4,p,a,hr,ul,ol,li,img,table,tr,td{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+    font-family: "Rubik", "Chiron GoRound TC", sans-serif;
+}
+img{
+    width: 100%;
+    vertical-align: bottom;
 }
 
-/* ==========================================================================
-   2. Reset & Base (基礎設定)
-   ========================================================================== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; scrollbar-gutter: stable; }
-
-body {
-    font-family: var(--font-main);
-    color: var(--color-text);
-    background-color: var(--color-bg);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased; /* 讓文字在 Mac 上極致清晰 */
+:root{
+    --mainColor--: #A1C6D9;
+    --darkGray--: #1D1E1F;
+    --midGray--: #292B2C;
+    --lightGray--: #797979;
+    --darkBlack--: #000;
+    --alphaBlack--: #0008;
+    --textWhite--: #FFF;
+    --transition--: all 600ms ease;
 }
 
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-ul { list-style: none; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
-
-/* 容器限制 */
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* ==========================================================================
-   3. Header & Navigation (頂部導覽)
-   ========================================================================== */
-#site-header {
-    height: var(--header-height);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.9); /* 90% 透明度 */
-    backdrop-filter: blur(10px); /* 頂部選單也有毛玻璃效果 */
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.navbar {
-    height: 100%;
+.flex{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -1px;
+.grid-1{
+    width: calc(100% / 12 * 1);
+}
+.grid-2{
+    width: calc(100% / 12 * 2);
+}
+.grid-3{
+    width: calc(100% / 12 * 3);
+}
+.grid-4{
+    width: calc(100% / 12 * 4);
+}
+.grid-5{
+    width: calc(100% / 12 * 5);
+}
+.grid-6{
+    width: calc(100% / 12 * 6);
+}
+.grid-7{
+    width: calc(100% / 12 * 7);
+}
+.grid-8{
+    width: calc(100% / 12 * 8);
+}
+.grid-9{
+    width: calc(100% / 12 * 9);
+}
+.grid-10{
+    width: calc(100% / 12 * 10);
+}
+.grid-11{
+    width: calc(100% / 12 * 11);
+}
+.grid-12{
+    width: calc(100% / 12 * 12);
 }
 
-.nav-menu { display: flex; gap: 40px; }
-.nav-item { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
-.nav-item:hover { color: var(--color-accent); }
-
-.nav-actions { display: flex; gap: 20px; align-items: center; }
-.icon-btn { font-size: 1.2rem; transition: 0.3s; }
-.icon-btn:hover { color: var(--color-accent); transform: scale(1.1); }
-
-/* ==========================================================================
-   4. Buttons (按鈕組件)
-   ========================================================================== */
-.btn-primary {
-    background: var(--color-primary);
-    color: #fff;
-    padding: 10px 24px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    display: inline-block;
-}
-
-.btn-primary:hover {
-    background: var(--color-accent);
-    transform: translateY(-2px); /* 懸浮微動效果 */
-    box-shadow: 0 10px 20px -10px rgba(37, 99, 235, 0.5); /* 增加投影 */
-}
-
-.btn-outline {
-    border: 2px solid var(--color-primary);
-    padding: 8px 24px;
-    border-radius: 50px;
-    font-weight: 600;
-    margin-left: 10px;
-}
-.btn-outline:hover { background: var(--color-primary); color: #fff; }
-
-/* ==========================================================================
-   5. Hero Section (首頁視覺核心 - 重點教學)
-   ========================================================================== */
-.hero-section {
-    position: relative;
-    padding: 100px 0;
-    overflow: hidden; /* 防止背景光暈溢出 */
-}
-
-/* 背景光暈：創造氛圍 */
-.hero-bg-glow {
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: var(--gradient-primary);
-    filter: blur(120px); /* 極度模糊，形成柔和光暈 */
-    opacity: 0.15;
-    border-radius: 50%;
-    z-index: -1;
-}
-
-.hero-content {
-    display: flex;
-    align-items: center;
-    min-height: 60vh;
-}
-
-/* 毛玻璃卡片：增加層次感 */
-.glass-card {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(20px); /* 關鍵：背景模糊 */
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    padding: 60px;
-    border-radius: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    max-width: 700px;
-}
-
-.badge {
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--color-accent);
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    display: inline-block;
-}
-
-.hero-title {
-    font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    font-weight: 800;
-    letter-spacing: -2px;
-}
-
-.hero-desc {
-    font-size: 1.1rem;
-    color: var(--color-text-light);
-    margin-bottom: 40px;
-    max-width: 500px;
-}
-
-/* 漸層文字魔法 */
-.gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text; /* 背景只在文字內顯示 */
-    color: transparent; /* 文字透明 */
-}
-
-/* 無障礙隱藏 */
-.skip-link { position: absolute; top: -100px; }
-.skip-link:focus { top: 0; background: #000; color: #fff; padding: 10px; z-index: 2000; }
