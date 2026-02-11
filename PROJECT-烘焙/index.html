@@ -6,8 +6,6 @@
     
     <title>PROJECT.CD | 定義味覺的維度</title>
     <meta name="description" content="PROJECT.CD - 定義味覺的維度。專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。">
-    <meta property="og:title" content="PROJECT.CD | 定義味覺的維度">
-    <meta property="og:image" content="images/og-share.jpg"> 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,9 +24,6 @@
         <div class="gate-content">
             <h1 class="gate-title text-breathing">PROJECT.CD</h1>
             <p class="gate-subtitle text-breathing">定義味覺的維度</p>
-            <button id="gate-action-btn" class="apple-enter-btn magnetic-btn">
-                <span class="btn-text">進入體驗</span>
-            </button>
         </div>
     </div>
 
@@ -56,11 +51,13 @@
             </a>
         </div>
         <div class="nav-right">
-            <a href="#vip" class="icon-link magnetic-icon" title="會員"><i class="fas fa-crown"></i></a>
-            <a href="#contact" class="icon-link magnetic-icon" title="聯繫"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="icon-link magnetic-icon nav-user-trigger" title="會員專區" id="nav-user-btn">
+                <i class="fas fa-crown" id="nav-crown-icon"></i>
+            </a>
+            <a href="#contact" class="icon-link magnetic-icon mobile-hide-icon" title="聯繫"><i class="fas fa-envelope"></i></a>
             <a href="#" class="icon-link cart-link magnetic-icon" id="cart-btn" title="收藏">
                 <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count-badge" id="cart-badge">0</span>
+                <span class="cart-count-badge hidden" id="cart-badge">0</span>
             </a>
         </div>
     </nav>
@@ -83,16 +80,83 @@
     </aside>
     <div id="cart-overlay" class="site-overlay"></div>
 
-    <audio id="bg-music" loop>
+    <div id="auth-modal" class="auth-modal site-overlay">
+        <div class="auth-glass-panel clean-glass" id="auth-glass-panel">
+            <button class="close-btn_nice auth-close-btn" id="close-auth"><i class="fas fa-times"></i></button>
+            <div id="auth-form-container">
+                <h2 class="auth-title">專屬維度</h2>
+                <p class="auth-subtitle">開啟您的味覺記憶</p>
+                <form id="auth-form" class="auth-form">
+                    
+                    <div class="input-row">
+                        <div class="gender-toggle">
+                            <input type="radio" id="gender-mr" name="gender" value="MR." checked>
+                            <label for="gender-mr">MR.</label>
+                            <input type="radio" id="gender-ms" name="gender" value="MS.">
+                            <label for="gender-ms">MS.</label>
+                        </div>
+                        <input type="text" class="tactile-input pill-input flex-grow" placeholder="如何稱呼您 (Name)" id="auth-name-input" autocomplete="name" required>
+                    </div>
+                    
+                    <input type="tel" class="tactile-input pill-input" placeholder="手機號碼 (Mobile)" id="auth-phone-input" inputmode="numeric" autocomplete="tel" required>
+                    <input type="email" class="tactile-input pill-input" placeholder="電子信箱 (Email)" id="auth-email-input" autocomplete="email" required>
+                    <input type="text" class="tactile-input pill-input" placeholder="誕生之日 (MM/DD)" id="auth-birthday-input" inputmode="numeric" maxlength="5" required>
+                    
+                    <div class="privacy-checkbox">
+                        <input type="checkbox" id="privacy-policy" required>
+                        <label for="privacy-policy">我已閱讀並同意 <a href="#">隱私權政策</a></label>
+                    </div>
+
+                    <button type="submit" class="magnetic-btn auth-submit-btn interact-btn" id="auth-submit-btn">
+                        <span class="btn-text">確認開啟</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="auth-success-circle clean-glass" id="auth-success-circle">
+            <i class="fas fa-check success-icon-large"></i>
+            <p>維度已開啟</p>
+        </div>
+    </div>
+
+    <div id="dashboard-modal" class="auth-modal site-overlay">
+        <div class="dashboard-glass-panel clean-glass">
+            <button class="close-btn_nice auth-close-btn" id="close-dashboard"><i class="fas fa-times"></i></button>
+            <div class="dashboard-grid">
+                <div class="dashboard-left">
+                    <h2 class="dash-name" id="dash-name">CHEN</h2>
+                    <p class="dash-tier text-gold" id="dash-tier-code">CD-0001</p>
+                    <div class="dash-stats">
+                        <div class="stat-box">
+                            <span class="stat-label">累積探索</span>
+                            <span class="stat-value text-gold" id="dash-total-spent">NT$ 0</span>
+                        </div>
+                        <div class="stat-box" style="margin-top: 20px;">
+                            <span class="stat-label" style="font-size: 9px; opacity: 0.5; letter-spacing: 2px;" id="dash-join-date">JOINED: 2026.02</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-right">
+                    <h3 class="dash-section-title">// 味覺記憶 (History)</h3>
+                    <div class="history-list" id="dashboard-history-list">
+                        </div>
+                    <button class="logout-btn" id="logout-btn">登出維度</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop preload="none">
         <source src="https://cdn.pixabay.com/download/audio/2021/11/24/audio_823a31e844.mp3" type="audio/mpeg">
     </audio>
 
     <div class="content-wrapper">
-        
         <section id="home" class="hero-section">
             <div class="hero-img-wrapper ken-burns">
                 <picture>
-                    <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg"> <img src="images/hero-desktop.jpg" alt="PROJECT.CD 主視覺" class="hero-static-img skeleton-bg"> </picture>
+                    <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg"> 
+                    <img src="images/hero-desktop.jpg" alt="PROJECT.CD 主視覺" class="hero-static-img skeleton-bg" fetchpriority="high"> 
+                </picture>
             </div>
             <div class="video-overlay"></div>
         </section>
@@ -100,41 +164,11 @@
         <section id="about" class="content-section fullscreen-section apple-section-light">
             <div class="container about-container">
                 <div class="section-header-wrapper fade-in-up">
-                    <h2 class="apple-headline-left">BRAND</h2>
-                    <span class="apple-subtitle-right">// 品牌故事</span>
+                    <h2 class="apple-headline-left">BRAND</h2><span class="apple-subtitle-right">// 品牌故事</span>
                 </div>
-                
                 <div class="about-magazine-layout">
-                    <div class="magazine-item fade-in-up">
-                        <div class="mag-img-box">
-                            <img src="images/brand-person.jpg" class="mag-img skeleton-bg" alt="負責人 CD" loading="lazy">
-                        </div>
-                        <div class="mag-content-glass left-glass">
-                            <h3 class="frame-title">負責人 : CD</h3>
-                            <div class="text-separator"></div>
-                            <p class="frame-desc">
-                                <span class="tag-label text-gold">品牌代言人</span><br>
-                                專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。
-                            </p>
-                            <div class="signature-box">
-                                <img src="images/signature.png" alt="Signature" class="signature-img">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="magazine-item reverse fade-in-up" style="transition-delay: 0.2s;">
-                        <div class="mag-img-box">
-                            <img src="images/brand-concept.jpg" class="mag-img skeleton-bg" alt="品牌理念" loading="lazy">
-                        </div>
-                        <div class="mag-content-glass right-glass">
-                            <h3 class="frame-title">PROJECT.CD</h3>
-                            <div class="text-separator"></div>
-                            <p class="frame-desc">
-                                <span class="tag-label text-gold">品牌理念</span><br>
-                                在數據與味蕾之間，尋找完美的平衡點。這是一場關於精準與美學的實驗。
-                            </p>
-                        </div>
-                    </div>
+                    <div class="magazine-item fade-in-up"><div class="mag-img-box"><img src="images/brand-person.jpg" class="mag-img skeleton-bg" alt="負責人 CD" loading="lazy"></div><div class="mag-content-glass left-glass"><h3 class="frame-title">負責人 : CD</h3><div class="text-separator"></div><p class="frame-desc"><span class="tag-label text-gold">品牌代言人</span><br>專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。</p><div class="signature-box"><img src="images/signature.png" alt="Signature" class="signature-img"></div></div></div>
+                    <div class="magazine-item reverse fade-in-up" style="transition-delay: 0.2s;"><div class="mag-img-box"><img src="images/brand-concept.jpg" class="mag-img skeleton-bg" alt="品牌理念" loading="lazy"></div><div class="mag-content-glass right-glass"><h3 class="frame-title">PROJECT.CD</h3><div class="text-separator"></div><p class="frame-desc"><span class="tag-label text-gold">品牌理念</span><br>在數據與味蕾之間，尋找完美的平衡點。這是一場關於精準與美學的實驗。</p></div></div>
                 </div>
             </div>
         </section>
@@ -142,63 +176,13 @@
         <section id="works" class="content-section fullscreen-section apple-section-white">
             <div class="container">
                 <div class="section-header-wrapper fade-in-up">
-                    <h2 class="apple-headline-left">SWEETS</h2>
-                    <span class="apple-subtitle-right">// 甜點系列</span>
+                    <h2 class="apple-headline-left">SWEETS</h2><span class="apple-subtitle-right">// 甜點系列</span>
                 </div>
-                
                 <div class="museum-grid">
-                    <div class="museum-card fade-in-up" onclick="openProductModal('p1')">
-                        <div class="museum-light"></div>
-                        <div class="museum-img-box">
-                            <img src="images/product1.jpg" alt="鳳梨酥" loading="lazy">
-                        </div>
-                        <div class="museum-info">
-                            <h3 class="product-name">鳳梨酥</h3>
-                            <p class="product-price text-gold">NT$ 550</p>
-                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p1')">
-                                <i class="fas fa-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="museum-card fade-in-up" style="transition-delay: 0.1s;" onclick="openProductModal('p2')">
-                        <div class="museum-light"></div>
-                        <div class="museum-img-box">
-                            <img src="images/product2.jpg" alt="堅果塔" loading="lazy">
-                        </div>
-                        <div class="museum-info">
-                            <h3 class="product-name">堅果塔</h3>
-                            <p class="product-price text-gold">NT$ 420</p>
-                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p2')">
-                                <i class="fas fa-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="museum-card fade-in-up" style="transition-delay: 0.2s;" onclick="openProductModal('p3')">
-                        <div class="museum-light"></div>
-                        <div class="museum-img-box">
-                            <img src="images/product3.jpg" alt="磅蛋糕" loading="lazy">
-                        </div>
-                        <div class="museum-info">
-                            <h3 class="product-name">磅蛋糕</h3>
-                            <p class="product-price text-gold">NT$ 380</p>
-                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p3')">
-                                <i class="fas fa-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="museum-card fade-in-up" style="transition-delay: 0.3s;" onclick="openProductModal('p4')">
-                        <div class="museum-light"></div>
-                        <div class="museum-img-box">
-                            <img src="images/product4.jpg" alt="8吋派" loading="lazy">
-                        </div>
-                        <div class="museum-info">
-                            <h3 class="product-name">8吋派</h3>
-                            <p class="product-price text-gold">NT$ 980</p>
-                            <button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p4')">
-                                <i class="fas fa-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <div class="museum-card fade-in-up" onclick="openProductModal('p1')"><div class="museum-light"></div><div class="museum-img-box"><img src="images/product1.jpg" alt="鳳梨酥" loading="lazy"></div><div class="museum-info"><h3 class="product-name">鳳梨酥</h3><p class="product-price text-gold">NT$ 550</p><button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p1')"><i class="fas fa-shopping-bag"></i></button></div></div>
+                    <div class="museum-card fade-in-up" style="transition-delay: 0.1s;" onclick="openProductModal('p2')"><div class="museum-light"></div><div class="museum-img-box"><img src="images/product2.jpg" alt="堅果塔" loading="lazy"></div><div class="museum-info"><h3 class="product-name">堅果塔</h3><p class="product-price text-gold">NT$ 420</p><button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p2')"><i class="fas fa-shopping-bag"></i></button></div></div>
+                    <div class="museum-card fade-in-up" style="transition-delay: 0.2s;" onclick="openProductModal('p3')"><div class="museum-light"></div><div class="museum-img-box"><img src="images/product3.jpg" alt="磅蛋糕" loading="lazy"></div><div class="museum-info"><h3 class="product-name">磅蛋糕</h3><p class="product-price text-gold">NT$ 380</p><button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p3')"><i class="fas fa-shopping-bag"></i></button></div></div>
+                    <div class="museum-card fade-in-up" style="transition-delay: 0.3s;" onclick="openProductModal('p4')"><div class="museum-light"></div><div class="museum-img-box"><img src="images/product4.jpg" alt="8吋派" loading="lazy"></div><div class="museum-info"><h3 class="product-name">8吋派</h3><p class="product-price text-gold">NT$ 980</p><button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p4')"><i class="fas fa-shopping-bag"></i></button></div></div>
                 </div>
             </div>
         </section>
@@ -219,19 +203,18 @@
                             <span class="card-signal"><i class="fas fa-wifi"></i></span>
                         </div>
                         <div class="card-middle">
-                            <span class="card-number">8888 8888 8888 8888</span>
+                            <span class="card-number" id="vip-center-text" style="font-size: 24px; letter-spacing: 6px; transition: 0.5s ease; text-align: center; width: 100%; display: block;">WELCOME</span>
                         </div>
                         <div class="card-bottom">
                             <div class="card-holder">
-                                <span class="label">MEMBER</span>
-                                <span class="name">PROJECT.CD VIP</span>
+                                <span class="name" id="vip-bottom-left" style="letter-spacing: 2px; transition: 0.5s ease; font-size: 13px;">PROJECT.CD</span>
                             </div>
-                            <div class="card-logo">BLACK</div>
+                            <div class="card-logo" id="vip-bottom-right" style="transition: 0.5s ease; letter-spacing: 2px; font-size: 14px;">CD - - - -</div>
                         </div>
                     </div>
                 </div>
                 
-                <button class="join-member-btn magnetic-btn fade-in-up">
+                <button class="join-member-btn magnetic-btn fade-in-up nav-user-trigger" id="vip-action-btn">
                     <span class="btn-text">加入會員</span>
                 </button>
             </div>
@@ -239,23 +222,16 @@
 
         <section id="contact" class="content-section fullscreen-section apple-section-white">
             <div class="container about-container center-content">
-                <div class="section-header-wrapper fade-in-up" style="width: 100%; margin-bottom: 60px;">
-                    <h2 class="apple-headline-left">CONTACT</h2>
-                    <span class="apple-subtitle-right">// 聯繫我們</span>
-                </div>
-                
+                <div class="section-header-wrapper fade-in-up" style="width: 100%; margin-bottom: 60px;"><h2 class="apple-headline-left">CONTACT</h2><span class="apple-subtitle-right">// 聯繫我們</span></div>
                 <div class="contact-tactile-wrapper fade-in-up">
-                    <form class="contact-form">
+                    <form class="contact-form" id="contact-form">
                         <div class="input-group">
-                            <input type="text" class="tactile-input" placeholder="您的姓名" required>
-                            <input type="tel" class="tactile-input" placeholder="聯絡電話" required>
+                            <input type="text" class="tactile-input" placeholder="您的姓名" id="contact-name-input" autocomplete="name" required>
+                            <input type="tel" class="tactile-input" placeholder="聯絡電話" id="contact-phone-input" autocomplete="tel" required>
                         </div>
-                        <input type="email" class="tactile-input" placeholder="電子信箱" required>
-                        <textarea class="tactile-input area-field" placeholder="訊息內容..." rows="5"></textarea>
-                        
-                        <button type="button" class="send-message-btn magnetic-btn">
-                            <span class="btn-text">發送訊息</span> <i class="fas fa-paper-plane" style="margin-left: 8px; font-size: 0.9em;"></i>
-                        </button>
+                        <input type="email" class="tactile-input" placeholder="電子信箱" id="contact-email-input" autocomplete="email" required>
+                        <textarea class="tactile-input area-field" placeholder="訊息內容..." rows="5" required></textarea>
+                        <button type="submit" class="send-message-btn magnetic-btn interact-btn" id="contact-submit-btn"><span class="btn-text">發送訊息</span> <i class="fas fa-paper-plane btn-icon"></i></button>
                     </form>
                 </div>
             </div>
@@ -267,7 +243,6 @@
                     <h3 class="footer-logo-text">PROJECT.CD</h3>
                     <p class="footer-slogan">定義味覺的維度</p>
                 </div>
-                
                 <div class="footer-info">
                     <h4>Info</h4>
                     <div class="info-content">
@@ -276,25 +251,19 @@
                         <p><i class="fas fa-clock"></i> 週二至週日 11:00 - 20:00</p>
                     </div>
                 </div>
-
                 <div class="footer-social">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
-                        <a href="#" class="magnetic-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="magnetic-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="magnetic-icon"><i class="fab fa-line"></i></a>
-                        <a href="#" class="magnetic-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="magnetic-icon social-fb"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="magnetic-icon social-ig"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="magnetic-icon social-line"><i class="fab fa-line"></i></a>
+                        <a href="#" class="magnetic-icon social-yt"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom-phantom">
                 <div class="copyright">&copy; 2026 PROJECT.CD. All Rights Reserved.</div>
-                <div class="legal">
-                    <a href="#">Privacy</a>
-                    <span class="sep">|</span>
-                    <a href="#">Terms</a>
-                </div>
+                <div class="legal"><a href="#">Privacy</a><span class="sep">|</span><a href="#">Terms</a></div>
             </div>
         </footer>
     </div>
