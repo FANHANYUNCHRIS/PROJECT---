@@ -1,11 +1,11 @@
 /**
  * PROJECT.CD - Ultimate Golden Master Controller
- * Version: 21.0 (Critical Hotfix)
+ * Version: 22.0 (The Grand Final)
  */
 
 'use strict'; 
 
-// --- Global Helpers (Exposed for HTML onclick) ---
+// --- Global Helpers ---
 window.mockApiDelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 const isValidPhone = (phone) => phone.length >= 8; 
@@ -27,7 +27,7 @@ window.productsData = {
     'p4': { id: 'p4', title: '8吋派', price: 980, images: ['images/product4.jpg'], desc: '滿滿的新鮮富士蘋果，搭配肉桂粉與黑糖。', ingredients: ['🍎 富士蘋果', '🇱🇰 錫蘭肉桂'], nutrition: { cal: '310 kcal', pro: '4.8 g', fat: '16.2 g', sug: '22.5 g', na: '95 mg' } }
 };
 
-// --- Global Functions (Accessible from HTML) ---
+// --- Global Functions ---
 
 window.showToast = function(message, iconClass = "fa-check-circle") {
     const container = document.getElementById('toast-container');
@@ -137,7 +137,6 @@ window.openProductModal = function(id) {
     });
     track.style.transform = `translateX(0)`;
 
-    // Re-bind buttons inside modal
     const deskBtn = document.getElementById('modal-add-btn-desktop');
     const mobileBtn = document.getElementById('modal-add-btn-mobile');
     const addHandler = () => { window.addToCart(id); window.closeProductModal(); };
@@ -188,7 +187,6 @@ window.toggleDashboard = function(show) {
     else modal.classList.remove('active');
 }
 
-// --- DOMContentLoaded: Listeners & Init ---
 document.addEventListener('DOMContentLoaded', () => {
 
     /* 1. Global Animations */
@@ -349,7 +347,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartBtn = document.getElementById('cart-btn');
     cartBtn.addEventListener('click', (e) => { e.preventDefault(); window.toggleCart(true); });
     
-    // Check legal checkbox state
     const legalCheck = document.getElementById('legal-agree-check');
     const checkoutBtn = document.getElementById('go-checkout');
     if (legalCheck && checkoutBtn) {
@@ -412,7 +409,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if(navCrown) navCrown.classList.add('nav-crown-glow');
             document.getElementById('dash-name').textContent = name;
             
-            // Fix VIP Card Text
             const vipCenter = document.getElementById('vip-center-text');
             const vipLeft = document.getElementById('vip-bottom-left');
             const vipRight = document.getElementById('vip-bottom-right');
