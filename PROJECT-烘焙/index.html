@@ -7,9 +7,12 @@
     <title>PROJECT.CD | 定義味覺的維度</title>
     <meta name="description" content="PROJECT.CD - 定義味覺的維度。專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。">
     
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://cdn.pixabay.com; media-src 'self' https://cdn.pixabay.com;">
+
+    <meta property="og:title" content="PROJECT.CD | 定義味覺的維度">
+    <meta property="og:image" content="images/hero-desktop.jpg">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
@@ -31,116 +34,117 @@
 
     <nav class="navbar" id="navbar">
         <div class="nav-left">
-            <button class="hamburger" id="hamburger-btn" aria-label="選單">
-                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-            </button>
-            <a href="#home" class="desktop-logo-link">
-                <img src="images/LOGO.png" alt="PROJECT.CD" class="logo-img">
-            </a>
+            <button class="hamburger" id="hamburger-btn"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <a href="#home" class="desktop-logo-link"><img src="images/LOGO.png" alt="PROJECT.CD" class="logo-img"></a>
             <ul class="nav-links-text" id="mobile-menu">
-                <li><a href="#about" class="nav-link magnetic-text">品牌</a></li>
-                <li><a href="#works" class="nav-link magnetic-text">甜點</a></li>
+                <li><a href="#about" class="nav-link">品牌</a></li>
+                <li><a href="#works" class="nav-link">甜點</a></li>
             </ul>
         </div>
         <div class="nav-center">
-            <a href="#home" class="desktop-brand-link">
-                <span class="desktop-brand-name">PROJECT.CD</span>
-            </a>
-            <a href="#home" class="mobile-logo-link">
-                <img src="images/LOGO.png" alt="PROJECT.CD" class="center-logo-img">
-            </a>
+            <a href="#home" class="desktop-brand-link"><span class="desktop-brand-name">PROJECT.CD</span></a>
+            <a href="#home" class="mobile-logo-link"><img src="images/LOGO.png" alt="PROJECT.CD" class="center-logo-img"></a>
         </div>
         <div class="nav-right">
-            <a href="#" class="icon-link magnetic-icon nav-user-trigger" title="會員專區" id="nav-user-btn">
-                <i class="fas fa-crown" id="nav-crown-icon"></i>
-            </a>
-            <a href="#contact" class="icon-link magnetic-icon mobile-hide-icon" title="聯繫"><i class="fas fa-envelope"></i></a>
-            <a href="#" class="icon-link cart-link magnetic-icon" id="cart-btn" title="收藏">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count-badge hidden" id="cart-badge">0</span>
+            <a href="#" class="icon-link nav-user-trigger" title="會員專區"><i class="fas fa-crown" id="nav-crown-icon"></i></a>
+            <a href="#contact" class="icon-link mobile-hide-icon" title="聯繫"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="icon-link cart-link" id="cart-btn" title="收藏">
+                <i class="fas fa-shopping-cart"></i><span class="cart-count-badge hidden" id="cart-badge">0</span>
             </a>
         </div>
     </nav>
 
     <aside id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h3>收藏清單</h3>
-            <button id="close-cart" class="close-btn_nice"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="cart-body" id="cart-items-container">
-            <p class="empty-msg">// 尚未載入數據</p>
-        </div>
+        <div class="cart-header"><h3>收藏清單</h3><button class="close-btn_nice" onclick="toggleCart(false)"><i class="fas fa-times"></i></button></div>
+        <div class="cart-body" id="cart-items-container"><p class="empty-msg">// 尚未載入數據</p></div>
         <div class="cart-footer">
-            <div class="cart-total-row">
-                <span class="total-label">總金額</span>
-                <span class="total-price" id="cart-total-price">NT$ 0</span>
+            <div class="cart-total-row"><span class="total-label">總金額</span><span class="total-price" id="cart-total-price">NT$ 0</span></div>
+            <div class="checkout-legal-check">
+                <input type="checkbox" id="legal-agree-check">
+                <label for="legal-agree-check">我已閱讀並同意 <a href="#" class="clean-link" onclick="event.preventDefault(); openLegal('terms')">服務條款</a>，並了解本產品因易於腐敗，<span class="highlight">不適用 7 天鑑賞期</span>。</label>
             </div>
-            <button class="checkout-btn" id="go-checkout">前往結帳</button>
+            <button class="flux-btn full-width" id="go-checkout" disabled><span class="btn-text">前往結帳</span><div class="flux-light"></div></button>
         </div>
     </aside>
-    <div id="cart-overlay" class="site-overlay"></div>
+    <div id="cart-overlay" class="site-overlay" onclick="toggleCart(false)"></div>
 
     <div id="auth-modal" class="auth-modal site-overlay">
         <div class="auth-glass-panel clean-glass" id="auth-glass-panel">
-            <button class="close-btn_nice auth-close-btn" id="close-auth"><i class="fas fa-times"></i></button>
+            <button class="close-btn_nice auth-close-btn" onclick="toggleAuth(false)"><i class="fas fa-times"></i></button>
             <div id="auth-form-container">
                 <h2 class="auth-title">專屬維度</h2>
                 <p class="auth-subtitle">開啟您的味覺記憶</p>
                 <form id="auth-form" class="auth-form">
-                    
                     <div class="input-row">
                         <div class="gender-toggle">
-                            <input type="radio" id="gender-mr" name="gender" value="MR." checked>
-                            <label for="gender-mr">MR.</label>
-                            <input type="radio" id="gender-ms" name="gender" value="MS.">
-                            <label for="gender-ms">MS.</label>
+                            <input type="radio" id="gender-mr" name="gender" value="MR." checked><label for="gender-mr">MR.</label>
+                            <input type="radio" id="gender-ms" name="gender" value="MS."><label for="gender-ms">MS.</label>
                         </div>
                         <input type="text" class="tactile-input pill-input flex-grow" placeholder="如何稱呼您 (Name)" id="auth-name-input" autocomplete="name" required>
                     </div>
-                    
-                    <input type="tel" class="tactile-input pill-input" placeholder="手機號碼 (Mobile)" id="auth-phone-input" inputmode="numeric" autocomplete="tel" required>
-                    <input type="email" class="tactile-input pill-input" placeholder="電子信箱 (Email)" id="auth-email-input" autocomplete="email" required>
-                    <input type="text" class="tactile-input pill-input" placeholder="誕生之日 (MM/DD)" id="auth-birthday-input" inputmode="numeric" maxlength="5" required>
-                    
+                    <input type="tel" inputmode="tel" class="tactile-input pill-input" placeholder="手機號碼 (Mobile)" id="auth-phone-input" autocomplete="tel" required>
+                    <input type="email" inputmode="email" class="tactile-input pill-input" placeholder="電子信箱 (Email)" id="auth-email-input" autocomplete="email" required>
+                    <input type="text" inputmode="numeric" class="tactile-input pill-input" placeholder="誕生之日 (MM/DD)" id="auth-birthday-input" maxlength="5" required>
                     <div class="privacy-checkbox">
                         <input type="checkbox" id="privacy-policy" required>
-                        <label for="privacy-policy">我已閱讀並同意 <a href="#">隱私權政策</a></label>
+                        <label for="privacy-policy">同意 <a href="#" class="clean-link" onclick="event.preventDefault(); openLegal('privacy')">隱私權政策</a></label>
                     </div>
-
-                    <button type="submit" class="magnetic-btn auth-submit-btn interact-btn" id="auth-submit-btn">
-                        <span class="btn-text">確認開啟</span>
+                    <button type="submit" class="pill-progress-btn full-width" id="auth-submit-btn" style="margin-top: 15px;">
+                        <div class="btn-progress-bar"></div><span class="btn-text">確認開啟</span>
                     </button>
                 </form>
             </div>
         </div>
         <div class="auth-success-circle clean-glass" id="auth-success-circle">
-            <i class="fas fa-check success-icon-large"></i>
-            <p>維度已開啟</p>
+            <i class="fas fa-check success-icon-large"></i><p>維度已開啟</p>
         </div>
     </div>
 
     <div id="dashboard-modal" class="auth-modal site-overlay">
         <div class="dashboard-glass-panel clean-glass">
-            <button class="close-btn_nice auth-close-btn" id="close-dashboard"><i class="fas fa-times"></i></button>
+            <button class="close-btn_nice auth-close-btn" onclick="toggleDashboard(false)"><i class="fas fa-times"></i></button>
             <div class="dashboard-grid">
                 <div class="dashboard-left">
-                    <h2 class="dash-name" id="dash-name">CHEN</h2>
+                    <h2 class="dash-name" id="dash-name">User</h2>
                     <p class="dash-tier text-gold" id="dash-tier-code">CD-0001</p>
                     <div class="dash-stats">
-                        <div class="stat-box">
-                            <span class="stat-label">累積探索</span>
-                            <span class="stat-value text-gold" id="dash-total-spent">NT$ 0</span>
-                        </div>
-                        <div class="stat-box" style="margin-top: 20px;">
-                            <span class="stat-label" style="font-size: 9px; opacity: 0.5; letter-spacing: 2px;" id="dash-join-date">JOINED: 2026.02</span>
-                        </div>
+                        <div class="stat-box"><span class="stat-label">累積探索</span><span class="stat-value text-gold" id="dash-total-spent">NT$ 0</span></div>
+                        <div class="stat-box" style="margin-top: 20px;"><span class="stat-label" style="font-size: 9px; opacity: 0.5; letter-spacing: 2px;" id="dash-join-date">JOINED: 2026.02</span></div>
                     </div>
                 </div>
                 <div class="dashboard-right">
                     <h3 class="dash-section-title">// 味覺記憶 (History)</h3>
-                    <div class="history-list" id="dashboard-history-list">
-                        </div>
+                    <div class="history-list" id="dashboard-history-list"></div>
                     <button class="logout-btn" id="logout-btn">登出維度</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="legal-modal" class="legal-modal">
+        <div class="legal-glass-panel">
+            <button class="close-btn_nice legal-close" onclick="closeLegalModal()"><i class="fas fa-times"></i></button>
+            <div class="legal-scroll-content">
+                <div id="content-terms" class="legal-text-block hidden">
+                    <h2 class="legal-title">服務條款與運送免責</h2>
+                    <p class="legal-update">最後修訂日期：2026.02.12</p>
+                    <h3>1. 通訊交易解除權例外聲明</h3>
+                    <p>依據「通訊交易解除權合理例外情事適用準則」第2條第1款：「易於腐敗、保存期限較短或解約時即將逾期」之商品，不適用 7 天鑑賞期。</p>
+                    <p><strong>PROJECT.CD 所販售之甜點皆屬此類，故售出後除食品本身瑕疵外，概不接受退換貨。</strong></p>
+                    <h3>2. 宅配運送風險告知</h3>
+                    <p>甜點為脆弱商品，第三方物流運送過程中仍有不可控因素。</p>
+                    <ul class="legal-list">
+                        <li><strong>不在賠償範圍：</strong>些微的位移、頂部裝飾輕微掉落、側邊沾黏奶油。</li>
+                        <li><strong>嚴重毀損：</strong>蛋糕本體嚴重翻覆、粉碎性解體、失溫導致嚴重變形。</li>
+                    </ul>
+                </div>
+                <div id="content-privacy" class="legal-text-block hidden">
+                    <h2 class="legal-title">隱私權政策</h2>
+                    <p class="legal-update">最後更新日期：2026.02.12</p>
+                    <h3>1. 資料蒐集目的</h3>
+                    <p>取得您的個人資料僅供商品配送與會員服務使用。</p>
+                    <h3>2. 當事人權利</h3>
+                    <p>您可以隨時聯繫我們，要求「刪除」您的會員帳號與個人資料。</p>
                 </div>
             </div>
         </div>
@@ -153,10 +157,7 @@
     <div class="content-wrapper">
         <section id="home" class="hero-section">
             <div class="hero-img-wrapper ken-burns">
-                <picture>
-                    <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg"> 
-                    <img src="images/hero-desktop.jpg" alt="PROJECT.CD 主視覺" class="hero-static-img skeleton-bg" fetchpriority="high"> 
-                </picture>
+                <picture><source media="(max-width: 768px)" srcset="images/hero-mobile.jpg"><img src="images/hero-desktop.jpg" class="hero-static-img skeleton-bg"></picture>
             </div>
             <div class="video-overlay"></div>
         </section>
@@ -166,23 +167,51 @@
                 <div class="section-header-wrapper fade-in-up">
                     <h2 class="apple-headline-left">BRAND</h2><span class="apple-subtitle-right">// 品牌故事</span>
                 </div>
-                <div class="about-magazine-layout">
-                    <div class="magazine-item fade-in-up"><div class="mag-img-box"><img src="images/brand-person.jpg" class="mag-img skeleton-bg" alt="負責人 CD" loading="lazy"></div><div class="mag-content-glass left-glass"><h3 class="frame-title">負責人 : CD</h3><div class="text-separator"></div><p class="frame-desc"><span class="tag-label text-gold">品牌代言人</span><br>專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。</p><div class="signature-box"><img src="images/signature.png" alt="Signature" class="signature-img"></div></div></div>
-                    <div class="magazine-item reverse fade-in-up" style="transition-delay: 0.2s;"><div class="mag-img-box"><img src="images/brand-concept.jpg" class="mag-img skeleton-bg" alt="品牌理念" loading="lazy"></div><div class="mag-content-glass right-glass"><h3 class="frame-title">PROJECT.CD</h3><div class="text-separator"></div><p class="frame-desc"><span class="tag-label text-gold">品牌理念</span><br>在數據與味蕾之間，尋找完美的平衡點。這是一場關於精準與美學的實驗。</p></div></div>
+                <div class="offset-layout-wrapper" id="about-interactive-zone">
+                    <div class="offset-item fade-in-up">
+                        <div class="offset-img-box"><img src="images/brand-person.jpg" class="offset-img skeleton-bg" loading="lazy"></div>
+                        <div class="offset-glass-card">
+                            <h3 class="frame-title">負責人 : CD</h3><div class="text-separator"></div>
+                            <p class="frame-desc"><span class="tag-label text-gold">品牌代言人</span><br>專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。</p>
+                            <div class="signature-box"><img src="images/signature.png" class="signature-img"></div>
+                        </div>
+                    </div>
+                    <div class="offset-item reverse fade-in-up" style="transition-delay: 0.2s;">
+                        <div class="offset-img-box"><img src="images/brand-concept.jpg" class="offset-img skeleton-bg" loading="lazy"></div>
+                        <div class="offset-glass-card right-align">
+                            <h3 class="frame-title">PROJECT.CD</h3><div class="text-separator"></div>
+                            <p class="frame-desc"><span class="tag-label text-gold">品牌理念</span><br>在數據與味蕾之間，尋找完美的平衡點。這是一場關於精準與美學的實驗。</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="works" class="content-section fullscreen-section apple-section-white">
-            <div class="container">
-                <div class="section-header-wrapper fade-in-up">
+            <div class="container full-width-container">
+                <div class="section-header-wrapper fade-in-up container-padding">
                     <h2 class="apple-headline-left">SWEETS</h2><span class="apple-subtitle-right">// 甜點系列</span>
                 </div>
-                <div class="museum-grid">
-                    <div class="museum-card fade-in-up" onclick="openProductModal('p1')"><div class="museum-light"></div><div class="museum-img-box"><img src="images/product1.jpg" alt="鳳梨酥" loading="lazy"></div><div class="museum-info"><h3 class="product-name">鳳梨酥</h3><p class="product-price text-gold">NT$ 550</p><button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p1')"><i class="fas fa-shopping-bag"></i></button></div></div>
-                    <div class="museum-card fade-in-up" style="transition-delay: 0.1s;" onclick="openProductModal('p2')"><div class="museum-light"></div><div class="museum-img-box"><img src="images/product2.jpg" alt="堅果塔" loading="lazy"></div><div class="museum-info"><h3 class="product-name">堅果塔</h3><p class="product-price text-gold">NT$ 420</p><button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p2')"><i class="fas fa-shopping-bag"></i></button></div></div>
-                    <div class="museum-card fade-in-up" style="transition-delay: 0.2s;" onclick="openProductModal('p3')"><div class="museum-light"></div><div class="museum-img-box"><img src="images/product3.jpg" alt="磅蛋糕" loading="lazy"></div><div class="museum-info"><h3 class="product-name">磅蛋糕</h3><p class="product-price text-gold">NT$ 380</p><button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p3')"><i class="fas fa-shopping-bag"></i></button></div></div>
-                    <div class="museum-card fade-in-up" style="transition-delay: 0.3s;" onclick="openProductModal('p4')"><div class="museum-light"></div><div class="museum-img-box"><img src="images/product4.jpg" alt="8吋派" loading="lazy"></div><div class="museum-info"><h3 class="product-name">8吋派</h3><p class="product-price text-gold">NT$ 980</p><button class="add-btn-circle gold-btn magnetic-btn-small" onclick="event.stopPropagation(); addToCart('p4')"><i class="fas fa-shopping-bag"></i></button></div></div>
+                <div class="carousel-container" id="sweets-carousel-container">
+                    <div class="carousel-track" id="sweets-track">
+                        <div class="carousel-card" onclick="openProductModal('p1')">
+                            <div class="c-img-box"><img src="images/product1.jpg" loading="lazy"></div>
+                            <div class="c-info"><h3>鳳梨酥</h3><p class="text-gold">NT$ 550</p><button class="pill-action-btn" onclick="event.stopPropagation(); addToCart('p1')"><i class="fas fa-shopping-bag"></i> 加入收藏</button></div>
+                        </div>
+                        <div class="carousel-card" onclick="openProductModal('p2')">
+                            <div class="c-img-box"><img src="images/product2.jpg" loading="lazy"></div>
+                            <div class="c-info"><h3>堅果塔</h3><p class="text-gold">NT$ 420</p><button class="pill-action-btn" onclick="event.stopPropagation(); addToCart('p2')"><i class="fas fa-shopping-bag"></i> 加入收藏</button></div>
+                        </div>
+                        <div class="carousel-card" onclick="openProductModal('p3')">
+                            <div class="c-img-box"><img src="images/product3.jpg" loading="lazy"></div>
+                            <div class="c-info"><h3>磅蛋糕</h3><p class="text-gold">NT$ 380</p><button class="pill-action-btn" onclick="event.stopPropagation(); addToCart('p3')"><i class="fas fa-shopping-bag"></i> 加入收藏</button></div>
+                        </div>
+                        <div class="carousel-card" onclick="openProductModal('p4')">
+                            <div class="c-img-box"><img src="images/product4.jpg" loading="lazy"></div>
+                            <div class="c-info"><h3>8吋派</h3><p class="text-gold">NT$ 980</p><button class="pill-action-btn" onclick="event.stopPropagation(); addToCart('p4')"><i class="fas fa-shopping-bag"></i> 加入收藏</button></div>
+                        </div>
+                        <div class="carousel-spacer"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -190,48 +219,44 @@
         <section id="vip" class="content-section fullscreen-section apple-section-light">
             <div class="container center-content">
                 <div class="section-header-wrapper fade-in-up" style="width: 100%; margin-bottom: 60px;">
-                    <h2 class="apple-headline-left">VIP</h2>
-                    <span class="apple-subtitle-right">// 會員專區</span>
+                    <h2 class="apple-headline-left">VIP</h2><span class="apple-subtitle-right">// 會員專區</span>
                 </div>
-                
-                <div class="titanium-card-container fade-in-up">
-                    <div class="card-ambient-light"></div>
-                    <div class="titanium-card" id="titanium-card">
-                        <div class="card-reflection"></div>
-                        <div class="card-top">
-                            <span class="card-chip"></span>
-                            <span class="card-signal"><i class="fas fa-wifi"></i></span>
-                        </div>
-                        <div class="card-middle">
-                            <span class="card-number" id="vip-center-text" style="font-size: 24px; letter-spacing: 6px; transition: 0.5s ease; text-align: center; width: 100%; display: block;">WELCOME</span>
-                        </div>
-                        <div class="card-bottom">
-                            <div class="card-holder">
-                                <span class="name" id="vip-bottom-left" style="letter-spacing: 2px; transition: 0.5s ease; font-size: 13px;">PROJECT.CD</span>
-                            </div>
-                            <div class="card-logo" id="vip-bottom-right" style="transition: 0.5s ease; letter-spacing: 2px; font-size: 14px;">CD - - - -</div>
+                <div class="vip-stage fade-in-up">
+                    <div class="vip-environment">
+                        <div class="ring ring-1"></div><div class="ring ring-2"></div><div class="ring ring-3"></div>
+                        <div class="floating-tag t1">PRIORITY</div><div class="floating-tag t2">SECRET MENU</div>
+                    </div>
+                    <div class="titanium-card-container">
+                        <div class="titanium-card" id="titanium-card">
+                            <div class="card-reflection"></div>
+                            <div class="card-top"><span class="card-chip"></span><span class="card-signal"><i class="fas fa-wifi"></i></span></div>
+                            <div class="card-middle"><span class="card-number" id="vip-center-text">WELCOME</span></div>
+                            <div class="card-bottom"><div class="card-holder"><span class="name" id="vip-bottom-left">PROJECT.CD</span></div><div class="card-logo" id="vip-bottom-right">CD - - - -</div></div>
                         </div>
                     </div>
                 </div>
-                
-                <button class="join-member-btn magnetic-btn fade-in-up nav-user-trigger" id="vip-action-btn">
-                    <span class="btn-text">加入會員</span>
+                <button class="pill-progress-btn nav-user-trigger fade-in-up" id="vip-action-btn" style="margin-top: 50px;">
+                    <div class="btn-progress-bar"></div><span class="btn-text" id="vip-btn-text">申請加入會員</span>
                 </button>
             </div>
         </section>
 
         <section id="contact" class="content-section fullscreen-section apple-section-white">
             <div class="container about-container center-content">
-                <div class="section-header-wrapper fade-in-up" style="width: 100%; margin-bottom: 60px;"><h2 class="apple-headline-left">CONTACT</h2><span class="apple-subtitle-right">// 聯繫我們</span></div>
-                <div class="contact-tactile-wrapper fade-in-up">
+                <div class="section-header-wrapper fade-in-up" style="width: 100%; margin-bottom: 60px;">
+                    <h2 class="apple-headline-left">CONTACT</h2><span class="apple-subtitle-right">// 聯繫我們</span>
+                </div>
+                <div class="contact-terminal-wrapper fade-in-up">
                     <form class="contact-form" id="contact-form">
-                        <div class="input-group">
-                            <input type="text" class="tactile-input" placeholder="您的姓名" id="contact-name-input" autocomplete="name" required>
-                            <input type="tel" class="tactile-input" placeholder="聯絡電話" id="contact-phone-input" autocomplete="tel" required>
+                        <div class="terminal-group"><label>NAME_ <span class="zh-label">姓名</span></label><input type="text" class="cmd-input" id="contact-name-input" required autocomplete="name"></div>
+                        <div class="terminal-group"><label>MOBILE_ <span class="zh-label">聯絡電話</span></label><input type="tel" inputmode="tel" class="cmd-input" id="contact-phone-input" required autocomplete="tel"></div>
+                        <div class="terminal-group"><label>EMAIL_ <span class="zh-label">電子信箱</span></label><input type="email" inputmode="email" class="cmd-input" id="contact-email-input" required autocomplete="email"></div>
+                        <div class="terminal-group"><label>MESSAGE_ <span class="zh-label">訊息內容</span></label><textarea class="cmd-input area-field" rows="1" id="contact-msg-input" required></textarea></div>
+                        <div class="contact-submit-wrapper">
+                            <button type="submit" class="pill-progress-btn" id="contact-submit-btn">
+                                <div class="btn-progress-bar"></div><span class="btn-text">發送訊息</span>
+                            </button>
                         </div>
-                        <input type="email" class="tactile-input" placeholder="電子信箱" id="contact-email-input" autocomplete="email" required>
-                        <textarea class="tactile-input area-field" placeholder="訊息內容..." rows="5" required></textarea>
-                        <button type="submit" class="send-message-btn magnetic-btn interact-btn" id="contact-submit-btn"><span class="btn-text">發送訊息</span> <i class="fas fa-paper-plane btn-icon"></i></button>
                     </form>
                 </div>
             </div>
@@ -239,16 +264,18 @@
         
         <footer class="site-footer modern-footer">
             <div class="container footer-grid">
-                <div class="footer-brand">
-                    <h3 class="footer-logo-text">PROJECT.CD</h3>
-                    <p class="footer-slogan">定義味覺的維度</p>
-                </div>
+                <div class="footer-brand"><h3 class="footer-logo-text">PROJECT.CD</h3><p class="footer-slogan">定義味覺的維度</p></div>
                 <div class="footer-info">
                     <h4>Info</h4>
                     <div class="info-content">
-                        <p><i class="fas fa-map-marker-alt"></i> 台北市大安區甜點路一段88號</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 台北市大安區 (工作室預約制)</p>
                         <p><i class="fas fa-phone"></i> 02-2345-6789</p>
                         <p><i class="fas fa-clock"></i> 週二至週日 11:00 - 20:00</p>
+                        <div class="trust-badge-group">
+                            <p class="trust-text"><i class="fas fa-file-signature"></i> 統編：98765432</p>
+                            <p class="trust-text"><i class="fas fa-shield-alt"></i> 食品業者登錄：F-123456789-00000-1</p>
+                            <p class="trust-text"><i class="fas fa-user-shield"></i> 產品責任險：富邦產物 1000 萬</p>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-social">
@@ -263,23 +290,42 @@
             </div>
             <div class="footer-bottom-phantom">
                 <div class="copyright">&copy; 2026 PROJECT.CD. All Rights Reserved.</div>
-                <div class="legal"><a href="#">Privacy</a><span class="sep">|</span><a href="#">Terms</a></div>
+                <div class="legal">
+                    <a href="#" class="clean-link" onclick="event.preventDefault(); openLegal('privacy')">Privacy</a><span class="sep">|</span><a href="#" class="clean-link" onclick="event.preventDefault(); openLegal('terms')">Terms</a>
+                </div>
             </div>
         </footer>
     </div>
 
-    <div id="product-modal" class="product-modal" onclick="closeProductModal()">
+    <div id="product-modal" class="product-modal">
         <div class="modal-content apple-modal" onclick="event.stopPropagation()">
+            <div class="mobile-handle-bar" onclick="closeProductModal()"></div>
             <button class="modal-close" onclick="closeProductModal()">&times;</button>
-            <div class="modal-img-container"><img id="modal-img" src="" alt=""></div>
-            <div class="modal-details">
-                <h2 id="modal-title" class="modal-title">TITLE</h2>
-                <p id="modal-price" class="modal-price text-gold">PRICE</p>
+            <div class="modal-gallery-wrapper"><div class="gallery-track" id="gallery-track"></div><div class="gallery-indicators" id="gallery-indicators"></div></div>
+            <div class="modal-details-scrollable">
+                <div class="modal-header"><h2 id="modal-title" class="modal-title">TITLE</h2><p id="modal-price" class="modal-price text-gold">PRICE</p></div>
                 <div class="modal-divider"></div>
-                <p id="modal-desc" class="modal-desc">Description</p>
-                <button class="modal-add-btn apple-primary-btn magnetic-btn" id="modal-add-btn">
-                    <span class="btn-text">加入收藏清單</span>
-                </button>
+                <div class="modal-body-content">
+                    <p id="modal-desc" class="modal-desc">Desc</p>
+                    <div class="ingredients-section"><span class="ing-label">嚴選食材</span><div class="pills-container" id="modal-ingredients"></div></div>
+                    <div class="legal-accordion-wrapper" id="legal-section">
+                        <div class="legal-toggle" onclick="toggleLegalInfo(this)"><span class="legal-icon"><i class="fas fa-shield-alt"></i></span><span class="legal-text">產品數據與食安資訊</span><span class="legal-arrow"><i class="fas fa-chevron-down"></i></span></div>
+                        <div class="legal-content">
+                            <div class="legal-grid">
+                                <div class="nutrition-table"><div class="nut-row header"><span>項目</span><span>每份</span></div><div class="nut-row"><span>熱量</span><span id="nut-cal">--</span></div></div>
+                                <div class="legal-info-text">
+                                    <p>產地：台灣 | 登錄字號：F-123... | 責任險：1000萬</p>
+                                    <p style="color:#d43f3a; font-size:11px; margin-top:5px;"><strong>⚠️ 過敏原：</strong>本產品含蛋、奶、堅果、麩質。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="flux-btn desktop-only full-width" id="modal-add-btn-desktop"><span class="btn-text">加入收藏清單</span><div class="flux-light"></div></button>
+            </div>
+            <div class="mobile-sticky-bar">
+                <div class="bar-price-box"><span class="label">總計</span><span class="price" id="mobile-sticky-price">NT$ 0</span></div>
+                <button class="flux-btn mobile-btn" id="modal-add-btn-mobile"><span class="btn-text">加入</span><div class="flux-light"></div></button>
             </div>
         </div>
     </div>
