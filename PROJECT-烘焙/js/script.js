@@ -1,11 +1,10 @@
 /**
  * PROJECT.CD - Ultimate Golden Master Controller
- * Version: 22.0 (The Grand Final)
+ * Version: 30.0 (The Ultimate Pixel-Perfect)
  */
 
 'use strict'; 
 
-// --- Global Helpers ---
 window.mockApiDelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 const isValidPhone = (phone) => phone.length >= 8; 
@@ -18,16 +17,107 @@ const isValidBirthday = (dateStr) => {
     return true;
 };
 
-// --- Global Data & State ---
+// --- 🌟 Global Data (純粹文案、Emoji) ---
 window.cartItems = [];
 window.productsData = {
-    'p1': { id: 'p1', title: '鳳梨酥', price: 550, images: ['images/product1.jpg'], desc: '嚴選台灣土鳳梨，經過 48 小時慢火熬煮。', ingredients: ['🇹🇼 台灣土鳳梨', '🇫🇷 依思尼奶油'], nutrition: { cal: '220 kcal', pro: '3.5 g', fat: '10.5 g', sug: '15.2 g', na: '45 mg' } },
-    'p2': { id: 'p2', title: '堅果塔', price: 420, images: ['images/product2.jpg'], desc: '澳洲夏威夷豆與杏仁果的完美結合。', ingredients: ['🇦🇺 夏威夷豆', '🇨🇦 有機楓糖'], nutrition: { cal: '180 kcal', pro: '4.2 g', fat: '12.8 g', sug: '8.5 g', na: '30 mg' } },
-    'p3': { id: 'p3', title: '磅蛋糕', price: 380, images: ['images/product3.jpg'], desc: '經典英式食譜，加入新鮮檸檬皮屑提香。', ingredients: ['🍋 屏東九如檸檬', '🇬🇧 伯爵茶粉'], nutrition: { cal: '250 kcal', pro: '3.0 g', fat: '14.5 g', sug: '18.0 g', na: '60 mg' } },
-    'p4': { id: 'p4', title: '8吋派', price: 980, images: ['images/product4.jpg'], desc: '滿滿的新鮮富士蘋果，搭配肉桂粉與黑糖。', ingredients: ['🍎 富士蘋果', '🇱🇰 錫蘭肉桂'], nutrition: { cal: '310 kcal', pro: '4.8 g', fat: '16.2 g', sug: '22.5 g', na: '95 mg' } }
+    'p1': { 
+        id: 'p1', title: '鳳梨酥', price: 550, 
+        images: ['images/product1.jpg', 'images/product1.jpg', 'images/product1.jpg'], 
+        desc: '嚴選台灣土鳳梨，經過 48 小時慢火熬煮，保留果肉纖維的酸甜口感。酥皮採用頂級發酵奶油，入口即化。', 
+        ingredients: [
+            { icon: '🧈', text: '法國 Isigny AOP 發酵奶油' },
+            { icon: '🌾', text: '日本日清紫羅蘭低筋麵粉' },
+            { icon: '🍍', text: '台灣在地鳳梨餡' },
+            { icon: '🍯', text: '日本林原海藻糖' },
+            { icon: '🧀', text: '帕瑪森起司粉' },
+            { icon: '🥛', text: '全脂奶粉' },
+            { icon: '🥚', text: '新鮮洗選蛋' }
+        ], 
+        nutrition: { cal: '205 kcal', pro: '2.0 g', fat: '9.0 g', sat: '5.0 g', trans: '0.0 g', carb: '30.0 g', sug: '12.5 g', na: '60 mg' } 
+    },
+    'p2': { 
+        id: 'p2', title: '磅蛋糕', price: 380, 
+        images: ['images/product2.jpg', 'images/product2.jpg', 'images/product2.jpg'], 
+        desc: '經典英式食譜，加入新鮮黃檸檬皮屑提香。蛋糕體濕潤扎實，外層淋上酸甜檸檬糖霜，層次豐富。', 
+        ingredients: [
+            { icon: '🧈', text: '法國 Isigny AOP 發酵奶油' },
+            { icon: '🌾', text: '日本日清紫羅蘭低筋麵粉' },
+            { icon: '🍯', text: '日本林原海藻糖' },
+            { icon: '🍋', text: '新鮮黃檸檬皮屑' },
+            { icon: '🥚', text: '新鮮洗選蛋' },
+            { icon: '🧂', text: '細砂糖' },
+            { icon: '🥄', text: '無鋁泡打粉' }
+        ], 
+        nutrition: { cal: '190 kcal', pro: '2.5 g', fat: '11.0 g', sat: '6.5 g', trans: '0.0 g', carb: '21.5 g', sug: '10.0 g', na: '40 mg' } 
+    },
+    'p3': { 
+        id: 'p3', title: '焦糖堅果塔', price: 420, 
+        images: ['images/product3.jpg', 'images/product3.jpg', 'images/product3.jpg'], 
+        desc: '特級綜合原味堅果的完美結合，淋上特製焦糖醬。塔皮酥脆，堅果香氣濃郁而不黏牙。', 
+        ingredients: [
+            { icon: '🌰', text: '特級綜合原味堅果' },
+            { icon: '🥛', text: '法國頂級動物性鮮奶油' },
+            { icon: '🧈', text: '法國 Isigny AOP 發酵奶油' },
+            { icon: '🌰', text: '純手工精磨杏仁粉' },
+            { icon: '🍯', text: '水麥芽與日本林原海藻糖' },
+            { icon: '🍒', text: '蔓越莓乾' },
+            { icon: '🌾', text: '日本日清紫羅蘭低筋麵粉' }
+        ], 
+        nutrition: { cal: '187 kcal', pro: '3.1 g', fat: '14.0 g', sat: '4.2 g', trans: '0.0 g', carb: '13.5 g', sug: '6.5 g', na: '17 mg' } 
+    },
+    'p4': { 
+        id: 'p4', title: '法式巧克力派', price: 980, 
+        images: ['images/product4.jpg', 'images/product4.jpg', 'images/product4.jpg'], 
+        desc: '選用法芙娜專業調溫巧克力，極致濃郁的黑巧克力內餡，搭配酥脆派皮與微量海鹽提味，成熟的大人風味。', 
+        ingredients: [
+            { icon: '🍫', text: '頂級調溫黑巧克力 (54%-70%)' },
+            { icon: '🥛', text: '法國頂級動物性鮮奶油' },
+            { icon: '🧈', text: '法國 Isigny AOP 發酵奶油' },
+            { icon: '🌾', text: '台灣優質中筋麵粉' },
+            { icon: '🍯', text: '日本林原海藻糖' },
+            { icon: '🧂', text: '細砂糖' },
+            { icon: '🧂', text: '微量海鹽' },
+            { icon: '🥚', text: '新鮮洗選蛋' }
+        ], 
+        nutrition: { cal: '346 kcal', pro: '4.5 g', fat: '24.0 g', sat: '13.5 g', trans: '0.0 g', carb: '30.2 g', sug: '17.5 g', na: '112 mg' } 
+    }
 };
 
-// --- Global Functions ---
+window.initDragScroll = function(slider) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
+    slider.addEventListener('mouseup', () => { isDown = false; slider.style.cursor = 'grab'; });
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; 
+        slider.scrollLeft = scrollLeft - walk;
+    });
+};
+
+window.scrollCarousel = function(direction) {
+    const container = document.getElementById('sweets-carousel-container');
+    if(!container) return;
+    const card = container.querySelector('.carousel-card');
+    const step = card ? card.offsetWidth * 1.2 : window.innerWidth * 0.3; 
+    container.scrollBy({ left: direction * step, behavior: 'smooth' });
+}
+
+window.scrollModalGallery = function(direction) {
+    const track = document.getElementById('gallery-track');
+    if(!track) return;
+    const slideWidth = track.offsetWidth; 
+    track.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+}
 
 window.showToast = function(message, iconClass = "fa-check-circle") {
     const container = document.getElementById('toast-container');
@@ -49,11 +139,9 @@ window.renderCart = function() {
     const container = document.getElementById('cart-items-container');
     const badge = document.getElementById('cart-badge');
     const totalEl = document.getElementById('cart-total-price');
-    
     const totalCount = window.cartItems.reduce((sum, item) => sum + item.quantity, 0);
     badge.textContent = totalCount;
     badge.classList.toggle('hidden', totalCount === 0);
-    
     if (window.cartItems.length === 0) {
         container.innerHTML = '<p class="empty-msg">// 尚未載入數據</p>';
         totalEl.textContent = 'NT$ 0';
@@ -97,30 +185,79 @@ window.addToCart = function(id) {
     window.showToast(`已將 ${product.title} 加入收藏`, 'fa-shopping-bag');
 }
 
+// 🌟 展開/收合內聯數據區
+window.toggleDataView = function() {
+    const dataView = document.getElementById('inline-data-view');
+    const toggleBtn = document.getElementById('data-toggle-btn');
+    
+    if (dataView.classList.contains('open')) {
+        dataView.classList.remove('open');
+        toggleBtn.classList.remove('open');
+    } else {
+        dataView.classList.add('open');
+        toggleBtn.classList.add('open');
+        setTimeout(() => {
+            const scrollable = document.getElementById('modal-details-scrollable');
+            scrollable.scrollBy({ top: 150, behavior: 'smooth' });
+        }, 300);
+    }
+}
+
 window.openProductModal = function(id) {
     const data = window.productsData[id];
     if(!data) return;
+
+    // 重置狀態：隱藏數據區，關閉按鈕狀態
+    document.getElementById('inline-data-view').classList.remove('open');
+    document.getElementById('data-toggle-btn').classList.remove('open');
 
     document.getElementById('modal-title').textContent = data.title;
     document.getElementById('modal-price').textContent = `NT$ ${data.price}`;
     document.getElementById('modal-desc').textContent = data.desc;
     document.getElementById('mobile-sticky-price').textContent = `NT$ ${data.price}`;
     
+    // 🌟 生成 Emoji 且初始絕對淨空 (無任何文字，無 hover)
     const ingContainer = document.getElementById('modal-ingredients');
+    const descText = document.getElementById('ingredient-detail-text');
     ingContainer.innerHTML = '';
-    data.ingredients.forEach(ing => {
-        const pill = document.createElement('div');
-        pill.className = 'ing-pill'; pill.textContent = ing;
-        ingContainer.appendChild(pill);
+    descText.textContent = ''; 
+    descText.style.opacity = 0;
+
+    data.ingredients.forEach((ing) => {
+        const btn = document.createElement('button');
+        btn.className = 'emoji-btn';
+        btn.innerHTML = ing.icon;
+        
+        const showText = () => {
+            document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            descText.style.opacity = 0;
+            setTimeout(() => {
+                descText.textContent = ing.text;
+                descText.style.opacity = 1;
+            }, 150);
+        };
+        
+        // 只允許點擊觸發，確保顧客握有探索主導權
+        btn.onclick = showText;
+        ingContainer.appendChild(btn);
     });
 
     if(data.nutrition) {
         document.getElementById('nut-cal').textContent = data.nutrition.cal;
+        document.getElementById('nut-pro').textContent = data.nutrition.pro;
+        document.getElementById('nut-fat').textContent = data.nutrition.fat;
+        document.getElementById('nut-sat').textContent = data.nutrition.sat;
+        document.getElementById('nut-trans').textContent = data.nutrition.trans;
+        document.getElementById('nut-carb').textContent = data.nutrition.carb;
+        document.getElementById('nut-sug').textContent = data.nutrition.sug;
+        document.getElementById('nut-na').textContent = data.nutrition.na;
     }
 
     const track = document.getElementById('gallery-track');
     const indicators = document.getElementById('gallery-indicators');
     track.innerHTML = ''; indicators.innerHTML = '';
+    
     const imgs = data.images.length ? data.images : [data.img];
     imgs.forEach((src, i) => {
         const img = document.createElement('img');
@@ -129,18 +266,26 @@ window.openProductModal = function(id) {
         const dot = document.createElement('div');
         dot.className = `gallery-dot ${i===0?'active':''}`;
         dot.onclick = () => {
-            track.style.transform = `translateX(-${i*100}%)`;
-            document.querySelectorAll('.gallery-dot').forEach(d => d.classList.remove('active'));
-            dot.classList.add('active');
+            track.scrollTo({ left: i * track.offsetWidth, behavior: 'smooth' });
         };
         indicators.appendChild(dot);
     });
-    track.style.transform = `translateX(0)`;
+    track.scrollTo({ left: 0 });
+    
+    track.addEventListener('scroll', () => {
+        const scrollIndex = Math.round(track.scrollLeft / track.offsetWidth);
+        document.querySelectorAll('.gallery-dot').forEach((d, i) => {
+            d.classList.toggle('active', i === scrollIndex);
+        });
+    });
+
+    if (window.innerWidth > 768) {
+        window.initDragScroll(track);
+    }
 
     const deskBtn = document.getElementById('modal-add-btn-desktop');
     const mobileBtn = document.getElementById('modal-add-btn-mobile');
     const addHandler = () => { window.addToCart(id); window.closeProductModal(); };
-    
     deskBtn.onclick = addHandler;
     mobileBtn.onclick = addHandler;
     
@@ -151,13 +296,6 @@ window.openProductModal = function(id) {
 window.closeProductModal = function() { 
     document.getElementById('product-modal').classList.remove('active'); 
     document.body.style.overflow = ''; 
-}
-
-window.toggleLegalInfo = function(el) {
-    el.classList.toggle('active');
-    const content = el.nextElementSibling;
-    if (content.style.maxHeight) { content.style.maxHeight = null; content.classList.remove('open'); } 
-    else { content.classList.add('open'); content.style.maxHeight = content.scrollHeight + "px"; }
 }
 
 window.openLegal = function(type) {
@@ -189,13 +327,11 @@ window.toggleDashboard = function(show) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* 1. Global Animations */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.15 });
     document.querySelectorAll('.fade-in-up, .offset-item').forEach(el => observer.observe(el));
 
-    /* 2. Titanium Card 3D */
     const card = document.getElementById('titanium-card');
     const cardContainer = document.querySelector('.titanium-card-container');
     const reflection = document.querySelector('.card-reflection');
@@ -218,7 +354,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* 3. Flux & Magnetic Buttons */
     document.querySelectorAll('.flux-btn').forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             if(btn.disabled) return;
@@ -241,7 +376,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('mouseleave', () => { gsap.to(btn, { duration: 0.8, x: 0, y: 0, ease: 'elastic.out(1, 0.3)' }); });
     });
 
-    /* 4. Navbar & Intro */
     setTimeout(() => { document.getElementById('entry-layer').classList.add('gate-fade-out'); document.getElementById('navbar').classList.remove('navbar-hidden'); }, 800);
     
     const navbar = document.getElementById('navbar');
@@ -267,10 +401,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     document.body.addEventListener('click', unlockAudio, { once: true });
 
-    /* 5. Sweets Carousel (Reset Logic) */
     const track = document.getElementById('sweets-track');
-    const carouselContainer = document.querySelector('.carousel-container');
+    const carouselContainer = document.getElementById('sweets-carousel-container');
     if (track && carouselContainer) {
+        if (window.innerWidth > 768) {
+            window.initDragScroll(carouselContainer);
+        }
         const allCards = track.querySelectorAll('.carousel-card');
         const updateCenter = () => {
             const containerWidth = carouselContainer.offsetWidth;
@@ -285,12 +421,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (dist < minDistance) { minDistance = dist; closestCard = card; }
             });
             if (closestCard) closestCard.classList.add('active-card');
-            
-            const lastCard = allCards[allCards.length - 1];
-            const lastCardCenter = lastCard.offsetLeft + (lastCard.offsetWidth / 2);
-            if (centerPoint > lastCardCenter + 150) {
-                gsap.to(carouselContainer, { scrollLeft: 0, duration: 1.5, ease: "power3.inOut" });
-            }
         };
         let isScrolling;
         carouselContainer.addEventListener('scroll', () => {
@@ -300,7 +430,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(updateCenter, 100);
     }
 
-    /* 6. Contact Form */
     const msgInput = document.getElementById('contact-msg-input');
     if (msgInput) {
         msgInput.addEventListener('input', function() {
@@ -343,7 +472,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* 7. Cart Init */
     const cartBtn = document.getElementById('cart-btn');
     cartBtn.addEventListener('click', (e) => { e.preventDefault(); window.toggleCart(true); });
     
@@ -360,7 +488,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedCart = localStorage.getItem('projectCD_cart');
     if (savedCart) { window.cartItems = JSON.parse(savedCart); window.renderCart(); }
 
-    /* 8. Auth Logic */
     let isLoggedIn = false;
     document.querySelectorAll('.nav-user-trigger').forEach(btn => {
         btn.addEventListener('click', (e) => {
