@@ -7,7 +7,7 @@
     <title>PROJECT.CD | 定義味覺的維度</title>
     <meta name="description" content="PROJECT.CD - 定義味覺的維度。專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。">
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://cdn.pixabay.com; media-src 'self' https://cdn.pixabay.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://cdn.pixabay.com; media-src 'self' https://cdn.pixabay.com;">
 
     <meta property="og:title" content="PROJECT.CD | 定義味覺的維度">
     <meta property="og:image" content="images/hero-desktop.jpg">
@@ -17,10 +17,35 @@
     
     <link rel="stylesheet" href="css/style.css">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Bakery",
+      "name": "PROJECT.CD",
+      "image": "https://yourdomain.com/images/brand-logo-cover.png",
+      "description": "定義味覺的維度。專注於解構經典法式甜點，以極致的數據思維重新定義風味。",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "大安區",
+        "addressRegion": "台北市",
+        "addressCountry": "TW"
+      },
+      "priceRange": "$$",
+      "servesCuisine": "French Pastry"
+    }
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="js/script.js" defer></script>
 </head>
 <body>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>我們使用 Cookie 來提供最極致的瀏覽體驗與個人化服務。繼續瀏覽即表示您同意我們的 <a href="#" data-action="openLegal" data-type="privacy">隱私權政策</a>。</p>
+            <button class="cookie-btn" data-action="acceptCookies">接受</button>
+        </div>
+    </div>
 
     <div class="gate-overlay" id="entry-layer">
         <div class="noise-texture"></div>
@@ -31,10 +56,11 @@
     </div>
 
     <div id="toast-container" class="toast-container"></div>
+    <div id="global-blur-overlay" class="site-overlay blurred-backdrop"></div>
 
     <nav class="navbar" id="navbar">
         <div class="nav-left">
-            <button class="hamburger" id="hamburger-btn"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <button class="hamburger" id="hamburger-btn" aria-label="開啟行動版選單" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
             <a href="#home" class="desktop-logo-link"><img src="images/LOGO.png" alt="PROJECT.CD" class="logo-img"></a>
             <ul class="nav-links-text" id="mobile-menu">
                 <li><a href="#about" class="nav-link">品牌</a></li>
@@ -46,51 +72,90 @@
             <a href="#home" class="mobile-logo-link"><img src="images/LOGO.png" alt="PROJECT.CD" class="center-logo-img"></a>
         </div>
         <div class="nav-right">
-            <a href="#" class="icon-link nav-user-trigger" title="會員專區"><i class="fas fa-crown" id="nav-crown-icon"></i></a>
-            <a href="#contact" class="icon-link mobile-hide-icon" title="聯繫"><i class="fas fa-envelope"></i></a>
-            <a href="#" class="icon-link cart-link" id="cart-btn" title="收藏">
+            <a href="#" class="icon-link" data-action="handleUserTrigger" title="會員專區" aria-label="會員專區"><i class="fas fa-crown" id="nav-crown-icon"></i></a>
+            <a href="#contact" class="icon-link mobile-hide-icon" title="聯繫" aria-label="聯繫我們"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="icon-link cart-link" id="cart-btn" data-action="toggleCart" data-show="true" title="收藏" aria-label="開啟收藏清單">
                 <i class="fas fa-shopping-cart"></i><span class="cart-count-badge hidden" id="cart-badge">0</span>
             </a>
         </div>
     </nav>
 
     <aside id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header"><h3>收藏清單</h3><button class="close-btn_nice" onclick="toggleCart(false)"><i class="fas fa-times"></i></button></div>
+        <div class="cart-header"><h3>收藏清單</h3><button class="close-btn_nice" data-action="toggleCart" data-show="false" aria-label="關閉清單"><i class="fas fa-times"></i></button></div>
         <div class="cart-body" id="cart-items-container"><p class="empty-msg">// 尚未載入數據</p></div>
         <div class="cart-footer">
             <div class="cart-total-row"><span class="total-label">總金額</span><span class="total-price" id="cart-total-price">NT$ 0</span></div>
             <div class="checkout-legal-check">
                 <input type="checkbox" id="legal-agree-check">
-                <label for="legal-agree-check">我已閱讀並同意 <a href="#" class="clean-link" onclick="event.preventDefault(); openLegal('terms')">服務條款</a>，並了解本產品因易於腐敗，<span class="highlight">不適用 7 天鑑賞期</span>。</label>
+                <label for="legal-agree-check">我已閱讀並同意 <a href="#" class="clean-link" data-action="openLegal" data-type="terms">服務條款</a>，並了解本產品因易於腐敗，<span class="highlight">不適用 7 天鑑賞期</span>。</label>
             </div>
-            <button class="flux-btn full-width" id="go-checkout" disabled><span class="btn-text">前往結帳</span><div class="flux-light"></div></button>
+            <button class="flux-btn full-width" id="go-checkout" data-action="openCheckout" disabled><span class="btn-text">前往結帳</span><div class="flux-light"></div></button>
         </div>
     </aside>
-    <div id="cart-overlay" class="site-overlay" onclick="toggleCart(false)"></div>
+    <div id="cart-overlay" class="site-overlay" data-action="toggleCart" data-show="false"></div>
+
+    <div id="checkout-modal" class="auth-modal site-overlay">
+        <div class="checkout-glass-panel clean-glass">
+            <button class="close-btn_nice auth-close-btn" data-action="closeCheckout" aria-label="關閉結帳"><i class="fas fa-times"></i></button>
+            <div class="checkout-header">
+                <h2 class="auth-title" style="font-size: 24px; margin-bottom: 5px;">結帳安排</h2>
+                <p class="auth-subtitle" style="margin-bottom: 20px;">選擇期望到貨日</p>
+            </div>
+            
+            <div class="date-picker-section">
+                <div class="date-picker-header">
+                    <span style="font-size: 13px; color: #86868b; font-weight: 500;">可預約日期 (最近 14 天)</span>
+                    <span style="font-size: 11px; color: #d43f3a;">週一公休</span>
+                </div>
+                <div class="date-scroll-container" id="date-scroll-container"></div>
+            </div>
+
+            <div class="checkout-summary-box">
+                <div class="summary-row"><span class="label">商品總計</span><span class="val" id="chk-subtotal">NT$ 0</span></div>
+                <div class="summary-row"><span class="label">低溫宅配運費</span><span class="val">NT$ 160</span></div>
+                <div class="summary-row total-row"><span class="label">訂單總額</span><span class="val text-gold" id="chk-total">NT$ 160</span></div>
+            </div>
+
+            <button class="pill-progress-btn full-width" id="final-pay-btn" data-action="simulatePayment" style="margin-top: 20px;" disabled>
+                <div class="btn-progress-bar"></div><span class="btn-text">確認付款 (前往金流)</span>
+            </button>
+        </div>
+    </div>
 
     <div id="auth-modal" class="auth-modal site-overlay">
         <div class="auth-glass-panel clean-glass" id="auth-glass-panel">
-            <button class="close-btn_nice auth-close-btn" onclick="toggleAuth(false)"><i class="fas fa-times"></i></button>
+            <button class="close-btn_nice auth-close-btn" data-action="toggleAuth" data-show="false" aria-label="關閉登入"><i class="fas fa-times"></i></button>
             <div id="auth-form-container">
                 <h2 class="auth-title">專屬維度</h2>
                 <p class="auth-subtitle">開啟您的味覺記憶</p>
+                
+                <div class="auth-mode-toggle">
+                    <button type="button" class="auth-tab active" data-action="switchAuthMode" data-mode="register">申請加入</button>
+                    <button type="button" class="auth-tab" data-action="switchAuthMode" data-mode="login">會員登入</button>
+                </div>
+
                 <form id="auth-form" class="auth-form">
-                    <div class="input-row">
+                    <div class="input-row register-only">
                         <div class="gender-toggle">
                             <input type="radio" id="gender-mr" name="gender" value="MR." checked><label for="gender-mr">MR.</label>
                             <input type="radio" id="gender-ms" name="gender" value="MS."><label for="gender-ms">MS.</label>
                         </div>
-                        <input type="text" class="tactile-input pill-input flex-grow" placeholder="如何稱呼您 (Name)" id="auth-name-input" autocomplete="name" required>
+                        <input type="text" class="tactile-input pill-input flex-grow" placeholder="如何稱呼您 (Name)" id="auth-name-input" autocomplete="name">
                     </div>
-                    <input type="tel" inputmode="tel" class="tactile-input pill-input" placeholder="手機號碼 (Mobile)" id="auth-phone-input" autocomplete="tel" required>
-                    <input type="email" inputmode="email" class="tactile-input pill-input" placeholder="電子信箱 (Email)" id="auth-email-input" autocomplete="email" required>
-                    <input type="text" inputmode="numeric" class="tactile-input pill-input" placeholder="誕生之日 (MM/DD)" id="auth-birthday-input" maxlength="5" required>
-                    <div class="privacy-checkbox">
-                        <input type="checkbox" id="privacy-policy" required>
-                        <label for="privacy-policy">同意 <a href="#" class="clean-link" onclick="event.preventDefault(); openLegal('privacy')">隱私權政策</a></label>
+                    
+                    <input type="tel" inputmode="tel" class="tactile-input pill-input" placeholder="手機號碼 (Mobile)" id="auth-phone-input" autocomplete="tel">
+                    <input type="email" inputmode="email" class="tactile-input pill-input" placeholder="電子信箱 (Email)" id="auth-email-input" autocomplete="email">
+                    
+                    <div class="register-only input-wrapper">
+                        <input type="text" inputmode="numeric" class="tactile-input pill-input full-width" placeholder="誕生之日 (MM/DD)" id="auth-birthday-input" maxlength="5">
                     </div>
+                    <div class="privacy-checkbox register-only">
+                        <input type="checkbox" id="privacy-policy">
+                        <label for="privacy-policy">同意 <a href="#" class="clean-link" data-action="openLegal" data-type="privacy">隱私權政策</a></label>
+                    </div>
+                    
                     <button type="submit" class="pill-progress-btn full-width" id="auth-submit-btn" style="margin-top: 15px;">
-                        <div class="btn-progress-bar"></div><span class="btn-text">確認開啟</span>
+                        <div class="btn-progress-bar"></div><span class="btn-text" id="auth-btn-text">確認開啟</span>
                     </button>
                 </form>
             </div>
@@ -102,20 +167,21 @@
 
     <div id="dashboard-modal" class="auth-modal site-overlay">
         <div class="dashboard-glass-panel clean-glass">
-            <button class="close-btn_nice auth-close-btn" onclick="toggleDashboard(false)"><i class="fas fa-times"></i></button>
+            <button class="close-btn_nice auth-close-btn" data-action="toggleDashboard" data-show="false" aria-label="關閉主控台"><i class="fas fa-times"></i></button>
             <div class="dashboard-grid">
                 <div class="dashboard-left">
                     <h2 class="dash-name" id="dash-name">User</h2>
                     <p class="dash-tier text-gold" id="dash-tier-code">CD-0001</p>
                     <div class="dash-stats">
                         <div class="stat-box"><span class="stat-label">累積探索</span><span class="stat-value text-gold" id="dash-total-spent">NT$ 0</span></div>
-                        <div class="stat-box" style="margin-top: 20px;"><span class="stat-label" style="font-size: 9px; opacity: 0.5; letter-spacing: 2px;" id="dash-join-date">JOINED: 2026.02</span></div>
+                        <div class="stat-box" id="dash-join-box"><span class="stat-label" style="font-size: 9px; opacity: 0.5; letter-spacing: 2px;" id="dash-join-date">JOINED: 2026.02</span></div>
                     </div>
                 </div>
                 <div class="dashboard-right">
                     <h3 class="dash-section-title">// 味覺記憶 (History)</h3>
                     <div class="history-list" id="dashboard-history-list"></div>
-                    <button class="logout-btn" id="logout-btn">登出維度</button>
+                    <div class="pagination-controls" id="history-pagination"></div>
+                    <button class="logout-btn" id="logout-btn" data-action="handleLogout">登出維度</button>
                 </div>
             </div>
         </div>
@@ -123,11 +189,11 @@
 
     <div id="legal-modal" class="legal-modal">
         <div class="legal-glass-panel">
-            <button class="close-btn_nice legal-close" onclick="closeLegalModal()"><i class="fas fa-times"></i></button>
+            <button class="close-btn_nice legal-close" data-action="closeLegalModal" aria-label="關閉條款"><i class="fas fa-times"></i></button>
             <div class="legal-scroll-content">
                 <div id="content-terms" class="legal-text-block hidden">
-                    <h2 class="legal-title">服務條款與運送免責</h2>
-                    <p class="legal-update">最後修訂日期：2026.02.13</p>
+                    <h2 class="legal-title text-gold">服務條款與運送免責</h2>
+                    <p class="legal-update">最後修訂日期：2026.02.15</p>
                     <h3>1. 通訊交易解除權例外聲明 (重要)</h3>
                     <p>依據行政院消費者保護處公布之<strong>《通訊交易解除權合理例外情事適用準則》第 2 條第 1 款</strong>規定，本站所販售之甜點商品屬於「易於腐敗、保存期限較短或解約時即將逾期」之類別。</p>
                     <p style="color: var(--color-gold-premium); font-weight: 500;">
@@ -154,8 +220,8 @@
                     <p>本產品生產製程廠房，其設備有處理：<strong>雞蛋、牛奶、堅果、麩質穀物、大豆</strong>及其製品。對上述食材有嚴重過敏反應者，建議請勿食用。</p>
                 </div>
                 <div id="content-privacy" class="legal-text-block hidden">
-                    <h2 class="legal-title">隱私權保護政策<br><span style="font-size: 16px; color: #86868b;">Privacy Policy</span></h2>
-                    <p class="legal-update">最後更新時間 / Last Updated：2026.02.13</p>
+                    <h2 class="legal-title text-gold">隱私權保護政策<br><span style="font-size: 16px; color: #86868b;">Privacy Policy</span></h2>
+                    <p class="legal-update">最後更新時間 / Last Updated：2026.02.15</p>
                     <p>非常歡迎您光臨「PROJECT.CD」（以下簡稱本網站）。請您詳閱以下內容：</p>
                     <h3>一、個人資料的蒐集、處理及利用方式</h3>
                     <p>我們將視功能性質，請您提供必要的個人資料。未經您書面同意，本網站不會將個人資料用於其他用途。</p>
@@ -187,8 +253,12 @@
         <section id="home" class="hero-section">
             <div class="hero-img-wrapper ken-burns">
                 <picture>
+                    <source media="(max-width: 768px)" type="image/avif" srcset="images/hero-mobile.avif">
+                    <source media="(max-width: 768px)" type="image/webp" srcset="images/hero-mobile.webp">
                     <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg"> 
-                    <img src="images/hero-desktop.jpg" alt="PROJECT.CD 主視覺" class="hero-static-img skeleton-bg" fetchpriority="high"> 
+                    <source type="image/avif" srcset="images/hero-desktop.avif">
+                    <source type="image/webp" srcset="images/hero-desktop.webp">
+                    <img src="images/hero-desktop.jpg" alt="PROJECT.CD 主視覺" class="hero-static-img" fetchpriority="high" onerror="this.style.opacity='0'"> 
                 </picture>
             </div>
             <div class="video-overlay"></div>
@@ -199,20 +269,35 @@
                 <div class="section-header-wrapper fade-in-up">
                     <h2 class="apple-headline-left">BRAND</h2><span class="apple-subtitle-right">// 品牌故事</span>
                 </div>
-                <div class="offset-layout-wrapper" id="about-interactive-zone">
-                    <div class="offset-item fade-in-up">
-                        <div class="offset-img-box"><img src="images/brand-person.jpg" class="offset-img skeleton-bg" alt="負責人 CD" loading="lazy"></div>
-                        <div class="offset-glass-card">
-                            <h3 class="frame-title">負責人 : CD</h3><div class="text-separator"></div>
-                            <p class="frame-desc"><span class="tag-label text-gold">品牌代言人</span><br>專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。</p>
-                            <div class="signature-box"><img src="images/signature.png" alt="Signature" class="signature-img"></div>
+                
+                <div class="brand-quadrant-wrapper fade-in-up" id="about-interactive-zone">
+                    <div class="quadrant-col">
+                        <div class="q-box q-img interactive-zone" data-action="openAboutModal" data-key="brand-img" style="background-color: #f5f5f7; padding: 100px;">
+                            <picture>
+                                <img src="images/brand-logo-cover.png" alt="PROJECT.CD Brand Cover" loading="lazy" style="object-fit: contain;">
+                            </picture>
+                        </div>
+                        <div class="q-box q-text interactive-zone" data-action="openAboutModal" data-key="brand-text">
+                            <h3 class="frame-title">PROJECT.CD</h3>
+                            <div class="text-separator"></div>
+                            <p class="frame-desc"><span class="tag-label text-gold">品牌理念</span><br>在數據與味蕾之間，尋找完美的平衡點。這是一場關於精準與美學的實驗。</p>
+                            <div class="read-more-hint">READ MORE ⟶</div>
                         </div>
                     </div>
-                    <div class="offset-item reverse fade-in-up" style="transition-delay: 0.2s;">
-                        <div class="offset-img-box"><img src="images/brand-concept.jpg" class="offset-img skeleton-bg" alt="品牌理念" loading="lazy"></div>
-                        <div class="offset-glass-card right-align">
-                            <h3 class="frame-title">PROJECT.CD</h3><div class="text-separator"></div>
-                            <p class="frame-desc"><span class="tag-label text-gold">品牌理念</span><br>在數據與味蕾之間，尋找完美的平衡點。這是一場關於精準與美學的實驗。</p>
+                    
+                    <div class="quadrant-col">
+                        <div class="q-box q-img interactive-zone" data-action="openAboutModal" data-key="founder-img" style="background-color: #f5f5f7; padding: 0px;">
+                            <picture>
+                                <source type="image/avif" srcset="images/founder-cover.avif">
+                                <source type="image/webp" srcset="images/founder-cover.webp">
+                                <img src="images/founder-cover.jpg" alt="虛擬代言人 CD" loading="lazy" onerror="this.style.opacity='0'" style="object-fit: contain;">
+                            </picture>
+                        </div>
+                        <div class="q-box q-text interactive-zone" data-action="openAboutModal" data-key="founder-text">
+                            <h3 class="frame-title">負責人 : CD</h3>
+                            <div class="text-separator"></div>
+                            <p class="frame-desc"><span class="tag-label text-gold">品牌代言人</span><br>專注於解構經典甜點，以精密的數據思維，重組味蕾的層次體驗。</p>
+                            <div class="read-more-hint">READ MORE ⟶</div>
                         </div>
                     </div>
                 </div>
@@ -228,31 +313,111 @@
                 </div>
                 
                 <div class="carousel-wrapper">
-                    <button class="carousel-arrow left" onclick="scrollCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-arrow left" id="carousel-btn-left" data-action="scrollCarousel" data-dir="-1" aria-label="上一頁"><i class="fas fa-chevron-left"></i></button>
                     
                     <div class="carousel-container" id="sweets-carousel-container">
                         <div class="carousel-track" id="sweets-track">
-                            <div class="carousel-card" onclick="openProductModal('p1')">
-                                <div class="c-img-box"><img src="images/product1.jpg" loading="lazy" alt="鳳梨酥"></div>
-                                <div class="c-info"><h3>鳳梨酥</h3><p class="text-gold">NT$ 550</p><button class="pill-action-btn" onclick="event.stopPropagation(); addToCart('p1')"><i class="fas fa-shopping-bag"></i> 加入收藏</button></div>
+                            
+                            <div class="carousel-card" data-action="handleCardClick" data-id="p1">
+                                <div class="c-img-box">
+                                    <picture>
+                                        <source type="image/avif" srcset="images/product1.avif">
+                                        <source type="image/webp" srcset="images/product1.webp">
+                                        <img src="images/product1.jpg" loading="lazy" alt="鳳梨酥" onerror="this.style.opacity='0'">
+                                    </picture>
+                                </div>
+                                <div class="c-info-console">
+                                    <div class="console-left">
+                                        <h3 class="product-title">鳳梨酥 <span class="product-unit">10入</span></h3>
+                                        <p class="product-price">NT$ 500</p>
+                                    </div>
+                                    <div class="console-right">
+                                        <div class="card-qty-ctrl">
+                                            <button data-action="updateCardQty" data-id="p1" data-val="-1" aria-label="減少數量"><i class="fas fa-minus"></i></button>
+                                            <span id="qty-p1">1</span>
+                                            <button data-action="updateCardQty" data-id="p1" data-val="1" aria-label="增加數量"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                        <button class="card-cart-btn" data-action="addCardToCart" data-id="p1" aria-label="加入購物車"><i class="fas fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="carousel-card" onclick="openProductModal('p2')">
-                                <div class="c-img-box"><img src="images/product2.jpg" loading="lazy" alt="磅蛋糕"></div>
-                                <div class="c-info"><h3>磅蛋糕</h3><p class="text-gold">NT$ 380</p><button class="pill-action-btn" onclick="event.stopPropagation(); addToCart('p2')"><i class="fas fa-shopping-bag"></i> 加入收藏</button></div>
+                            
+                            <div class="carousel-card" data-action="handleCardClick" data-id="p2">
+                                <div class="c-img-box">
+                                    <picture>
+                                        <source type="image/avif" srcset="images/product2.avif">
+                                        <source type="image/webp" srcset="images/product2.webp">
+                                        <img src="images/product2.jpg" loading="lazy" alt="磅蛋糕" onerror="this.style.opacity='0'">
+                                    </picture>
+                                </div>
+                                <div class="c-info-console">
+                                    <div class="console-left">
+                                        <h3 class="product-title">磅蛋糕</h3>
+                                        <p class="product-price">NT$ 400</p>
+                                    </div>
+                                    <div class="console-right">
+                                        <div class="card-qty-ctrl">
+                                            <button data-action="updateCardQty" data-id="p2" data-val="-1" aria-label="減少數量"><i class="fas fa-minus"></i></button>
+                                            <span id="qty-p2">1</span>
+                                            <button data-action="updateCardQty" data-id="p2" data-val="1" aria-label="增加數量"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                        <button class="card-cart-btn" data-action="addCardToCart" data-id="p2" aria-label="加入購物車"><i class="fas fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="carousel-card" onclick="openProductModal('p3')">
-                                <div class="c-img-box"><img src="images/product3.jpg" loading="lazy" alt="焦糖堅果塔"></div>
-                                <div class="c-info"><h3>焦糖堅果塔</h3><p class="text-gold">NT$ 420</p><button class="pill-action-btn" onclick="event.stopPropagation(); addToCart('p3')"><i class="fas fa-shopping-bag"></i> 加入收藏</button></div>
+
+                            <div class="carousel-card" data-action="handleCardClick" data-id="p3">
+                                <div class="c-img-box">
+                                    <picture>
+                                        <source type="image/avif" srcset="images/product3.avif">
+                                        <source type="image/webp" srcset="images/product3.webp">
+                                        <img src="images/product3.jpg" loading="lazy" alt="堅果塔" onerror="this.style.opacity='0'">
+                                    </picture>
+                                </div>
+                                <div class="c-info-console">
+                                    <div class="console-left">
+                                        <h3 class="product-title">堅果塔 <span class="product-unit">10入</span></h3>
+                                        <p class="product-price">NT$ 600</p>
+                                    </div>
+                                    <div class="console-right">
+                                        <div class="card-qty-ctrl">
+                                            <button data-action="updateCardQty" data-id="p3" data-val="-1" aria-label="減少數量"><i class="fas fa-minus"></i></button>
+                                            <span id="qty-p3">1</span>
+                                            <button data-action="updateCardQty" data-id="p3" data-val="1" aria-label="增加數量"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                        <button class="card-cart-btn" data-action="addCardToCart" data-id="p3" aria-label="加入購物車"><i class="fas fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="carousel-card" onclick="openProductModal('p4')">
-                                <div class="c-img-box"><img src="images/product4.jpg" loading="lazy" alt="法式巧克力派"></div>
-                                <div class="c-info"><h3>法式巧克力派</h3><p class="text-gold">NT$ 980</p><button class="pill-action-btn" onclick="event.stopPropagation(); addToCart('p4')"><i class="fas fa-shopping-bag"></i> 加入收藏</button></div>
+
+                            <div class="carousel-card" data-action="handleCardClick" data-id="p4">
+                                <div class="c-img-box">
+                                    <picture>
+                                        <source type="image/avif" srcset="images/product4.avif">
+                                        <source type="image/webp" srcset="images/product4.webp">
+                                        <img src="images/product4.jpg" loading="lazy" alt="巧克力派" onerror="this.style.opacity='0'">
+                                    </picture>
+                                </div>
+                                <div class="c-info-console">
+                                    <div class="console-left">
+                                        <h3 class="product-title">巧克力派</h3>
+                                        <p class="product-price">NT$ 600</p>
+                                    </div>
+                                    <div class="console-right">
+                                        <div class="card-qty-ctrl">
+                                            <button data-action="updateCardQty" data-id="p4" data-val="-1" aria-label="減少數量"><i class="fas fa-minus"></i></button>
+                                            <span id="qty-p4">1</span>
+                                            <button data-action="updateCardQty" data-id="p4" data-val="1" aria-label="增加數量"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                        <button class="card-cart-btn" data-action="addCardToCart" data-id="p4" aria-label="加入購物車"><i class="fas fa-shopping-cart"></i></button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="carousel-spacer"></div>
+                            
                         </div>
                     </div>
                     
-                    <button class="carousel-arrow right" onclick="scrollCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+                    <button class="carousel-arrow right" id="carousel-btn-right" data-action="scrollCarousel" data-dir="1" aria-label="下一頁"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </section>
@@ -276,7 +441,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="pill-progress-btn nav-user-trigger fade-in-up center-self" id="vip-action-btn" style="margin-top: 50px;">
+                <button class="pill-progress-btn fade-in-up center-self absolute-center" id="vip-action-btn" data-action="handleUserTrigger" style="margin-top: 50px;">
                     <div class="btn-progress-bar"></div><span class="btn-text" id="vip-btn-text">申請加入會員</span>
                 </button>
             </div>
@@ -322,103 +487,119 @@
                 <div class="footer-social">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
-                        <a href="#" class="magnetic-icon social-fb"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="magnetic-icon social-ig"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="magnetic-icon social-line"><i class="fab fa-line"></i></a>
-                        <a href="#" class="magnetic-icon social-yt"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="magnetic-icon social-fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="magnetic-icon social-ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="magnetic-icon social-line" aria-label="Line"><i class="fab fa-line"></i></a>
+                        <a href="#" class="magnetic-icon social-yt" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom-phantom">
                 <div class="copyright">&copy; 2026 PROJECT.CD. All Rights Reserved.</div>
                 <div class="legal">
-                    <a href="#" class="clean-link" onclick="event.preventDefault(); openLegal('privacy')">隱私權政策</a>
+                    <a href="#" class="clean-link" data-action="openLegal" data-type="privacy">隱私權政策</a>
                     <span class="sep">|</span>
-                    <a href="#" class="clean-link" onclick="event.preventDefault(); openLegal('terms')">服務條款</a>
+                    <a href="#" class="clean-link" data-action="openLegal" data-type="terms">服務條款</a>
                 </div>
             </div>
         </footer>
     </div>
 
+    <div id="editorial-modal" class="editorial-modal">
+        <div id="ed-modal-content" class="ed-modal-content text-mode">
+            <button class="ed-close-btn text-close" id="ed-close-btn" data-action="closeAboutModal" aria-label="關閉故事"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
     <div id="product-modal" class="product-modal">
-        <div class="modal-content apple-modal" onclick="event.stopPropagation()">
-            <div class="mobile-handle-bar" onclick="closeProductModal()"></div>
-            <button class="modal-close" onclick="closeProductModal()">&times;</button>
+        <div class="modal-content apple-modal">
+            <div class="mobile-handle-bar" data-action="closeProductModal"></div>
+            <button class="modal-close" data-action="closeProductModal" aria-label="關閉商品詳情">&times;</button>
             
             <div class="modal-gallery-wrapper">
-                <button class="gallery-nav-btn left" onclick="scrollModalGallery(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-nav-btn left" data-action="scrollModalGallery" data-dir="-1" aria-label="上一張圖片"><i class="fas fa-chevron-left"></i></button>
                 <div class="gallery-track" id="gallery-track"></div>
-                <button class="gallery-nav-btn right" onclick="scrollModalGallery(1)"><i class="fas fa-chevron-right"></i></button>
+                <button class="gallery-nav-btn right" data-action="scrollModalGallery" data-dir="1" aria-label="下一張圖片"><i class="fas fa-chevron-right"></i></button>
                 <div class="gallery-indicators" id="gallery-indicators"></div>
             </div>
             
             <div class="modal-details-scrollable compact-desktop" id="modal-details-scrollable">
-                <div class="modal-header"><h2 id="modal-title" class="modal-title">TITLE</h2><p id="modal-price" class="modal-price text-gold">PRICE</p></div>
-                <div class="modal-divider-compact"></div>
-                
-                <div class="modal-body-content">
-                    
-                    <p id="modal-desc" class="modal-desc-compact">Desc</p>
-                    
-                    <div class="ingredients-section-compact">
-                        <span class="ing-label-compact">嚴選食材</span>
-                        <div class="ingredients-capsule-row" id="modal-ingredients">
-                            </div>
-                        <div class="ingredient-detail-text" id="ingredient-detail-text"></div>
+                <div class="modal-details-inner">
+                    <div class="modal-header">
+                        <h2 id="modal-title" class="modal-title">TITLE</h2>
+                        <p id="modal-price" class="modal-price text-gold">PRICE</p>
                     </div>
-                    
-                    <button class="view-switch-btn" id="data-toggle-btn" onclick="toggleDataView()">
-                        <i class="fas fa-info-circle"></i> 查看詳細數據與食安資訊 <i class="fas fa-chevron-down nav-arrow" id="data-toggle-arrow"></i>
-                    </button>
+                    <div class="modal-body-content"><p id="modal-desc" class="modal-desc-compact">Desc</p></div>
 
-                    <div id="inline-data-view" class="inline-data-wrapper hidden">
-                        <div class="inline-data-grid">
-                            
-                            <div class="data-left">
-                                <div class="nutrition-table-compact">
-                                    <div class="nut-row header"><span>項目</span><span>每份</span></div>
-                                    <div class="nut-row"><span>熱量</span><span id="nut-cal">--</span></div>
-                                    <div class="nut-row"><span>蛋白質</span><span id="nut-pro">--</span></div>
-                                    <div class="nut-row"><span>脂肪</span><span id="nut-fat">--</span></div>
-                                    <div class="nut-row"><span>飽和脂肪</span><span id="nut-sat">--</span></div>
-                                    <div class="nut-row"><span>反式脂肪</span><span id="nut-trans">--</span></div>
-                                    <div class="nut-row"><span>碳水化合物</span><span id="nut-carb">--</span></div>
-                                    <div class="nut-row"><span>糖</span><span id="nut-sug">--</span></div>
-                                    <div class="nut-row"><span>鈉</span><span id="nut-na">--</span></div>
-                                </div>
+                    <div class="desktop-info-group">
+                        <div class="ingredients-section-compact">
+                            <div class="ing-header">
+                                <span class="ing-label-compact">嚴選食材</span>
+                                <span class="ing-disclaimer">堅持使用各國頂尖原料，實際品項將依全球供應微調。</span>
                             </div>
-                            
-                            <div class="data-right">
-                                <div class="legal-info-text-compact">
-                                    <div class="info-block-compact">
-                                        <p class="nowrap-text"><i class="fas fa-map-marker-alt"></i> 產地：台灣</p>
-                                        <p class="nowrap-text"><i class="fas fa-shield-alt"></i> 責任險：1000萬</p>
-                                        <p class="nowrap-text"><i class="fas fa-file-signature"></i> 登錄字號：F-123456789-00000-1</p>
-                                    </div>
-                                    <div class="warning-block-compact">
-                                        <div class="warning-icon">⚠️</div>
-                                        <div class="warning-text">過敏原：本產品含蛋、奶、堅果、麩質，不適合對其過敏體質者食用。</div>
-                                    </div>
-                                    <div class="storage-block-compact">
-                                        <p class="nowrap-text"><i class="fas fa-snowflake"></i> 保存：常溫 7 天 / 冷藏 14 天</p>
-                                    </div>
-                                </div>
+                            <div class="ingredients-capsule-row" id="modal-ingredients"></div>
+                        </div>
+                        <div class="modal-safety-card">
+                            <div class="safety-row single-line">
+                                <span class="safety-label">產地</span><span class="safety-desc">台灣</span>
+                                <span class="safety-divider">｜</span>
+                                <span class="safety-label">保存</span><span class="safety-desc" id="modal-storage-desc">常溫 7 天</span>
                             </div>
+                            <div class="safety-row warning single-line">
+                                <span class="safety-label">過敏原</span><span class="safety-desc">本產品含蛋、奶、堅果、麩質，不適合對其過敏體質者食用。</span>
+                            </div>
+                        </div>
+                        <button class="view-switch-btn full-width-style noselect" data-action="openDataHub" data-type="spec">
+                            <i class="fas fa-clipboard-list"></i> 完整營養與食安標示
+                        </button>
+                    </div>
 
+                    <div class="mobile-info-group">
+                        <div class="tech-dials-grid">
+                            <div class="tech-dial-group" data-action="openDataHub" data-type="ingredients">
+                                <button class="tech-dial-btn"><i class="fas fa-seedling"></i></button>
+                                <span class="tech-dial-label">嚴選食材</span>
+                            </div>
+                            <div class="tech-dial-group" data-action="openDataHub" data-type="notice">
+                                <button class="tech-dial-btn"><i class="fas fa-exclamation-circle"></i></button>
+                                <span class="tech-dial-label">產地須知</span>
+                            </div>
+                            <div class="tech-dial-group" data-action="openDataHub" data-type="spec">
+                                <button class="tech-dial-btn"><i class="fas fa-clipboard-list"></i></button>
+                                <span class="tech-dial-label">營養數據</span>
+                            </div>
                         </div>
                     </div>
                     
-                </div>
-                
-                <div class="modal-btn-wrapper">
-                    <button class="modal-add-btn-premium desktop-only" id="modal-add-btn-desktop">加入收藏清單</button>
+                    <div class="modal-btn-wrapper desktop-only">
+                        <div class="modal-qty-selector">
+                            <button data-action="updateModalQty" data-val="-1" aria-label="減少數量"><i class="fas fa-minus"></i></button>
+                            <span id="modal-qty-display">1</span>
+                            <button data-action="updateModalQty" data-val="1" aria-label="增加數量"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <button class="modal-add-btn-premium noselect" id="modal-add-btn-desktop" data-action="addModalToCart">加入收藏清單</button>
+                    </div>
                 </div>
             </div>
             
             <div class="mobile-sticky-bar">
-                <div class="bar-price-box"><span class="label">總計</span><span class="price" id="mobile-sticky-price">NT$ 0</span></div>
-                <button class="flux-btn mobile-btn" id="modal-add-btn-mobile"><span class="btn-text">加入</span><div class="flux-light"></div></button>
+                <div class="mobile-qty-ctrl">
+                     <button data-action="updateModalQty" data-val="-1" aria-label="減少數量"><i class="fas fa-minus"></i></button>
+                     <span id="mobile-modal-qty-display">1</span>
+                     <button data-action="updateModalQty" data-val="1" aria-label="增加數量"><i class="fas fa-plus"></i></button>
+                </div>
+                <button class="flux-btn mobile-btn" id="modal-add-btn-mobile" data-action="addModalToCart"><span class="btn-text">加入收藏清單</span><div class="flux-light"></div></button>
             </div>
+        </div>
+    </div>
+
+    <div id="data-hub-modal" class="data-hub-modal">
+        <div class="data-hub-content">
+            <div class="dh-header">
+                <h3 class="dh-title" id="dh-title">TECH SPEC</h3>
+                <button class="dh-close-btn" data-action="closeDataHub" aria-label="關閉數據中心"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="dh-body" id="dh-body"></div>
         </div>
     </div>
 
